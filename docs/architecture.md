@@ -10,7 +10,7 @@ flowchart TB
 
     subgraph adapters["Adapters"]
         GH["Google Health export<br/>(no credentials, no network)"]
-        DS["Public dataset adapters<br/>(Stage 2, not built)"]
+        DS["PMData adapter<br/>(16 subjects, ~5 months each)"]
         SY["Seeded synthetic generators"]
     end
 
@@ -75,11 +75,12 @@ rather than trusting the diagram.
 | `engine/decide.py` | precedence, confidence, retry | gates, policies, reasons |
 | `engine/explain.py` | prose rendered from trace fields only | features, policies |
 | `engine/engine.py` | the public `evaluate()` | all of the above |
-| `engine/adapters/` | external data into the canonical model | schemas, signals |
+| `engine/adapters/` | Google Health and PMData into the canonical model | schemas, signals |
 | `engine/api/` | HTTP translation and the demo page | engine |
 | `engine/measure.py` | **independent** contract measurement, for labelling only | policies, schemas |
 | `engine/synth.py`, `engine/corruptions.py` | seeded evidence and failure injection | schemas, measure |
-| `eval/` | suite, baselines, metrics, report | engine, synth, corruptions |
+| `eval/` | synthetic suite, baselines, metrics, sweep | engine, synth, corruptions |
+| `eval/pmdata_*.py` | real-data preparation, evaluation, and policy A/B | engine, pmdata adapter |
 
 Two separations are deliberate and enforced by tests:
 

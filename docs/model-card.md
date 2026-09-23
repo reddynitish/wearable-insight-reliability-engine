@@ -10,7 +10,7 @@ falsifiable thresholds about people's physiology.
 | | |
 |---|---|
 | Name | Wearable Insight Reliability Engine |
-| Version | `reliability-engine-0.1.0` / policy `claim-policy-0.1.0` |
+| Version | `reliability-engine-0.1.0` / policy `claim-policy-0.2.0` |
 | Date | 2026-09-23 |
 | Type | Deterministic rules engine with versioned claim contracts. No learned component. |
 | Input | A proposed claim, a target window, canonical observations, per-day baseline values, and collection context |
@@ -97,6 +97,30 @@ implementation of the same written contract, so a zero rate is agreement between
 readings of one specification — a regression result, not a benchmark result. The evidence
 is Gaussian-generated with no sensor-error model. Nothing here measures real-world
 performance.
+
+### Results — real data (PMData)
+
+16 subjects, ~5 months each, Fitbit Versa 2. Thambawita et al., MMSys '20, CC BY 4.0.
+2186 subject-days, 1658 with daily resting heart rate.
+
+| claim | days evaluated | decision coverage |
+|---|---|---|
+| `RESTING_HEART_RATE_ELEVATED` | 1658 | 7.5% |
+| `ACTIVITY_LOAD_HIGH` | 2396 | 9.1% |
+| `SLEEP_DURATION_LOW` | 1879 | 14.5% |
+| `SLEEP_QUALITY_REDUCED` | 1879 | 3.6% |
+
+**Unsupported-show rate on corrupted real evidence: 0.0000** across 1488 cases. Labels are
+known because the corruption is known; there is no oracle for the uncorrupted days.
+
+Three thresholds were revised on this evidence (`claim-policy-0.2.0`, ADR 0007). The two
+that mattered were wrong by shape rather than by decimal places: the resting-heart-rate
+stability gate sat at twice the observed maximum and fired on 0.0% of subject-days, and the
+activity stability gate fired on 48.7% and was withholding half of all activity claims.
+
+**Interpretation.** This is the first evidence that any threshold in the contract describes
+real people. It is one cohort — 16 largely athletic adults, one device model — so the
+revised values are tuned to them, not validated for a population.
 
 ### Metrics that do not exist yet
 

@@ -46,22 +46,64 @@ tautological.
 **Consequence: this data tests decision logic, not physiology.** It cannot support any
 claim about real-world performance, and the evaluation report says so in its own text.
 
-## 2. Public datasets (planned, none downloaded)
+## 2. PMData (verified, downloaded, in use)
 
-See [`data/DATASETS.md`](../data/DATASETS.md). Five candidates: PPG-DaLiA, SleepAccel,
-WESAD, MMASH, DREAMT.
+| | |
+|---|---|
+| Source | https://datasets.simula.no/pmdata/ |
+| Citation | Thambawita et al., "PMData: A Sports Logging Dataset", MMSys '20, [doi:10.1145/3339825.3394926](https://dl.acm.org/doi/10.1145/3339825.3394926) |
+| Licence | CC BY 4.0. Attribution given here, in the README, in the adapter, and in every evaluation artifact. No changes made to the data. |
+| Size | 1.4 GB zip, 3.0 GB unpacked. SHA-256 recorded in `data/DATASETS.md`. |
+| Subjects | 16, ~5 months each, Nov 2019 – Mar 2020 |
+| Device | Fitbit Versa 2 |
+| Committed | **No.** `data/datasets/` and `data/datasets/pmdata_cache/` are gitignored. |
+
+**Why this one.** The engine's claims are defined against a personal baseline of 7–14 valid
+days. A dataset with one session per subject cannot exercise them at all — the engine would
+correctly abstain on every case and the evaluation would learn nothing. PMData gives months
+per subject, which is the first thing that made the baseline-dependent claims testable.
+
+**What is used:** `resting_heart_rate.json`, `sleep.json`, `*_active_minutes.json`,
+`heart_rate.json` (intraday, for measured wear time and gaps), `steps.json`.
+**Not used:** food images, Google Forms reports, and the PMSys subjective reports, except
+`wellness.csv` in one explicitly exploratory section. Those are self-report; this engine
+judges sensor evidence.
+
+**Processing.** Each participant's 114 MB `heart_rate.json` is streamed once and reduced to
+per-day summaries in `data/datasets/pmdata_cache/` (gitignored). Wear time is *measured* as
+the number of distinct minutes in which the device produced a heart-rate sample — not a
+proxy, and not assumed.
+
+**Assumptions, both consequential:**
+
+1. *Timezone.* Fitbit exports naive device-local timestamps and PMData states no zone.
+   `Europe/Oslo` is the default because collection was run from Oslo, and it is a
+   parameter because it is a guess. It determines which samples land in which day.
+2. *Sleep efficiency.* Fitbit's reported `efficiency` is not `minutesAsleep / timeInBed`
+   (97 vs 87.9 on the first record inspected). The reported field is used as the canonical
+   signal because it is what a consumer app displays, and the computed ratio is carried
+   alongside so the gap can be inspected.
+
+**Known quirk handled:** a daily resting heart rate of exactly 0 means "no estimate", not a
+measurement. Those days are dropped rather than averaged into a baseline.
+
+## 3. The other four datasets (planned, none downloaded)
+
+See [`data/DATASETS.md`](../data/DATASETS.md): PPG-DaLiA, SleepAccel, WESAD, DREAMT.
 
 **Status: nothing downloaded, every metadata row marked UNVERIFIED.** Citations, URLs,
 sizes, and licence names in that file were drafted from memory during AI-assisted planning
 and must be checked against primary sources before any file is fetched or any dataset name
-appears in a README, paper, or resume bullet.
+appears in a README, paper, or resume bullet. PMData's licence discrepancy — a search
+summary said CC BY-NC 4.0, the dataset page says CC BY 4.0 — is the standing argument for
+that rule.
 
 Rules that hold regardless: no blind merging across datasets, provenance preserved per
 record, subject-held-out splits only, at least one dataset held out entirely for external
 transfer, pseudonymous identifiers rewritten on ingest, and no dataset file or derived
 subject-level table committed (`data/datasets/` is gitignored).
 
-## 3. Personal Google Health data (demonstration only)
+## 4. Personal Google Health data (demonstration only)
 
 | | |
 |---|---|
@@ -93,7 +135,7 @@ observations using candidate key lists written from the fetch client and the doc
 shape, **not** by inspecting personal exports. Points it cannot map are counted and
 reported by `demo/google_health_demo.py --report`, never converted with a guessed value.
 
-## 4. BLE research artifacts (preserved, not evidence)
+## 5. BLE research artifacts (preserved, not evidence)
 
 `captures/`, `logs/`, and `scripts/` hold the completed direct-BLE investigation: GATT
 enumerations, advertisement records, and notification payloads from the owner's own device.

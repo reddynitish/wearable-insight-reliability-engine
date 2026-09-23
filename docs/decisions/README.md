@@ -12,3 +12,4 @@ records are kept and marked, never deleted.
 | [0004](0004-separate-confidence-from-support.md) | Decision confidence is separate from claim support | accepted |
 | [0005](0005-synthetic-evidence-for-v01.md) | Seeded synthetic evidence for v0.1 validation | accepted |
 | [0006](0006-ble-research-closed.md) | Direct-BLE motion access is closed, not paused | accepted |
+| [0007](0007-thresholds-revised-from-real-data.md) | Thresholds revised from real data, not re-argued | accepted |

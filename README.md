@@ -250,10 +250,89 @@ sometimes fixing the engine, sometimes the labeller, all of it in the git histor
 evidence itself is generated from Gaussian baselines with no sensor-error model, so it
 tests the decision logic, not physiology.
 
-**No public-dataset results exist yet.** No learned component exists yet. Nothing here
-shows real-world performance, and nothing here should be cited as if it did. The datasets
-that would change that are listed, with their licences unverified and nothing downloaded,
-in [data/DATASETS.md](data/DATASETS.md).
+**No learned component exists yet**, so baselines B3 and B4 remain unimplemented and
+declared as such. But the engine has now been run against real wearable data — see below.
+
+## Results on real data — PMData
+
+The engine has been evaluated against **PMData**: 16 subjects, ~5 months each, Fitbit
+Versa 2. ([Thambawita et al., MMSys '20](https://dl.acm.org/doi/10.1145/3339825.3394926),
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), no changes made to the data.)
+2186 subject-days, 1658 with daily resting heart rate.
+
+```bash
+./.venv/bin/python -m eval.pmdata_prepare   # once, ~15 min, needs the 1.4 GB download
+./.venv/bin/python -m eval.pmdata_eval
+```
+
+It was chosen for one reason: this engine's claims are defined against a personal baseline
+of 7–14 valid days, so a dataset with one session per subject cannot exercise them at all.
+PMData gives months per subject, and it is Fitbit data, so the field semantics carry over
+to the personal integration path.
+
+### What the engine actually does on real days
+
+| claim | days | decision coverage | most common reason for withholding |
+|---|---|---|---|
+| `RESTING_HEART_RATE_ELEVATED` | 1658 | 7.5% | `CLAIM_CONTRADICTED` (most days it just isn't elevated) |
+| `ACTIVITY_LOAD_HIGH` | 2396 | 9.1% | `CLAIM_CONTRADICTED`, `INSUFFICIENT_HISTORICAL_COVERAGE` |
+| `SLEEP_DURATION_LOW` | 1879 | 14.5% | `CLAIM_CONTRADICTED` |
+| `SLEEP_QUALITY_REDUCED` | 1879 | 3.6% | `CLAIM_CONTRADICTED`, `EFFECT_BELOW_RELIABLE_THRESHOLD` |
+
+An insight that fires on 7.5% of days is roughly one a fortnight, which is a sane rate for
+"your resting heart rate is elevated". Nobody knew this number before; it was guessed.
+
+### The gates hold on real noise
+
+The corruption harness re-run on real subject-days the engine displays:
+**unsupported-show rate 0.0000 across 1488 corrupted cases.** Duplication and reordering
+changed no decision, which is the required behaviour.
+
+### Three thresholds were wrong, and real data showed it
+
+This is the part that mattered. Every threshold was reasoned, never measured, and
+`docs/limitations.md` said so. Now:
+
+| threshold | was | fired on | now |
+|---|---|---|---|
+| RHR `max_baseline_sd` | 8.0 bpm | **0.0%** of 1451 subject-days | 5.0 |
+| activity `max_baseline_sd` | 45 min | **48.7%** of 2055 subject-days | 90 |
+| sleep-quality `max_baseline_sd` | 12 pts | 0.3% of 1663 nights | 6.0 |
+| RHR `min_baseline_days` | 14 | — | 28, disclosed band 14–27 |
+
+- The resting-heart-rate stability gate sat at **twice the observed maximum** (real SD:
+  median 1.78, p95 3.29, max 4.04 bpm). It could never act on anyone.
+- The activity stability gate was the opposite error: it withheld **half of all activity
+  claims** because people's activity varies day to day — which is the phenomenon the claim
+  is about, not a defect in the evidence.
+- A personal baseline takes a median of **48 days** to settle within 10% of its 60-day
+  value, not 14. Requiring 48 would deny a new user any claim for seven weeks, so the bar
+  moved to 28 with a disclosed 14–27 band. That split is a judgement, not a finding.
+- The 3 bpm absolute floor was **confirmed** — real consecutive-day change is median 0.75,
+  p95 2.32 bpm. It also exposed an interaction: at the median personal SD, 3 bpm is
+  `z = 1.68`, so that floor, not the stated `show_z` of 1.5, is what actually binds.
+
+Adopted as `claim-policy-0.2.0` only after measuring the effect (activity coverage
+5.3% → 9.1%, resting heart rate 8.2% → 7.5%) and confirming the safety check still returned
+0.0000 — a revision that buys coverage by weakening gates is a regression, not an
+improvement. Full before/after:
+[`eval/results/pmdata-policy-comparison-*.md`](eval/results/).
+
+### One design lesson the data handed over
+
+No Fitbit export carries a sync-completion timestamp. Without one the engine discloses
+`SYNC_STATE_UNKNOWN` on **every** day, which caps every decision at `SHOW_WITH_WARNING` —
+zero clean `SHOW`s across 1658 real days. The contract asks for a field that real exports
+do not have, so an integrating app must supply it from its own sync layer. Both modes are
+measured side by side in the report.
+
+### What this still does not establish
+
+PMData is 16 largely athletic adults on one device model, and none of them is a reference
+standard. There is still no ground truth for whether an *uncorrupted* real day's claim was
+actually supportable — only the corrupted cases carry known labels. The thresholds are now
+tuned to these 16 people, which is better than tuned to nothing and is not general. No
+calibration, no learned component.
 
 ## Fitbit / Google Health integration
 
@@ -295,13 +374,14 @@ therefore depend entirely on public datasets that ship raw accelerometer data.
 ```
 engine/            the engine: schemas, policies, features, gates, decisions, explanations
   policies/        six versioned claim contracts
-  adapters/        Google Health -> canonical observations (no credentials, no network)
+  adapters/        Google Health and PMData -> canonical observations
   api/             FastAPI surface and the before/after demo page
   measure.py       independent contract measurement, used only to label evaluation cases
   corruptions.py   17 seeded failure injections
   synth.py         seeded synthetic evidence generators
-eval/              suite builder, baselines, metrics, report writer
-tests/             276 tests
+eval/              synthetic suite, baselines, metrics, threshold sweep,
+                   PMData preparation / evaluation / policy comparison
+tests/             293 tests
 docs/              claim contracts, evaluation protocol, related work, cards, ADRs
 demo/              Google Health demonstration script
 tools/             secret scanner
@@ -314,7 +394,7 @@ google_health/     the supported API client (unchanged)
 ## Development
 
 ```bash
-./.venv/bin/python -m pytest                    # 276 tests
+./.venv/bin/python -m pytest                    # 293 tests
 ./.venv/bin/python -m eval.run_eval --seeds 5   # evaluation artifacts
 ./.venv/bin/python tools/secret_scan.py         # pre-publish gate
 ```
@@ -346,5 +426,5 @@ reports whether measurements support a statement, never whether a person has a c
 - [docs/resume-positioning.md](docs/resume-positioning.md) — what may and may not be claimed
 - [docs/architecture.md](docs/architecture.md) — diagram and module map
 - [docs/decisions/](docs/decisions/) — architecture decision records
-- [data/DATASETS.md](data/DATASETS.md) — dataset manifest; **nothing downloaded, nothing verified**
+- [data/DATASETS.md](data/DATASETS.md) — dataset manifest; PMData verified and in use, the rest unverified
 - [FITBIT_AIR_RESEARCH.md](FITBIT_AIR_RESEARCH.md) — the completed BLE feasibility research

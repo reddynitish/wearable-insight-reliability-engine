@@ -3,26 +3,40 @@
 Read this before drawing any conclusion from this repository. It is ordered by how badly
 each item would mislead someone who skipped it.
 
-## 1. No result here is evidence of real-world performance
+## 1. One dataset, one cohort, one device
 
-The only evaluation that exists runs on seeded synthetic evidence. The engine's
-unsupported-show rate of 0.0000 is agreement between two independent implementations of one
-written contract — `engine/` decides, `engine/measure.py` labels — across 17 injected
-failure modes. That makes the suite a strong regression harness and a weak benchmark.
+The engine has now been evaluated on real wearable data — PMData, 16 subjects, ~5 months
+each, Fitbit Versa 2 — and three thresholds were revised because of it. That is a real
+result and it is a narrow one.
 
-It does not show that the contract's thresholds are correct for real people, because the
-evidence was generated from Gaussian baselines with independent days and no sensor-error
-model. A gate that fires exactly when the specification says it should can still be
-specified wrong.
+PMData is **16 largely athletic Norwegian adults on a single device model**. The revised
+thresholds in `claim-policy-0.2.0` are tuned to that cohort's distributions. That is better
+than tuned to nothing, and it is not general: a less active population, an older one, or a
+different sensor would likely move them again. In particular the resting-heart-rate
+stability gate still fires on 0.0% of subject-days even after being tightened from 8.0 to
+5.0 bpm, because nobody in this cohort has an unstable baseline — so that gate remains
+**unvalidated in the direction it exists to act**.
 
-## 2. The thresholds are reasoned, not fitted
+## 2. Real data has no ground truth for the uncorrupted days
 
-Every number in `docs/claim-contracts.md` — 14 baseline days, 60% wear coverage, 1.5 SD to
-display, a 3 bpm absolute floor — comes from domain reasoning about sensor error, reporting
-conventions, and baseline statistics. **None was fitted to outcomes.** They are the most
-likely part of this system to be wrong, and they are the reason Stage 2 exists.
+On synthetic data every case carries a known evidence state. On real data only the
+*corrupted* cases do, because the corruption is known. For an ordinary uncorrupted PMData
+day there is no oracle saying whether the claim was actually supportable, so the real-data
+result is "the gates withheld everything they should have when we broke the evidence"
+plus "here is the decision distribution", not "the engine was right 95% of the time".
 
-## 3. The synthetic suite cannot validate the thresholds
+Getting further needs a reference standard the dataset does not contain — chest ECG for
+heart rate, polysomnography for sleep. That is what PPG-DaLiA and SleepAccel are for, and
+neither has been touched.
+
+## 3. Some thresholds are still only reasoned
+
+`claim-policy-0.2.0` marks with **[PMData]** the thresholds that have evidence behind them.
+Everything unmarked is still domain reasoning that has never been measured: the effect-size
+thresholds for sleep and activity, every `contradict_z`, the coverage floors for the sleep
+claims, the whole anomaly claim, and every consistency rule's penalty.
+
+## 4. The synthetic suite cannot validate the thresholds
 
 The threshold sweep in the evaluation report settles this. Holding the gates fixed and
 moving the display thresholds from permissive (0.30 / 0.40) to strict (0.85 / 0.94) leaves
@@ -39,7 +53,7 @@ no risk left to remove.
 Picking an operating point honestly requires real data and a stated cost for a wrong
 `SHOW` relative to a needless abstention. Neither exists here.
 
-## 4. There is no learned component and no calibration
+## 5. There is no learned component and no calibration
 
 `claim_support_probability` is a deterministic score, not a calibrated probability. Every
 response carries `support_is_calibrated: false` for that reason. No calibration curve,
@@ -52,15 +66,25 @@ project's own success criterion — that a learned component must beat the rules
 held-out subjects — has not been tested. If it is tested and fails, the documented outcome
 is that negative result.
 
-## 5. No public dataset has been touched
+## 6. The other four datasets are untouched
 
-All five rows in `data/DATASETS.md` are marked UNVERIFIED and nothing has been downloaded.
-The citations, URLs, sizes, and licence names there were drafted from memory during
-AI-assisted planning and must be checked against primary sources before any file is
-fetched. No dataset name from that file should appear in a README, paper, or resume bullet
-until its row is verified.
+PMData is verified and in use. The other four rows in `data/DATASETS.md` — PPG-DaLiA,
+SleepAccel, WESAD, DREAMT — are still marked UNVERIFIED and untouched; their citations,
+URLs, sizes, and licence names were drafted from memory during AI-assisted planning. No
+name from those rows should appear in a README, paper, or resume bullet until verified.
 
-## 6. The novelty claim is unverified
+The PMData row is itself the argument for that rule: a web search reported its licence as
+CC BY-NC 4.0 and the dataset's own page says CC BY 4.0. The primary source won, and the
+discrepancy is recorded.
+
+The missing ones matter for specific reasons. PPG-DaLiA is the only planned source of a
+reference-grade heart-rate ground truth and of raw accelerometer data; without it the
+signal-quality stage has no way to learn what a motion-corrupted window looks like.
+SleepAccel is the only planned check on how far consumer sleep staging is from
+polysomnography, which is the empirical basis the `LOW_REFERENCE_AGREEMENT` disclosure
+currently asserts without evidence.
+
+## 7. The novelty claim is unverified
 
 `docs/related-work.md` states the position conservatively and lists seven verification
 tasks, none started. In particular, the vendors (Apple, Fitbit, Garmin, Oura) visibly
@@ -72,7 +96,7 @@ document has been checked against its primary source.** If verification shows th
 combination is already published, the honest response is to reposition the project as a
 careful open implementation and say so.
 
-## 7. Personal Fitbit data proves integration and nothing more
+## 8. Personal Fitbit data proves integration and nothing more
 
 The owner's device history is short. Baseline-dependent claims therefore return
 `WAIT_FOR_MORE_DATA`, which is correct rather than a failure, and it means the personal
@@ -84,7 +108,7 @@ exports, and its candidate key lists are deliberately generous. Run
 `demo/google_health_demo.py --report` to see what does and does not convert on a real
 export; unmapped points are counted and dropped, never converted with a guessed value.
 
-## 8. Raw motion data is unavailable, which constrains the whole Stage-2 plan
+## 9. Raw motion data is unavailable, which constrains the whole Stage-2 plan
 
 Neither the legacy Fitbit Web API nor the Google Health API exposes accelerometer or
 gyroscope samples, and `FITBIT_AIR_RESEARCH.md` documents three sessions establishing that
@@ -95,7 +119,7 @@ Motion-artifact quality estimation therefore depends entirely on public datasets
 raw accelerometer data — principally PPG-DaLiA. If that dataset turns out to be
 unobtainable or unusable, the signal-quality stage has no personal-data fallback.
 
-## 9. Fairness and subgroup performance are untested
+## 10. Fairness and subgroup performance are untested
 
 The engine compares each person only to their own baseline, which avoids population-
 reference bias by construction. But PPG signal quality is known to vary with skin tone,
@@ -104,7 +128,7 @@ people would ration insights unevenly while looking safe in the aggregate. Nothi
 measures that. No fairness claim is made. Testing it needs datasets carrying the relevant
 metadata, and coverage must be reported per subgroup, not only pooled.
 
-## 10. Known engine-level gaps
+## 11. Known engine-level gaps
 
 - **Coverage depends on the caller.** Wear time and sync-completion time are context
   fields. When they are absent the engine discloses `COVERAGE_UNKNOWN` and
@@ -130,7 +154,7 @@ metadata, and coverage must be reported per subgroup, not only pooled.
 - **No persistence, no deployment.** No database, no retention or deletion path for
   decision traces, which contain personal measurements wherever they are logged.
 
-## 11. AI-assisted development
+## 12. AI-assisted development
 
 This repository was built with AI assistance: scaffolding, tests, documentation, and code
 review. Generated code was executed and tested; generated *facts* were not independently
@@ -143,11 +167,14 @@ committed artifact demonstrates it.
 
 In order of value:
 
-1. Verify the `data/DATASETS.md` rows and download PPG-DaLiA. Build the signal-quality
-   estimator with real PPG and a chest-ECG reference.
+1. Verify the remaining `data/DATASETS.md` rows and download PPG-DaLiA. Build the
+   signal-quality estimator with real PPG and a chest-ECG reference — the one thing that
+   would give a real ground truth rather than a known-corruption label.
 2. Verify `docs/related-work.md`, especially FHIR `dataAbsentReason` and vendor gating,
    then rewrite the novelty paragraph to match what is found.
 3. Implement B3 and B4 with subject-held-out splits and a separate calibration split, and
    publish the calibration curve and the risk-coverage curve — including if the learned
    component loses to the rules baseline.
 4. Report subgroup coverage wherever metadata permits it.
+5. Re-check the `claim-policy-0.2.0` thresholds against a second, less athletic cohort.
+   A threshold tuned to one cohort is a hypothesis about the next one.

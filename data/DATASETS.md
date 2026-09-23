@@ -36,7 +36,9 @@ sources is committed to this repository. `data/datasets/` is gitignored.
 | Status | **VERIFIED 2026-09-23, downloaded** |
 | Canonical page | https://datasets.simula.no/pmdata/ |
 | Direct download | `https://datasets.simula.no/downloads/pmdata.zip` |
-| Size | 1.4 GB (zip), as stated on the page and confirmed on download |
+| Size | 1.4 GB zip (1,416,129,266 bytes), 3.0 GB unpacked, confirmed on download |
+| SHA-256 (pmdata.zip) | `53a49d94a2e9713fb8a0fc57d4d9dec3e1e4d2ae866969cd1f7537a5bc125357` |
+| Access date | 2026-09-23 |
 | Licence | **CC BY 4.0** — https://creativecommons.org/licenses/by/4.0/ — per the dataset's own page. Permits use, adaptation and redistribution with attribution. A search summary claimed CC BY-NC 4.0; the primary source says otherwise and is authoritative here. |
 | Required citation | Thambawita, Hicks, Borgli, Stensland, Jha, Svensen, Pettersen, Johansen, Johansen, Pettersen, Nordvang, Pedersen, Gjerdrum, Grønli, Fredriksen, Eg, Hansen, Fagernes, Claudi, Biørn-Hansen, Nguyen, Kupka, Hammer, Jain, Riegler, Halvorsen. **"PMData: A Sports Logging Dataset."** *Proceedings of the 11th ACM Multimedia Systems Conference (MMSys '20)*, 2020, pp. 231–236. DOI [10.1145/3339825.3394926](https://dl.acm.org/doi/10.1145/3339825.3394926) |
 | Attribution requirement | The licence text on the page requires that any document or paper using or reporting results from PMData cite the article above, link the licence, and indicate if changes were made. This repository does all three: here, in the README, and in every evaluation artifact produced from it. |
