@@ -26,8 +26,16 @@ from engine.synth import GroundTruth
 from eval import metrics as M
 from eval.baselines import BASELINES, NOT_IMPLEMENTED
 from eval.suite import REFERENCE_DECISION, build
+from eval.sweep import gate_contribution, sweep, to_markdown as sweep_markdown
 
 OUT_DIR = Path(__file__).resolve().parent / "results"
+
+
+class _OperatingPointView:
+    """Lets to_markdown render operating points read back from the JSON artifact."""
+
+    def __init__(self, **row):
+        self.__dict__.update(row)
 
 
 def _dimension(case) -> str | None:
@@ -88,6 +96,9 @@ def run(seeds: int) -> dict:
             entry["by_ground_truth"] = M.breakdown(records, lambda r: r.truth.value)
         results[name] = entry
 
+    operating_points = sweep(scored)
+    contribution = gate_contribution(scored)
+
     return {
         "artifact": "synthetic-evaluation",
         "synthetic": True,
@@ -108,6 +119,8 @@ def run(seeds: int) -> dict:
             for c in describe()
         ],
         "baselines": results,
+        "operating_points": [p.as_dict() for p in operating_points],
+        "gate_contribution": contribution,
         "baselines_not_implemented": NOT_IMPLEMENTED,
         "excluded_borderline": [
             {
@@ -205,6 +218,11 @@ def to_markdown(report: dict) -> str:
             f"{c['rationale']} |"
         )
 
+    lines += sweep_markdown(
+        [_OperatingPointView(**row) for row in report["operating_points"]],
+        report["gate_contribution"],
+    )
+
     excluded = report["excluded_borderline"]
     lines += [
         "",
@@ -272,6 +290,13 @@ def main() -> int:
         print(f"  {name:20s} unsupported-show {usr['point']:.4f} "
               f"[{usr['ci95_low']:.4f}, {usr['ci95_high']:.4f}]  coverage {cov:.4f}  "
               f"macroF1 {entry['macro_f1']:.4f}")
+    default = next((p for p in report["operating_points"] if p["is_default"]), None)
+    if default:
+        print(f"  default operating point: coverage {default['decision_coverage']:.4f}, "
+              f"unsupported-show {default['unsupported_show_rate']:.4f}")
+    contribution = report["gate_contribution"]
+    print(f"  safety attributable to deterministic gates: "
+          f"{contribution['share_attributable_to_gates']:.1%}")
     print()
     print(f"wrote {json_path}")
     print(f"wrote {md_path}")

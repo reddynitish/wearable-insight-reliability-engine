@@ -2,7 +2,7 @@
 
 **SYNTHETIC EVIDENCE ONLY. These numbers measure agreement between the engine and the claim contract it implements. They are not a measurement of real-world performance and must not be reported as one.**
 
-- generated: `2026-09-23T18:45:35.284577+00:00`
+- generated: `2026-09-23T18:49:21.419601+00:00`
 - model version: `reliability-engine-0.1.0`
 - policy version: `claim-policy-0.1.0`
 - cases: 3120 total, 3057 scored, 63 excluded as borderline
@@ -23,7 +23,7 @@ Reproduce with:
 |---|---|---|---|---|---|
 | `B0_always_show` | 1.0000 [1.0000, 1.0000] | 0.0000 | 1.0000 | 0.1417 | 0.000 ms |
 | `B1_data_present` | 0.9583 [0.9436, 0.9723] | 0.3309 | 0.8803 | 0.1364 | 0.001 ms |
-| `B2_rules_engine` | 0.0000 [0.0000, 0.0000] | 0.0000 | 0.2699 | 0.7752 | 0.110 ms |
+| `B2_rules_engine` | 0.0000 [0.0000, 0.0000] | 0.0000 | 0.2699 | 0.7752 | 0.111 ms |
 
 Not implemented, and not claimed:
 
@@ -115,6 +115,25 @@ Not implemented, and not claimed:
 | `shuffle_order` | integrity | no | samples arrive out of chronological order. The engine must sort and still decide; this stays SUPPORTABLE for the same reason as duplication |
 | `stale_data` | freshness | yes | the whole evidence bundle is old: evaluation happens long after the newest measurement and the last sync |
 | `truncate_baseline` | baseline | yes | the personal baseline is too short to say what is normal for this person, the situation every new user is in |
+
+## Selective risk versus coverage (engine, synthetic)
+
+Display thresholds swept with every deterministic gate held fixed. The shipped default is marked.
+
+| warn_above | show_above | coverage | unsupported-show | over-abstention | shown unsupportable | withheld supportable |
+|---|---|---|---|---|---|---|
+| 0.30 | 0.40 | 0.2699 | 0.0000 | 0.0000 | 0 | 0 |
+| 0.40 | 0.50 | 0.2699 | 0.0000 | 0.0000 | 0 | 0 |
+| 0.45 | 0.60 | 0.2699 | 0.0000 | 0.0000 | 0 | 0 |
+| 0.55 **(default)** | 0.75 | 0.2699 | 0.0000 | 0.0000 | 0 | 0 |
+| 0.65 | 0.82 | 0.2676 | 0.0000 | 0.0085 | 0 | 7 |
+| 0.75 | 0.88 | 0.2676 | 0.0000 | 0.0085 | 0 | 7 |
+| 0.85 | 0.94 | 0.1560 | 0.0000 | 0.4218 | 0 | 348 |
+
+Of 2232 unsupportable cases, 2232 (100.0%) are withheld even at the most permissive thresholds in this sweep, so they were withheld by a deterministic gate rather than by a threshold choice. That share is the part of the engine's safety that no threshold tuning, and no future learned score, can undo.
+
+The curve is flat wherever gates already decide the case. That is the point of the design rather than a limitation of the sweep -- but it also means this synthetic suite cannot recommend an operating point. Choosing one needs real data and an explicit cost for a wrong SHOW against a needless abstention.
+
 
 ## Excluded borderline cases
 

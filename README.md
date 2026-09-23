@@ -213,6 +213,27 @@ types × 3 severities:**
 Intervals bootstrap over **subjects**, not cases, because cases from one subject share a
 baseline and a window.
 
+### Where the safety actually comes from
+
+The report also sweeps the display thresholds with every gate held fixed:
+
+| warn_above | show_above | coverage | unsupported-show | over-abstention |
+|---|---|---|---|---|
+| 0.30 | 0.40 | 0.2699 | 0.0000 | 0.0000 |
+| **0.55 (default)** | **0.75** | **0.2699** | **0.0000** | **0.0000** |
+| 0.65 | 0.82 | 0.2676 | 0.0000 | 0.0085 |
+| 0.85 | 0.94 | 0.1560 | 0.0000 | 0.4218 |
+
+All 2232 unsupportable cases are withheld even at the most permissive thresholds, so
+**100% of the engine's safety on this suite comes from deterministic gates, not from
+threshold choices.** That is the design working — no threshold tuning, and no future
+learned score, can undo a gate.
+
+It is also the sharpest limitation of the suite: if the thresholds never decide an
+unsupportable case, the suite cannot tell whether the thresholds are any good. Choosing an
+operating point needs real data and an explicit cost for a wrong `SHOW` against a needless
+abstention. Nothing here provides either.
+
 ### What that 0.0000 does and does not mean
 
 It means the deterministic gates fire wherever the written contract says they should,
@@ -280,7 +301,7 @@ engine/            the engine: schemas, policies, features, gates, decisions, ex
   corruptions.py   17 seeded failure injections
   synth.py         seeded synthetic evidence generators
 eval/              suite builder, baselines, metrics, report writer
-tests/             268 tests
+tests/             276 tests
 docs/              claim contracts, evaluation protocol, related work, cards, ADRs
 demo/              Google Health demonstration script
 tools/             secret scanner
@@ -293,7 +314,7 @@ google_health/     the supported API client (unchanged)
 ## Development
 
 ```bash
-./.venv/bin/python -m pytest                    # 268 tests
+./.venv/bin/python -m pytest                    # 276 tests
 ./.venv/bin/python -m eval.run_eval --seeds 5   # evaluation artifacts
 ./.venv/bin/python tools/secret_scan.py         # pre-publish gate
 ```
@@ -322,6 +343,7 @@ reports whether measurements support a statement, never whether a person has a c
 - [docs/related-work.md](docs/related-work.md) — scoping review; **citations unverified**
 - [docs/model-card.md](docs/model-card.md) / [docs/data-card.md](docs/data-card.md)
 - [docs/limitations.md](docs/limitations.md)
+- [docs/resume-positioning.md](docs/resume-positioning.md) — what may and may not be claimed
 - [docs/architecture.md](docs/architecture.md) — diagram and module map
 - [docs/decisions/](docs/decisions/) — architecture decision records
 - [data/DATASETS.md](data/DATASETS.md) — dataset manifest; **nothing downloaded, nothing verified**

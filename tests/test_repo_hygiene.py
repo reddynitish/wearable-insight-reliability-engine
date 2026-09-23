@@ -77,6 +77,7 @@ def test_the_required_documentation_exists():
         "docs/data-card.md",
         "docs/limitations.md",
         "docs/architecture.md",
+        "docs/resume-positioning.md",
         "docs/model-card.md",
         "data/DATASETS.md",
         "docs/decisions/README.md",

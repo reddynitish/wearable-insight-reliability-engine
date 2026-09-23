@@ -2,7 +2,7 @@
   "artifact": "synthetic-evaluation",
   "synthetic": true,
   "warning": "SYNTHETIC EVIDENCE ONLY. These numbers measure agreement between the engine and the claim contract it implements. They are not a measurement of real-world performance and must not be reported as one.",
-  "generated_at": "2026-09-23T18:45:35.284577+00:00",
+  "generated_at": "2026-09-23T18:49:21.419601+00:00",
   "model_version": "reliability-engine-0.1.0",
   "policy_version": "claim-policy-0.1.0",
   "python": "3.13.11",
@@ -214,7 +214,7 @@
       "latency_ms": {
         "p50": 0.0,
         "p95": 0.0001,
-        "p99": 0.0001
+        "p99": 0.0007
       }
     },
     "B1_data_present": {
@@ -266,8 +266,8 @@
       },
       "latency_ms": {
         "p50": 0.0005,
-        "p95": 0.001,
-        "p99": 0.0039
+        "p95": 0.0011,
+        "p99": 0.0041
       }
     },
     "B2_rules_engine": {
@@ -318,9 +318,9 @@
         "REJECT": 1393
       },
       "latency_ms": {
-        "p50": 0.0726,
-        "p95": 0.1098,
-        "p99": 0.1397
+        "p50": 0.0729,
+        "p95": 0.1105,
+        "p99": 0.1355
       },
       "by_claim_type": {
         "ACTIVITY_LOAD_HIGH": {
@@ -567,6 +567,91 @@
         }
       }
     }
+  },
+  "operating_points": [
+    {
+      "warn_above": 0.3,
+      "show_above": 0.4,
+      "cases": 3057,
+      "decision_coverage": 0.2699,
+      "unsupported_show_rate": 0.0,
+      "over_abstention_rate": 0.0,
+      "shown_unsupportable": 0,
+      "withheld_supportable": 0,
+      "is_default": false
+    },
+    {
+      "warn_above": 0.4,
+      "show_above": 0.5,
+      "cases": 3057,
+      "decision_coverage": 0.2699,
+      "unsupported_show_rate": 0.0,
+      "over_abstention_rate": 0.0,
+      "shown_unsupportable": 0,
+      "withheld_supportable": 0,
+      "is_default": false
+    },
+    {
+      "warn_above": 0.45,
+      "show_above": 0.6,
+      "cases": 3057,
+      "decision_coverage": 0.2699,
+      "unsupported_show_rate": 0.0,
+      "over_abstention_rate": 0.0,
+      "shown_unsupportable": 0,
+      "withheld_supportable": 0,
+      "is_default": false
+    },
+    {
+      "warn_above": 0.55,
+      "show_above": 0.75,
+      "cases": 3057,
+      "decision_coverage": 0.2699,
+      "unsupported_show_rate": 0.0,
+      "over_abstention_rate": 0.0,
+      "shown_unsupportable": 0,
+      "withheld_supportable": 0,
+      "is_default": true
+    },
+    {
+      "warn_above": 0.65,
+      "show_above": 0.82,
+      "cases": 3057,
+      "decision_coverage": 0.2676,
+      "unsupported_show_rate": 0.0,
+      "over_abstention_rate": 0.0085,
+      "shown_unsupportable": 0,
+      "withheld_supportable": 7,
+      "is_default": false
+    },
+    {
+      "warn_above": 0.75,
+      "show_above": 0.88,
+      "cases": 3057,
+      "decision_coverage": 0.2676,
+      "unsupported_show_rate": 0.0,
+      "over_abstention_rate": 0.0085,
+      "shown_unsupportable": 0,
+      "withheld_supportable": 7,
+      "is_default": false
+    },
+    {
+      "warn_above": 0.85,
+      "show_above": 0.94,
+      "cases": 3057,
+      "decision_coverage": 0.156,
+      "unsupported_show_rate": 0.0,
+      "over_abstention_rate": 0.4218,
+      "shown_unsupportable": 0,
+      "withheld_supportable": 348,
+      "is_default": false
+    }
+  ],
+  "gate_contribution": {
+    "unsupportable_cases": 2232,
+    "withheld_even_at_the_most_permissive_thresholds": 2232,
+    "share_attributable_to_gates": 1.0,
+    "note": "Cases still withheld at warn_above=0.30 / show_above=0.40 were withheld by a deterministic gate. That share is the part of the engine's safety that no threshold choice, and no future learned score, can undo."
   },
   "baselines_not_implemented": {
     "B3_learned_no_abstention": "requires public datasets; see data/DATASETS.md",

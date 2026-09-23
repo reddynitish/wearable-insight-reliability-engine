@@ -81,6 +81,17 @@ the contradiction and display thresholds).
 Intervals bootstrap over subjects. Reproduce with
 `./.venv/bin/python -m eval.run_eval --seeds 5`.
 
+### Operating points
+
+The report sweeps the display thresholds with every gate held fixed. Across 0.30/0.40 to
+0.85/0.94 the unsupported-show rate stays at 0.0000, because all 2232 unsupportable cases in
+the suite are withheld by a deterministic gate rather than by a threshold. Tightening to
+0.85/0.94 raises over-abstention to 0.4218 and removes no risk, since none was left.
+
+**Consequence: the threshold values are unvalidated by this evaluation.** Selecting an
+operating point requires real data and a stated cost for a wrong SHOW against a needless
+abstention.
+
 **Interpretation.** Labels come from `engine/measure.py`, an independent second
 implementation of the same written contract, so a zero rate is agreement between two
 readings of one specification — a regression result, not a benchmark result. The evidence
