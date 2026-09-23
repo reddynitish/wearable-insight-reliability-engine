@@ -1,0 +1,30 @@
+{"kind": "connected", "round": 1, "mtu": 247, "t": 1790113112.1514199}
+{"kind": "read", "round": 1, "since_connect": 0.0, "uuid": "abbafd03-e56a-484c-b832-8b17cf6cbfe8", "ok": false, "error": "TimeoutError", "still_connected": true, "t": 1790113114.653194}
+{"kind": "read", "round": 1, "since_connect": 2.5, "uuid": "ac2f0145-8182-4be5-91e0-2992e6b40ebb", "ok": false, "error": "TimeoutError", "still_connected": true, "t": 1790113117.154797}
+{"kind": "read", "round": 1, "since_connect": 5.0, "uuid": "4eee1c03-4133-479b-8663-02c84bdc14be", "ok": false, "error": "TimeoutError", "still_connected": true, "t": 1790113119.656327}
+{"kind": "read", "round": 1, "since_connect": 7.51, "uuid": "4eee1c06-4133-479b-8663-02c84bdc14be", "ok": false, "error": "TimeoutError", "still_connected": true, "t": 1790113122.157884}
+{"kind": "read", "round": 1, "since_connect": 10.01, "uuid": "4eee1c07-4133-479b-8663-02c84bdc14be", "ok": false, "error": "TimeoutError", "still_connected": true, "t": 1790113124.6598148}
+{"kind": "connected", "round": 2, "mtu": 247, "t": 1790113143.5929222}
+{"kind": "read", "round": 2, "since_connect": 0.0, "uuid": "ac2f0145-8182-4be5-91e0-2992e6b40ebb", "ok": true, "len": 16, "hex": "ac2f284581824be591e02992e6b40ebb", "text": "./(E..K..)....", "t": 1790113143.652163}
+{"kind": "read", "round": 2, "since_connect": 0.06, "uuid": "4eee1c03-4133-479b-8663-02c84bdc14be", "ok": false, "error": "BleakGATTProtocolError", "still_connected": true, "t": 1790113143.7112808}
+{"kind": "read", "round": 2, "since_connect": 0.12, "uuid": "4eee1c06-4133-479b-8663-02c84bdc14be", "ok": true, "len": 1, "hex": "00", "text": ".", "t": 1790113143.7715998}
+{"kind": "read", "round": 2, "since_connect": 0.18, "uuid": "4eee1c07-4133-479b-8663-02c84bdc14be", "ok": true, "len": 1, "hex": "00", "text": ".", "t": 1790113143.831048}
+{"kind": "read", "round": 2, "since_connect": 0.24, "uuid": "abbafd01-e56a-484c-b832-8b17cf6cbfe8", "ok": true, "len": 9, "hex": "180000004800f70000", "text": "....H....", "t": 1790113143.89228}
+{"kind": "read", "round": 2, "since_connect": 0.3, "uuid": "abbafd02-e56a-484c-b832-8b17cf6cbfe8", "ok": true, "len": 7, "hex": "01000000000000", "text": ".......", "t": 1790113143.952241}
+{"kind": "read", "round": 2, "since_connect": 0.36, "uuid": "00002a23-0000-1000-8000-00805f9b34fb", "ok": true, "len": 8, "hex": "0000000000000000", "text": "........", "t": 1790113144.011555}
+{"kind": "read", "round": 2, "since_connect": 0.42, "uuid": "00002a2a-0000-1000-8000-00805f9b34fb", "ok": true, "len": 1, "hex": "00", "text": ".", "t": 1790113144.071615}
+{"kind": "read", "round": 2, "since_connect": 0.48, "uuid": "00002a50-0000-1000-8000-00805f9b34fb", "ok": true, "len": 7, "hex": "00000000000000", "text": ".......", "t": 1790113144.131001}
+{"kind": "read", "round": 2, "since_connect": 0.54, "uuid": "00002a25-0000-1000-8000-00805f9b34fb", "ok": true, "len": 12, "hex": "376336623261306433663631", "text": "7c6b2a0d3f61", "t": 1790113144.191442}
+{"kind": "read", "round": 2, "since_connect": 0.6, "uuid": "00002a27-0000-1000-8000-00805f9b34fb", "ok": true, "len": 0, "hex": "", "text": "", "t": 1790113144.2514381}
+{"kind": "read", "round": 2, "since_connect": 0.66, "uuid": "00002a28-0000-1000-8000-00805f9b34fb", "ok": true, "len": 0, "hex": "", "text": "", "t": 1790113144.311585}
+{"kind": "read", "round": 2, "since_connect": 0.72, "uuid": "abbafd03-e56a-484c-b832-8b17cf6cbfe8", "ok": false, "error": "BleakGATTProtocolError", "still_connected": true, "t": 1790113144.371238}
+{"kind": "connected", "round": 3, "mtu": 247, "t": 1790113154.603364}
+{"kind": "read", "round": 3, "since_connect": 0.0, "uuid": "abbafd03-e56a-484c-b832-8b17cf6cbfe8", "ok": false, "error": "TimeoutError", "still_connected": true, "t": 1790113157.104387}
+{"kind": "read", "round": 3, "since_connect": 2.5, "uuid": "4eee1c03-4133-479b-8663-02c84bdc14be", "ok": false, "error": "TimeoutError", "still_connected": true, "t": 1790113159.606014}
+{"kind": "connected", "round": 4, "mtu": 247, "t": 1790113185.92258}
+{"kind": "read", "round": 4, "since_connect": 0.0, "uuid": "4eee1c03-4133-479b-8663-02c84bdc14be", "ok": false, "error": "BleakGATTProtocolError", "still_connected": true, "t": 1790113185.9816692}
+{"kind": "read", "round": 4, "since_connect": 0.06, "uuid": "abbafd03-e56a-484c-b832-8b17cf6cbfe8", "ok": false, "error": "BleakGATTProtocolError", "still_connected": true, "t": 1790113186.041226}
+{"kind": "connected", "round": 5, "mtu": 247, "t": 1790113196.602562}
+{"kind": "read", "round": 5, "since_connect": 0.0, "uuid": "abbafd03-e56a-484c-b832-8b17cf6cbfe8", "ok": false, "error": "TimeoutError", "still_connected": true, "t": 1790113199.1044989}
+{"kind": "read", "round": 5, "since_connect": 2.5, "uuid": "4eee1c03-4133-479b-8663-02c84bdc14be", "ok": false, "error": "TimeoutError", "still_connected": true, "t": 1790113201.6060958}
+{"kind": "summary", "got": {"ac2f0145-8182-4be5-91e0-2992e6b40ebb": "ac2f284581824be591e02992e6b40ebb", "4eee1c06-4133-479b-8663-02c84bdc14be": "00", "4eee1c07-4133-479b-8663-02c84bdc14be": "00", "abbafd01-e56a-484c-b832-8b17cf6cbfe8": "180000004800f70000", "abbafd02-e56a-484c-b832-8b17cf6cbfe8": "01000000000000", "00002a23-0000-1000-8000-00805f9b34fb": "0000000000000000", "00002a2a-0000-1000-8000-00805f9b34fb": "00", "00002a50-0000-1000-8000-00805f9b34fb": "00000000000000", "00002a25-0000-1000-8000-00805f9b34fb": "376336623261306433663631", "00002a27-0000-1000-8000-00805f9b34fb": "", "00002a28-0000-1000-8000-00805f9b34fb": ""}, "failed": {"abbafd03-e56a-484c-b832-8b17cf6cbfe8": "TimeoutError", "ac2f0145-8182-4be5-91e0-2992e6b40ebb": "TimeoutError", "4eee1c03-4133-479b-8663-02c84bdc14be": "TimeoutError", "4eee1c06-4133-479b-8663-02c84bdc14be": "TimeoutError", "4eee1c07-4133-479b-8663-02c84bdc14be": "TimeoutError"}, "t": 1790113201.60729}

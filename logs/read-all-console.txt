@@ -1,0 +1,19 @@
+waiting for tracker (0xFD62)...
+connected FITBIT-AIR-LOCAL-HANDLE mtu 247
+00002a29 ['read'] 466974626974
+00002a24 ['read'] 3637
+00002a25 ['read'] 653565336130336165623565
+00002a27 ['read'] 
+00002a26 ['read'] 36372e32303030312e3235332e32
+00002a28 ['read'] 
+00002a23 ['read'] 0000000000000000
+00002a2a ['read'] 00
+00002a50 ['read'] 00000000000000
+abbafd01 ['notify', 'read'] 180000004800f70000
+abbafd02 ['notify', 'read'] 01000000000000
+abbafd03 ['read'] TimeoutError()
+ac2f0145 ['read'] TimeoutError()
+4eee1c03 ['read'] TimeoutError()
+4eee1c06 ['write', 'read', 'notify'] TimeoutError()
+4eee1c07 ['indicate', 'write', 'read'] TimeoutError()
+saved /Users/<user>/Projects/fitbit-air-research/logs/read-all-20260921-192523.json

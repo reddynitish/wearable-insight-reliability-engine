@@ -1,0 +1,9 @@
+waiting for tracker to advertise (wake it: tap/raise your wrist)...
+RX* abbafd01 180000004800f70000
+RX* abbafd02 01000000000000
+subscribed to Gattlink RX; sending Reset Request
+TX  80 Reset Request
+TX  80 Reset Request (retry)
+TX  80 Reset Request (retry)
+final state: AWAITING_RESET_COMPLETE_SELF_INITIATED
+saved /Users/<user>/Projects/fitbit-air-research/captures/gattlink-probe-20260921-191822.jsonl

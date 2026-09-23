@@ -1,0 +1,43 @@
+# ---- secrets and personal health data (never commit) ----
+google_health/credentials.json
+google_health/token.json
+google_health/data/
+**/credentials.json
+**/token.json
+*.pem
+*.key
+.env
+.env.*
+personal/
+data/raw/
+data/personal/
+
+# ---- third-party clones kept locally for reference only ----
+repos/
+ref/
+
+# ---- python ----
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+htmlcov/
+.coverage
+.coverage.*
+
+# ---- datasets (large / license-restricted; see data/DATASETS.md) ----
+data/datasets/
+*.parquet
+*.h5
+*.pkl
+
+# ---- os / editor ----
+.DS_Store
+.idea/
+.vscode/

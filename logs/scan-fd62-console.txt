@@ -1,0 +1,3 @@
+log -> /Users/<user>/Projects/fitbit-air-research/logs/adv-events-20260921-191741.jsonl; 1 devices
+
+n=  3 best= -43 FITBIT-AIR-LOCAL-HANDLE 'Google Fitbit Air' svcs=['0000fd62'] mfg=[] sdata=['0000180a']

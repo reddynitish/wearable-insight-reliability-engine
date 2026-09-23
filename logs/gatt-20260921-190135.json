@@ -1,0 +1,365 @@
+{
+  "address": "FITBIT-AIR-LOCAL-HANDLE",
+  "name": null,
+  "time": "20260921-190135",
+  "services": [
+    {
+      "uuid": "0000180a-0000-1000-8000-00805f9b34fb",
+      "handle": 16,
+      "description": "Device Information",
+      "known": null,
+      "characteristics": [
+        {
+          "uuid": "00002a29-0000-1000-8000-00805f9b34fb",
+          "handle": 17,
+          "properties": [
+            "read"
+          ],
+          "known": null,
+          "max_write": 244,
+          "descriptors": [],
+          "value_hex": "466974626974",
+          "value_text": "Fitbit"
+        },
+        {
+          "uuid": "00002a24-0000-1000-8000-00805f9b34fb",
+          "handle": 19,
+          "properties": [
+            "read"
+          ],
+          "known": null,
+          "max_write": 244,
+          "descriptors": [],
+          "value_hex": "3637",
+          "value_text": "67"
+        },
+        {
+          "uuid": "00002a25-0000-1000-8000-00805f9b34fb",
+          "handle": 21,
+          "properties": [
+            "read"
+          ],
+          "known": null,
+          "max_write": 244,
+          "descriptors": [],
+          "value_hex": "353363646133303136313631",
+          "value_text": "53cda3016161"
+        },
+        {
+          "uuid": "00002a27-0000-1000-8000-00805f9b34fb",
+          "handle": 23,
+          "properties": [
+            "read"
+          ],
+          "known": null,
+          "max_write": 244,
+          "descriptors": [],
+          "value_hex": "",
+          "value_text": ""
+        },
+        {
+          "uuid": "00002a26-0000-1000-8000-00805f9b34fb",
+          "handle": 25,
+          "properties": [
+            "read"
+          ],
+          "known": null,
+          "max_write": 244,
+          "descriptors": [],
+          "value_hex": "36372e32303030312e3235332e32",
+          "value_text": "67.20001.253.2"
+        },
+        {
+          "uuid": "00002a28-0000-1000-8000-00805f9b34fb",
+          "handle": 27,
+          "properties": [
+            "read"
+          ],
+          "known": null,
+          "max_write": 244,
+          "descriptors": [],
+          "value_hex": "",
+          "value_text": ""
+        },
+        {
+          "uuid": "00002a23-0000-1000-8000-00805f9b34fb",
+          "handle": 29,
+          "properties": [
+            "read"
+          ],
+          "known": null,
+          "max_write": 244,
+          "descriptors": []
+        },
+        {
+          "uuid": "00002a2a-0000-1000-8000-00805f9b34fb",
+          "handle": 31,
+          "properties": [
+            "read"
+          ],
+          "known": null,
+          "max_write": 244,
+          "descriptors": []
+        },
+        {
+          "uuid": "00002a50-0000-1000-8000-00805f9b34fb",
+          "handle": 33,
+          "properties": [
+            "read"
+          ],
+          "known": null,
+          "max_write": 244,
+          "descriptors": []
+        }
+      ]
+    },
+    {
+      "uuid": "abbafd00-e56a-484c-b832-8b17cf6cbfe8",
+      "handle": 48,
+      "description": "Unknown",
+      "known": "Link Status service",
+      "characteristics": [
+        {
+          "uuid": "abbafd01-e56a-484c-b832-8b17cf6cbfe8",
+          "handle": 49,
+          "properties": [
+            "notify",
+            "read"
+          ],
+          "known": "Link Status: currentConnectionConfiguration",
+          "max_write": 244,
+          "descriptors": [
+            {
+              "uuid": "00002902-0000-1000-8000-00805f9b34fb",
+              "handle": 51
+            }
+          ],
+          "value_hex": "180000004800f70000"
+        },
+        {
+          "uuid": "abbafd02-e56a-484c-b832-8b17cf6cbfe8",
+          "handle": 52,
+          "properties": [
+            "notify",
+            "read"
+          ],
+          "known": "Link Status: currentConnectionStatus",
+          "max_write": 244,
+          "descriptors": [
+            {
+              "uuid": "00002902-0000-1000-8000-00805f9b34fb",
+              "handle": 54
+            }
+          ],
+          "value_hex": "01000000000000",
+          "value_text": "\u0001\u0000\u0000\u0000\u0000\u0000\u0000"
+        },
+        {
+          "uuid": "abbafd03-e56a-484c-b832-8b17cf6cbfe8",
+          "handle": 55,
+          "properties": [
+            "read"
+          ],
+          "known": "Link Status: (fd03)",
+          "max_write": 244,
+          "descriptors": [],
+          "read_error": "TimeoutError()"
+        }
+      ]
+    },
+    {
+      "uuid": "abbaff00-e56a-484c-b832-8b17cf6cbfe8",
+      "handle": 64,
+      "description": "Unknown",
+      "known": "Gattlink service",
+      "characteristics": [
+        {
+          "uuid": "abbaff01-e56a-484c-b832-8b17cf6cbfe8",
+          "handle": 65,
+          "properties": [
+            "write-without-response"
+          ],
+          "known": "Gattlink TX (phone->tracker, write-no-resp)",
+          "max_write": 244,
+          "descriptors": []
+        },
+        {
+          "uuid": "abbaff02-e56a-484c-b832-8b17cf6cbfe8",
+          "handle": 67,
+          "properties": [
+            "notify"
+          ],
+          "known": "Gattlink RX (tracker->phone, notify)",
+          "max_write": 244,
+          "descriptors": [
+            {
+              "uuid": "00002902-0000-1000-8000-00805f9b34fb",
+              "handle": 69
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uuid": "ac2f0045-8182-4be5-91e0-2992e6b40ebb",
+      "handle": 80,
+      "description": "Unknown",
+      "known": "GATT cache validation service",
+      "characteristics": [
+        {
+          "uuid": "ac2f0145-8182-4be5-91e0-2992e6b40ebb",
+          "handle": 81,
+          "properties": [
+            "read"
+          ],
+          "known": null,
+          "max_write": 244,
+          "descriptors": []
+        },
+        {
+          "uuid": "ac2f2845-8182-4be5-91e0-2992e6b40ebb",
+          "handle": 83,
+          "properties": [
+            "write"
+          ],
+          "known": null,
+          "max_write": 244,
+          "descriptors": []
+        }
+      ]
+    },
+    {
+      "uuid": "0000180d-0000-1000-8000-00805f9b34fb",
+      "handle": 96,
+      "description": "Heart Rate",
+      "known": "Heart Rate",
+      "characteristics": [
+        {
+          "uuid": "00002a37-0000-1000-8000-00805f9b34fb",
+          "handle": 97,
+          "properties": [
+            "notify"
+          ],
+          "known": null,
+          "max_write": 244,
+          "descriptors": [
+            {
+              "uuid": "00002902-0000-1000-8000-00805f9b34fb",
+              "handle": 99
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uuid": "4eee1c00-4133-479b-8663-02c84bdc14be",
+      "handle": 112,
+      "description": "Unknown",
+      "known": "Unknown Fitbit telemetry service",
+      "characteristics": [
+        {
+          "uuid": "4eee1c01-4133-479b-8663-02c84bdc14be",
+          "handle": 113,
+          "properties": [
+            "notify",
+            "indicate"
+          ],
+          "known": null,
+          "max_write": 244,
+          "descriptors": [
+            {
+              "uuid": "00002902-0000-1000-8000-00805f9b34fb",
+              "handle": 115
+            }
+          ]
+        },
+        {
+          "uuid": "4eee1c02-4133-479b-8663-02c84bdc14be",
+          "handle": 116,
+          "properties": [
+            "write",
+            "write-without-response"
+          ],
+          "known": null,
+          "max_write": 244,
+          "descriptors": []
+        },
+        {
+          "uuid": "4eee1c03-4133-479b-8663-02c84bdc14be",
+          "handle": 118,
+          "properties": [
+            "read"
+          ],
+          "known": null,
+          "max_write": 244,
+          "descriptors": []
+        },
+        {
+          "uuid": "4eee1c04-4133-479b-8663-02c84bdc14be",
+          "handle": 120,
+          "properties": [
+            "indicate"
+          ],
+          "known": null,
+          "max_write": 244,
+          "descriptors": [
+            {
+              "uuid": "00002902-0000-1000-8000-00805f9b34fb",
+              "handle": 122
+            }
+          ]
+        },
+        {
+          "uuid": "4eee1c05-4133-479b-8663-02c84bdc14be",
+          "handle": 123,
+          "properties": [
+            "notify"
+          ],
+          "known": null,
+          "max_write": 244,
+          "descriptors": [
+            {
+              "uuid": "00002902-0000-1000-8000-00805f9b34fb",
+              "handle": 125
+            }
+          ]
+        },
+        {
+          "uuid": "4eee1c06-4133-479b-8663-02c84bdc14be",
+          "handle": 126,
+          "properties": [
+            "write",
+            "notify",
+            "read"
+          ],
+          "known": null,
+          "max_write": 244,
+          "descriptors": [
+            {
+              "uuid": "00002902-0000-1000-8000-00805f9b34fb",
+              "handle": 128
+            }
+          ]
+        },
+        {
+          "uuid": "4eee1c07-4133-479b-8663-02c84bdc14be",
+          "handle": 129,
+          "properties": [
+            "write",
+            "indicate",
+            "read"
+          ],
+          "known": null,
+          "max_write": 244,
+          "descriptors": [
+            {
+              "uuid": "00002902-0000-1000-8000-00805f9b34fb",
+              "handle": 131
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "mtu": 247
+}

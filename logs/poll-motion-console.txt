@@ -1,0 +1,72 @@
+scanning for Fitbit Air...
+found REDACTED-DEVICE
+
+>>> Get ready. Wear the tracker.
+
+>>> still
+    [still] 392 reads over 3 connection(s)
+
+>>> typing
+    [typing] 392 reads over 3 connection(s)
+
+>>> still
+    [still] 345 reads over 2 connection(s)
+
+>>> wave
+    [wave] 383 reads over 3 connection(s)
+
+>>> punch
+    [punch] 396 reads over 3 connection(s)
+
+>>> wrist rotation
+    [wrist rotation] 396 reads over 3 connection(s)
+
+>>> drinking motion
+    [drinking motion] 392 reads over 3 connection(s)
+
+>>> lifting weights
+    [lifting weights] 388 reads over 3 connection(s)
+
+>>> still
+    [still] 311 reads over 3 connection(s)
+
+>>> done
+Traceback (most recent call last):
+  File "/Users/<user>/Projects/fitbit-air-research/scripts/poll_motion.py", line 137, in <module>
+    asyncio.run(main())
+    ~~~~~~~~~~~^^^^^^^^
+  File "/Users/<user>/miniconda3/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/Users/<user>/miniconda3/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/<user>/miniconda3/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/Users/<user>/Projects/fitbit-air-research/scripts/poll_motion.py", line 116, in main
+    await task
+  File "/Users/<user>/Projects/fitbit-air-research/scripts/poll_motion.py", line 82, in poller
+    v = await asyncio.wait_for(c.read_gatt_char(uuid), 1.5)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/<user>/miniconda3/lib/python3.13/asyncio/tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/Users/<user>/Projects/fitbit-air-research/.venv/lib/python3.13/site-packages/bleak/__init__.py", line 761, in read_gatt_char
+    return await self._backend.read_gatt_char(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        characteristic, use_cached=use_cached, **kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/<user>/Projects/fitbit-air-research/.venv/lib/python3.13/site-packages/bleak/backends/corebluetooth/client.py", line 295, in read_gatt_char
+    output = await self._delegate.read_characteristic(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        characteristic.obj, use_cached=use_cached
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/<user>/Projects/fitbit-air-research/.venv/lib/python3.13/site-packages/bleak/backends/corebluetooth/PeripheralDelegate.py", line 401, in read_characteristic
+    return await future
+           ^^^^^^^^^^^^
+asyncio.exceptions.CancelledError

@@ -1,0 +1,27 @@
+{"kind": "connected", "mtu": 247, "t": 1790031867.750016}
+{"kind": "subscribed", "uuid": "abbafd01-e56a-484c-b832-8b17cf6cbfe8", "t": 1790031867.809929}
+{"kind": "notify", "uuid": "abbafd01-e56a-484c-b832-8b17cf6cbfe8", "len": 9, "hex": "180000004800f70000", "t": 1790031867.810988}
+{"kind": "subscribed", "uuid": "abbafd02-e56a-484c-b832-8b17cf6cbfe8", "t": 1790031867.869917}
+{"kind": "notify", "uuid": "abbafd02-e56a-484c-b832-8b17cf6cbfe8", "len": 7, "hex": "01000000000000", "t": 1790031867.871095}
+{"kind": "subscribed", "uuid": "abbaff02-e56a-484c-b832-8b17cf6cbfe8", "t": 1790031867.9298382}
+{"kind": "subscribed", "uuid": "00002a37-0000-1000-8000-00805f9b34fb", "t": 1790031867.9900448}
+{"kind": "subscribed", "uuid": "4eee1c01-4133-479b-8663-02c84bdc14be", "t": 1790031868.049439}
+{"kind": "subscribed", "uuid": "4eee1c04-4133-479b-8663-02c84bdc14be", "t": 1790031868.10972}
+{"kind": "subscribed", "uuid": "4eee1c05-4133-479b-8663-02c84bdc14be", "t": 1790031868.1697211}
+{"kind": "subscribed", "uuid": "4eee1c06-4133-479b-8663-02c84bdc14be", "t": 1790031868.230199}
+{"kind": "subscribed", "uuid": "4eee1c07-4133-479b-8663-02c84bdc14be", "t": 1790031868.289731}
+{"kind": "label", "label": "still", "phase": "start", "t": 1790031873.3053162}
+{"kind": "label", "label": "still", "phase": "end", "t": 1790031888.305413}
+{"kind": "label", "label": "wave", "phase": "start", "t": 1790031888.310038}
+{"kind": "label", "label": "wave", "phase": "end", "t": 1790031903.311125}
+{"kind": "label", "label": "still", "phase": "start", "t": 1790031903.31669}
+{"kind": "label", "label": "still", "phase": "end", "t": 1790031918.3177722}
+{"kind": "label", "label": "punch", "phase": "start", "t": 1790031918.323655}
+{"kind": "label", "label": "punch", "phase": "end", "t": 1790031933.324783}
+{"kind": "label", "label": "still", "phase": "start", "t": 1790031933.331647}
+{"kind": "label", "label": "still", "phase": "end", "t": 1790031948.332051}
+{"kind": "label", "label": "rotation", "phase": "start", "t": 1790031948.336169}
+{"kind": "label", "label": "rotation", "phase": "end", "t": 1790031963.337346}
+{"kind": "label", "label": "still", "phase": "start", "t": 1790031963.343628}
+{"kind": "label", "label": "still", "phase": "end", "t": 1790031978.344657}
+{"kind": "label", "label": "typing", "phase": "start", "t": 1790031978.349264}

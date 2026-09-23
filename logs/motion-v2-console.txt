@@ -1,0 +1,82 @@
+
+===== PHASE A: advertisement surface (not connected) =====
+
+>>> Phase A. Wear the tracker. Get ready.
+
+>>> still
+    [still] adverts seen: 1 in 20s
+
+>>> wave
+    [wave] adverts seen: 2 in 15s
+
+>>> still
+    [still] adverts seen: 0 in 15s
+
+>>> punch
+    [punch] adverts seen: 0 in 15s
+
+>>> wrist rotation
+    [wrist rotation] adverts seen: 1 in 15s
+Phase A done. total adverts=4
+
+===== PHASE B: connected GATT surface =====
+scanning for Fitbit Air (service 0xFD62)... wake it: tap it / raise your wrist
+connected FITBIT-AIR-LOCAL-HANDLE mtu=247
+  NOTIFY abbafd01 180000004800f70000
+  NOTIFY abbafd02 01000000000000
+subscribed to 9 characteristics
+
+>>> Phase B. Get ready.
+
+>>> still
+  !! liveness read failed: TimeoutError()
+    [still] notifications: 0 (link alive: 0 ok / 1 fail)
+
+>>> typing
+  !! liveness read failed: TimeoutError()
+    [typing] notifications: 0 (link alive: 0 ok / 2 fail)
+
+>>> still
+  !! liveness read failed: TimeoutError()
+    [still] notifications: 0 (link alive: 0 ok / 3 fail)
+
+>>> wave
+  !! liveness read failed: TimeoutError()
+    [wave] notifications: 0 (link alive: 0 ok / 4 fail)
+
+>>> still
+  !! liveness read failed: TimeoutError()
+    [still] notifications: 0 (link alive: 0 ok / 5 fail)
+
+>>> punch
+  !! liveness read failed: TimeoutError()
+    [punch] notifications: 0 (link alive: 0 ok / 6 fail)
+
+>>> still
+    [still] notifications: 0 (link alive: 0 ok / 6 fail)
+
+>>> wrist rotation
+  !! liveness read failed: TimeoutError()
+    [wrist rotation] notifications: 0 (link alive: 0 ok / 7 fail)
+
+>>> still
+  !! liveness read failed: TimeoutError()
+    [still] notifications: 0 (link alive: 0 ok / 8 fail)
+
+>>> drinking motion
+  !! liveness read failed: TimeoutError()
+    [drinking motion] notifications: 0 (link alive: 0 ok / 9 fail)
+
+>>> still
+  !! liveness read failed: TimeoutError()
+    [still] notifications: 0 (link alive: 0 ok / 10 fail)
+
+>>> lifting weights
+  !! liveness read failed: TimeoutError()
+    [lifting weights] notifications: 0 (link alive: 0 ok / 11 fail)
+
+>>> done
+
+Phase B done. notification counts={'abbafd01-e56a-484c-b832-8b17cf6cbfe8': 1, 'abbafd02-e56a-484c-b832-8b17cf6cbfe8': 1} liveness={'ok': 0, 'fail': 11}
+
+saved /Users/<user>/Projects/fitbit-air-research/captures/motion-v2-20260922-171936.jsonl

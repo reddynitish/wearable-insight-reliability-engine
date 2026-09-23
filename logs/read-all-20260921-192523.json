@@ -1,0 +1,146 @@
+[
+  {
+    "service": "0000180a-0000-1000-8000-00805f9b34fb",
+    "char": "00002a29-0000-1000-8000-00805f9b34fb",
+    "props": [
+      "read"
+    ],
+    "hex": "466974626974",
+    "text": "Fitbit"
+  },
+  {
+    "service": "0000180a-0000-1000-8000-00805f9b34fb",
+    "char": "00002a24-0000-1000-8000-00805f9b34fb",
+    "props": [
+      "read"
+    ],
+    "hex": "3637",
+    "text": "67"
+  },
+  {
+    "service": "0000180a-0000-1000-8000-00805f9b34fb",
+    "char": "00002a25-0000-1000-8000-00805f9b34fb",
+    "props": [
+      "read"
+    ],
+    "hex": "653565336130336165623565",
+    "text": "e5e3a03aeb5e"
+  },
+  {
+    "service": "0000180a-0000-1000-8000-00805f9b34fb",
+    "char": "00002a27-0000-1000-8000-00805f9b34fb",
+    "props": [
+      "read"
+    ],
+    "hex": "",
+    "text": ""
+  },
+  {
+    "service": "0000180a-0000-1000-8000-00805f9b34fb",
+    "char": "00002a26-0000-1000-8000-00805f9b34fb",
+    "props": [
+      "read"
+    ],
+    "hex": "36372e32303030312e3235332e32",
+    "text": "67.20001.253.2"
+  },
+  {
+    "service": "0000180a-0000-1000-8000-00805f9b34fb",
+    "char": "00002a28-0000-1000-8000-00805f9b34fb",
+    "props": [
+      "read"
+    ],
+    "hex": "",
+    "text": ""
+  },
+  {
+    "service": "0000180a-0000-1000-8000-00805f9b34fb",
+    "char": "00002a23-0000-1000-8000-00805f9b34fb",
+    "props": [
+      "read"
+    ],
+    "hex": "0000000000000000",
+    "text": "\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000"
+  },
+  {
+    "service": "0000180a-0000-1000-8000-00805f9b34fb",
+    "char": "00002a2a-0000-1000-8000-00805f9b34fb",
+    "props": [
+      "read"
+    ],
+    "hex": "00",
+    "text": "\u0000"
+  },
+  {
+    "service": "0000180a-0000-1000-8000-00805f9b34fb",
+    "char": "00002a50-0000-1000-8000-00805f9b34fb",
+    "props": [
+      "read"
+    ],
+    "hex": "00000000000000",
+    "text": "\u0000\u0000\u0000\u0000\u0000\u0000\u0000"
+  },
+  {
+    "service": "abbafd00-e56a-484c-b832-8b17cf6cbfe8",
+    "char": "abbafd01-e56a-484c-b832-8b17cf6cbfe8",
+    "props": [
+      "notify",
+      "read"
+    ],
+    "hex": "180000004800f70000"
+  },
+  {
+    "service": "abbafd00-e56a-484c-b832-8b17cf6cbfe8",
+    "char": "abbafd02-e56a-484c-b832-8b17cf6cbfe8",
+    "props": [
+      "notify",
+      "read"
+    ],
+    "hex": "01000000000000",
+    "text": "\u0001\u0000\u0000\u0000\u0000\u0000\u0000"
+  },
+  {
+    "service": "abbafd00-e56a-484c-b832-8b17cf6cbfe8",
+    "char": "abbafd03-e56a-484c-b832-8b17cf6cbfe8",
+    "props": [
+      "read"
+    ],
+    "error": "TimeoutError()"
+  },
+  {
+    "service": "ac2f0045-8182-4be5-91e0-2992e6b40ebb",
+    "char": "ac2f0145-8182-4be5-91e0-2992e6b40ebb",
+    "props": [
+      "read"
+    ],
+    "error": "TimeoutError()"
+  },
+  {
+    "service": "4eee1c00-4133-479b-8663-02c84bdc14be",
+    "char": "4eee1c03-4133-479b-8663-02c84bdc14be",
+    "props": [
+      "read"
+    ],
+    "error": "TimeoutError()"
+  },
+  {
+    "service": "4eee1c00-4133-479b-8663-02c84bdc14be",
+    "char": "4eee1c06-4133-479b-8663-02c84bdc14be",
+    "props": [
+      "write",
+      "read",
+      "notify"
+    ],
+    "error": "TimeoutError()"
+  },
+  {
+    "service": "4eee1c00-4133-479b-8663-02c84bdc14be",
+    "char": "4eee1c07-4133-479b-8663-02c84bdc14be",
+    "props": [
+      "indicate",
+      "write",
+      "read"
+    ],
+    "error": "TimeoutError()"
+  }
+]

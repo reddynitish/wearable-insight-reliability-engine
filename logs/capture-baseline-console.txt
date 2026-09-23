@@ -1,0 +1,40 @@
+subscribed abbafd01-e56a-484c-b832-8b17cf6cbfe8
+subscribed abbafd02-e56a-484c-b832-8b17cf6cbfe8
+subscribed abbaff02-e56a-484c-b832-8b17cf6cbfe8
+subscribed 00002a37-0000-1000-8000-00805f9b34fb
+subscribed 4eee1c01-4133-479b-8663-02c84bdc14be
+subscribed 4eee1c04-4133-479b-8663-02c84bdc14be
+subscribed 4eee1c05-4133-479b-8663-02c84bdc14be
+subscribed 4eee1c06-4133-479b-8663-02c84bdc14be
+subscribed 4eee1c07-4133-479b-8663-02c84bdc14be
+>>> still
+>>> stop
+Traceback (most recent call last):
+  File "/Users/<user>/miniconda3/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/<user>/miniconda3/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/Users/<user>/Projects/fitbit-air-research/scripts/capture.py", line 70, in main
+    await c.stop_notify(u)
+  File "/Users/<user>/Projects/fitbit-air-research/.venv/lib/python3.13/site-packages/bleak/__init__.py", line 930, in stop_notify
+    await self._backend.stop_notify(characteristic)
+  File "/Users/<user>/Projects/fitbit-air-research/.venv/lib/python3.13/site-packages/bleak/backends/corebluetooth/client.py", line 397, in stop_notify
+    await self._delegate.stop_notifications(characteristic.obj)
+  File "/Users/<user>/Projects/fitbit-air-research/.venv/lib/python3.13/site-packages/bleak/backends/corebluetooth/PeripheralDelegate.py", line 489, in stop_notifications
+    await future
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/<user>/Projects/fitbit-air-research/scripts/capture.py", line 85, in <module>
+    sys.exit(asyncio.run(main(a[1], float(a[2]), sched, "--say" in a)))
+             ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/<user>/miniconda3/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/Users/<user>/miniconda3/lib/python3.13/asyncio/runners.py", line 123, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt

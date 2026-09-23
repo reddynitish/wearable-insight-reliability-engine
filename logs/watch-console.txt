@@ -1,0 +1,67 @@
+SIGHTING {'t': 1790031694.1354828, 'addr': 'FITBIT-AIR-LOCAL-HANDLE', 'rssi': -36, 'name': None, 'services': ['0000fd62-0000-1000-8000-00805f9b34fb'], 'mfg': {}, 'sdata': {'0000180a-0000-1000-8000-00805f9b34fb': '4304e6437231cc4d'}}
+candidate: FITBIT-AIR-LOCAL-HANDLE
+looking for FITBIT-AIR-LOCAL-HANDLE ...
+found FITBIT-AIR-LOCAL-HANDLE: None
+connected; mtu = 247
+
+[service] 0000180a-0000-1000-8000-00805f9b34fb Device Information
+   [char] 00002a29-0000-1000-8000-00805f9b34fb ['read'] Manufacturer Name String
+        value = 466974626974 'Fitbit'
+   [char] 00002a24-0000-1000-8000-00805f9b34fb ['read'] Model Number String
+        value = 3637 '67'
+   [char] 00002a25-0000-1000-8000-00805f9b34fb ['read'] Serial Number String
+        value = 353363646133303136313631 '53cda3016161'
+   [char] 00002a27-0000-1000-8000-00805f9b34fb ['read'] Hardware Revision String
+        value =  ''
+   [char] 00002a26-0000-1000-8000-00805f9b34fb ['read'] Firmware Revision String
+        value = 36372e32303030312e3235332e32 '67.20001.253.2'
+   [char] 00002a28-0000-1000-8000-00805f9b34fb ['read'] Software Revision String
+        value =  ''
+   [char] 00002a23-0000-1000-8000-00805f9b34fb ['read'] System ID
+   [char] 00002a2a-0000-1000-8000-00805f9b34fb ['read'] IEEE 11073-20601 Regulatory Cert. Data List
+   [char] 00002a50-0000-1000-8000-00805f9b34fb ['read'] PnP ID
+
+[service] abbafd00-e56a-484c-b832-8b17cf6cbfe8 Link Status service
+   [char] abbafd01-e56a-484c-b832-8b17cf6cbfe8 ['notify', 'read'] Link Status: currentConnectionConfiguration
+        [desc] 00002902-0000-1000-8000-00805f9b34fb h=51
+        value = 180000004800f70000 ''
+   [char] abbafd02-e56a-484c-b832-8b17cf6cbfe8 ['notify', 'read'] Link Status: currentConnectionStatus
+        [desc] 00002902-0000-1000-8000-00805f9b34fb h=54
+        value = 01000000000000 '\x01\x00\x00\x00\x00\x00\x00'
+   [char] abbafd03-e56a-484c-b832-8b17cf6cbfe8 ['read'] Link Status: (fd03)
+        read failed: TimeoutError()
+
+[service] abbaff00-e56a-484c-b832-8b17cf6cbfe8 Gattlink service
+   [char] abbaff01-e56a-484c-b832-8b17cf6cbfe8 ['write-without-response'] Gattlink TX (phone->tracker, write-no-resp)
+   [char] abbaff02-e56a-484c-b832-8b17cf6cbfe8 ['notify'] Gattlink RX (tracker->phone, notify)
+        [desc] 00002902-0000-1000-8000-00805f9b34fb h=69
+
+[service] ac2f0045-8182-4be5-91e0-2992e6b40ebb GATT cache validation service
+   [char] ac2f0145-8182-4be5-91e0-2992e6b40ebb ['read'] Unknown
+   [char] ac2f2845-8182-4be5-91e0-2992e6b40ebb ['write'] Unknown
+
+[service] 0000180d-0000-1000-8000-00805f9b34fb Heart Rate
+   [char] 00002a37-0000-1000-8000-00805f9b34fb ['notify'] Heart Rate Measurement
+        [desc] 00002902-0000-1000-8000-00805f9b34fb h=99
+
+[service] 4eee1c00-4133-479b-8663-02c84bdc14be Unknown Fitbit telemetry service
+   [char] 4eee1c01-4133-479b-8663-02c84bdc14be ['notify', 'indicate'] Unknown
+        [desc] 00002902-0000-1000-8000-00805f9b34fb h=115
+   [char] 4eee1c02-4133-479b-8663-02c84bdc14be ['write', 'write-without-response'] Unknown
+   [char] 4eee1c03-4133-479b-8663-02c84bdc14be ['read'] Unknown
+   [char] 4eee1c04-4133-479b-8663-02c84bdc14be ['indicate'] Unknown
+        [desc] 00002902-0000-1000-8000-00805f9b34fb h=122
+   [char] 4eee1c05-4133-479b-8663-02c84bdc14be ['notify'] Unknown
+        [desc] 00002902-0000-1000-8000-00805f9b34fb h=125
+   [char] 4eee1c06-4133-479b-8663-02c84bdc14be ['write', 'notify', 'read'] Unknown
+        [desc] 00002902-0000-1000-8000-00805f9b34fb h=128
+   [char] 4eee1c07-4133-479b-8663-02c84bdc14be ['write', 'indicate', 'read'] Unknown
+        [desc] 00002902-0000-1000-8000-00805f9b34fb h=131
+
+=== Known Fitbit Air UUID check ===
+service abbaff00-e56a-484c-b832-8b17cf6cbfe8: PRESENT
+service abbafd00-e56a-484c-b832-8b17cf6cbfe8: PRESENT
+char    abbaff01-e56a-484c-b832-8b17cf6cbfe8: PRESENT
+char    abbaff02-e56a-484c-b832-8b17cf6cbfe8: PRESENT
+char    abbafd01-e56a-484c-b832-8b17cf6cbfe8: PRESENT
+saved /Users/<user>/Projects/fitbit-air-research/logs/gatt-20260921-190135.json

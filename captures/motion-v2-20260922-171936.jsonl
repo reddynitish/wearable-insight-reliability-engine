@@ -1,0 +1,63 @@
+{"t": 1790111984.9158442, "kind": "label", "label": "still", "phase": "start", "surface": "adv"}
+{"t": 1790111987.692123, "kind": "adv", "addr": "FITBIT-AIR-LOCAL-HANDLE", "name": null, "rssi": -42, "label": "still", "sdata": {"0000180a-0000-1000-8000-00805f9b34fb": "4304d1238787c97d"}, "mfg": {}}
+{"t": 1790112004.940097, "kind": "label", "label": "still", "phase": "end", "surface": "adv"}
+{"t": 1790112004.945984, "kind": "label", "label": "wave", "phase": "start", "surface": "adv"}
+{"t": 1790112010.91104, "kind": "adv", "addr": "FITBIT-AIR-LOCAL-HANDLE", "name": null, "rssi": -60, "label": "wave", "sdata": {"0000180a-0000-1000-8000-00805f9b34fb": "4304d1238787c97d"}, "mfg": {}}
+{"t": 1790112018.649287, "kind": "adv", "addr": "FITBIT-AIR-LOCAL-HANDLE", "name": null, "rssi": -56, "label": "wave", "sdata": {"0000180a-0000-1000-8000-00805f9b34fb": "4304d1238787c97d"}, "mfg": {}}
+{"t": 1790112019.952884, "kind": "label", "label": "wave", "phase": "end", "surface": "adv"}
+{"t": 1790112019.958946, "kind": "label", "label": "still", "phase": "start", "surface": "adv"}
+{"t": 1790112034.962548, "kind": "label", "label": "still", "phase": "end", "surface": "adv"}
+{"t": 1790112034.9664881, "kind": "label", "label": "punch", "phase": "start", "surface": "adv"}
+{"t": 1790112049.968629, "kind": "label", "label": "punch", "phase": "end", "surface": "adv"}
+{"t": 1790112049.9724648, "kind": "label", "label": "wrist rotation", "phase": "start", "surface": "adv"}
+{"t": 1790112062.506437, "kind": "adv", "addr": "FITBIT-AIR-LOCAL-HANDLE", "name": null, "rssi": -53, "label": "wrist rotation", "sdata": {"0000180a-0000-1000-8000-00805f9b34fb": "4304d1238787c97d"}, "mfg": {}}
+{"t": 1790112064.974574, "kind": "label", "label": "wrist rotation", "phase": "end", "surface": "adv"}
+{"t": 1790112101.231818, "kind": "found", "addr": "FITBIT-AIR-LOCAL-HANDLE", "name": null}
+{"t": 1790112105.865346, "kind": "connected", "addr": "FITBIT-AIR-LOCAL-HANDLE", "mtu": 247}
+{"t": 1790112105.924615, "kind": "subscribed", "uuid": "abbafd01-e56a-484c-b832-8b17cf6cbfe8"}
+{"t": 1790112105.9262059, "kind": "notify", "uuid": "abbafd01-e56a-484c-b832-8b17cf6cbfe8", "len": 9, "hex": "180000004800f70000"}
+{"t": 1790112105.984583, "kind": "subscribed", "uuid": "abbafd02-e56a-484c-b832-8b17cf6cbfe8"}
+{"t": 1790112105.9863648, "kind": "notify", "uuid": "abbafd02-e56a-484c-b832-8b17cf6cbfe8", "len": 7, "hex": "01000000000000"}
+{"t": 1790112106.044631, "kind": "subscribed", "uuid": "abbaff02-e56a-484c-b832-8b17cf6cbfe8"}
+{"t": 1790112106.1047091, "kind": "subscribed", "uuid": "00002a37-0000-1000-8000-00805f9b34fb"}
+{"t": 1790112106.164709, "kind": "subscribed", "uuid": "4eee1c01-4133-479b-8663-02c84bdc14be"}
+{"t": 1790112106.224702, "kind": "subscribed", "uuid": "4eee1c04-4133-479b-8663-02c84bdc14be"}
+{"t": 1790112106.28423, "kind": "subscribed", "uuid": "4eee1c05-4133-479b-8663-02c84bdc14be"}
+{"t": 1790112106.344949, "kind": "subscribed", "uuid": "4eee1c06-4133-479b-8663-02c84bdc14be"}
+{"t": 1790112106.404704, "kind": "subscribed", "uuid": "4eee1c07-4133-479b-8663-02c84bdc14be"}
+{"t": 1790112116.4156969, "kind": "label", "label": "still", "phase": "start", "surface": "gatt"}
+{"t": 1790112124.416714, "kind": "liveness", "ok": false, "connected": true, "error": "TimeoutError()"}
+{"t": 1790112136.4171379, "kind": "label", "label": "still", "phase": "end", "surface": "gatt"}
+{"t": 1790112136.422569, "kind": "label", "label": "typing", "phase": "start", "surface": "gatt"}
+{"t": 1790112142.41977, "kind": "liveness", "ok": false, "connected": true, "error": "TimeoutError()"}
+{"t": 1790112156.424012, "kind": "label", "label": "typing", "phase": "end", "surface": "gatt"}
+{"t": 1790112156.428285, "kind": "label", "label": "still", "phase": "start", "surface": "gatt"}
+{"t": 1790112160.423105, "kind": "liveness", "ok": false, "connected": true, "error": "TimeoutError()"}
+{"t": 1790112171.429652, "kind": "label", "label": "still", "phase": "end", "surface": "gatt"}
+{"t": 1790112171.434187, "kind": "label", "label": "wave", "phase": "start", "surface": "gatt"}
+{"t": 1790112178.4260092, "kind": "liveness", "ok": false, "connected": true, "error": "TimeoutError()"}
+{"t": 1790112186.43545, "kind": "label", "label": "wave", "phase": "end", "surface": "gatt"}
+{"t": 1790112186.4401689, "kind": "label", "label": "still", "phase": "start", "surface": "gatt"}
+{"t": 1790112196.4282508, "kind": "liveness", "ok": false, "connected": true, "error": "TimeoutError()"}
+{"t": 1790112201.4415271, "kind": "label", "label": "still", "phase": "end", "surface": "gatt"}
+{"t": 1790112201.443927, "kind": "label", "label": "punch", "phase": "start", "surface": "gatt"}
+{"t": 1790112214.431316, "kind": "liveness", "ok": false, "connected": true, "error": "TimeoutError()"}
+{"t": 1790112216.4452631, "kind": "label", "label": "punch", "phase": "end", "surface": "gatt"}
+{"t": 1790112216.4500248, "kind": "label", "label": "still", "phase": "start", "surface": "gatt"}
+{"t": 1790112231.45144, "kind": "label", "label": "still", "phase": "end", "surface": "gatt"}
+{"t": 1790112231.456521, "kind": "label", "label": "wrist rotation", "phase": "start", "surface": "gatt"}
+{"t": 1790112232.433438, "kind": "liveness", "ok": false, "connected": true, "error": "TimeoutError()"}
+{"t": 1790112246.457334, "kind": "label", "label": "wrist rotation", "phase": "end", "surface": "gatt"}
+{"t": 1790112246.462894, "kind": "label", "label": "still", "phase": "start", "surface": "gatt"}
+{"t": 1790112250.4372249, "kind": "liveness", "ok": false, "connected": true, "error": "TimeoutError()"}
+{"t": 1790112261.463823, "kind": "label", "label": "still", "phase": "end", "surface": "gatt"}
+{"t": 1790112261.4691, "kind": "label", "label": "drinking motion", "phase": "start", "surface": "gatt"}
+{"t": 1790112268.440317, "kind": "liveness", "ok": false, "connected": true, "error": "TimeoutError()"}
+{"t": 1790112276.47054, "kind": "label", "label": "drinking motion", "phase": "end", "surface": "gatt"}
+{"t": 1790112276.475734, "kind": "label", "label": "still", "phase": "start", "surface": "gatt"}
+{"t": 1790112286.443089, "kind": "liveness", "ok": false, "connected": true, "error": "TimeoutError()"}
+{"t": 1790112291.477356, "kind": "label", "label": "still", "phase": "end", "surface": "gatt"}
+{"t": 1790112291.481743, "kind": "label", "label": "lifting weights", "phase": "start", "surface": "gatt"}
+{"t": 1790112304.446035, "kind": "liveness", "ok": false, "connected": true, "error": "TimeoutError()"}
+{"t": 1790112306.4825878, "kind": "label", "label": "lifting weights", "phase": "end", "surface": "gatt"}
+{"t": 1790112306.4855628, "kind": "done", "counts": {"abbafd01-e56a-484c-b832-8b17cf6cbfe8": 1, "abbafd02-e56a-484c-b832-8b17cf6cbfe8": 1}, "liveness": {"ok": 0, "fail": 11}, "connected": true}

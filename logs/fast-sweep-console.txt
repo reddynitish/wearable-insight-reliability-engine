@@ -1,0 +1,64 @@
+scanning...
+
+=== round 1: 13 characteristic(s) left ===
+connected mtu=247
+  t+  0.0s abbafd03 FAIL TimeoutError
+  t+  2.5s ac2f0145 FAIL TimeoutError
+  t+  5.0s 4eee1c03 FAIL TimeoutError
+  t+  7.5s 4eee1c06 FAIL TimeoutError
+  t+ 10.0s 4eee1c07 FAIL TimeoutError
+  (past the ATT window at t+12.5s, reconnecting)
+scanning...
+
+=== round 2: 13 characteristic(s) left ===
+connected mtu=247
+  t+  0.0s ac2f0145 OK  len= 16 ac2f284581824be591e02992e6b40ebb  |./(E..K..)....|
+  t+  0.1s 4eee1c03 FAIL BleakGATTProtocolError
+  t+  0.1s 4eee1c06 OK  len=  1 00  |.|
+  t+  0.2s 4eee1c07 OK  len=  1 00  |.|
+  t+  0.2s abbafd01 OK  len=  9 180000004800f70000  |....H....|
+  t+  0.3s abbafd02 OK  len=  7 01000000000000  |.......|
+  t+  0.4s 00002a23 OK  len=  8 0000000000000000  |........|
+  t+  0.4s 00002a2a OK  len=  1 00  |.|
+  t+  0.5s 00002a50 OK  len=  7 00000000000000  |.......|
+  t+  0.5s 00002a25 OK  len= 12 376336623261306433663631  |7c6b2a0d3f61|
+  t+  0.6s 00002a27 OK  len=  0   ||
+  t+  0.7s 00002a28 OK  len=  0   ||
+  t+  0.7s abbafd03 FAIL BleakGATTProtocolError
+scanning...
+
+=== round 3: 2 characteristic(s) left ===
+connected mtu=247
+  t+  0.0s abbafd03 FAIL TimeoutError
+  t+  2.5s 4eee1c03 FAIL TimeoutError
+scanning...
+
+=== round 4: 2 characteristic(s) left ===
+connected mtu=247
+  t+  0.0s 4eee1c03 FAIL BleakGATTProtocolError
+  t+  0.1s abbafd03 FAIL BleakGATTProtocolError
+scanning...
+
+=== round 5: 2 characteristic(s) left ===
+connected mtu=247
+  t+  0.0s abbafd03 FAIL TimeoutError
+  t+  2.5s 4eee1c03 FAIL TimeoutError
+
+======================================================================
+SWEEP RESULT
+======================================================================
+  NO ANSWER abbafd03-e56a-484c-b832-8b17cf6cbfe8  (TimeoutError)
+  READ OK   ac2f0145-8182-4be5-91e0-2992e6b40ebb  ac2f284581824be591e02992e6b40ebb
+  NO ANSWER 4eee1c03-4133-479b-8663-02c84bdc14be  (TimeoutError)
+  READ OK   4eee1c06-4133-479b-8663-02c84bdc14be  00
+  READ OK   4eee1c07-4133-479b-8663-02c84bdc14be  00
+  READ OK   abbafd01-e56a-484c-b832-8b17cf6cbfe8  180000004800f70000
+  READ OK   abbafd02-e56a-484c-b832-8b17cf6cbfe8  01000000000000
+  READ OK   00002a23-0000-1000-8000-00805f9b34fb  0000000000000000
+  READ OK   00002a2a-0000-1000-8000-00805f9b34fb  00
+  READ OK   00002a50-0000-1000-8000-00805f9b34fb  00000000000000
+  READ OK   00002a25-0000-1000-8000-00805f9b34fb  376336623261306433663631
+  READ OK   00002a27-0000-1000-8000-00805f9b34fb  
+  READ OK   00002a28-0000-1000-8000-00805f9b34fb  
+
+saved /Users/<user>/Projects/fitbit-air-research/captures/fast-sweep-20260922-173807.jsonl

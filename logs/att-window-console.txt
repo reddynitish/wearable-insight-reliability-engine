@@ -1,0 +1,118 @@
+scanning for Fitbit Air (0xFD62)...
+
+--- round 1: connecting ---
+connected in 7.11s mtu=247
+  t+  0.0s 2A26-fw              OK     59.5ms  36372e32303030312e3235332e32
+  t+  0.1s 2A24-model           OK     59.7ms  3637
+  t+  0.1s abbafd01-linkstatus  OK     60.2ms  180000004800f70000
+  t+  1.2s 2A26-fw              OK     48.7ms  36372e32303030312e3235332e32
+  t+  1.2s 2A24-model           OK     59.7ms  3637
+  t+  1.3s abbafd01-linkstatus  OK     60.0ms  180000004800f70000
+  t+  2.4s 2A26-fw              OK     49.1ms  36372e32303030312e3235332e32
+  t+  2.4s 2A24-model           OK     59.8ms  3637
+  t+  2.5s abbafd01-linkstatus  OK     60.0ms  180000004800f70000
+  t+  3.5s 2A26-fw              OK     48.8ms  36372e32303030312e3235332e32
+  t+  3.6s 2A24-model           OK     60.5ms  3637
+  t+  3.6s abbafd01-linkstatus  OK     59.7ms  180000004800f70000
+  t+  4.7s 2A26-fw              OK     49.3ms  36372e32303030312e3235332e32
+  t+  4.7s 2A24-model           OK     59.2ms  3637
+  t+  4.8s abbafd01-linkstatus  OK     60.3ms  180000004800f70000
+  t+  5.9s 2A26-fw              OK     49.4ms  36372e32303030312e3235332e32
+  t+  5.9s 2A24-model           OK     58.9ms  3637
+  t+  6.0s abbafd01-linkstatus  OK     59.7ms  180000004800f70000
+  t+  7.0s 2A26-fw              OK     49.0ms  36372e32303030312e3235332e32
+  t+  7.1s 2A24-model           OK     59.3ms  3637
+  t+  7.1s abbafd01-linkstatus  OK     60.1ms  180000004800f70000
+  t+  8.2s 2A26-fw              OK     49.4ms  36372e32303030312e3235332e32
+  t+  8.2s 2A24-model           OK     59.9ms  3637
+  t+  8.3s abbafd01-linkstatus  OK     60.2ms  180000004800f70000
+  t+  9.4s 2A26-fw              FAIL 5000.9ms  TimeoutError (is_connected=True)
+  t+ 14.4s 2A24-model           FAIL 5001.3ms  TimeoutError (is_connected=True)
+  t+ 19.4s abbafd01-linkstatus  FAIL 5000.9ms  TimeoutError (is_connected=True)
+  t+ 25.4s 2A26-fw              FAIL 5000.8ms  TimeoutError (is_connected=True)
+  t+ 30.4s 2A24-model           FAIL 5002.0ms  TimeoutError (is_connected=True)
+  t+ 35.4s abbafd01-linkstatus  FAIL 5001.3ms  TimeoutError (is_connected=True)
+  t+ 41.4s 2A26-fw              FAIL 5001.4ms  TimeoutError (is_connected=True)
+  t+ 46.4s 2A24-model           FAIL 5001.1ms  TimeoutError (is_connected=True)
+  t+ 51.4s abbafd01-linkstatus  FAIL 5000.6ms  TimeoutError (is_connected=True)
+--- round 1: last OK at t+8.309827089309692s, first FAIL at t+9.371353149414062s ---
+waiting 10s before reconnect...
+scanning for Fitbit Air (0xFD62)...
+
+--- round 2: connecting ---
+connected in 2.10s mtu=247
+  t+  0.0s 2A26-fw              OK     58.9ms  36372e32303030312e3235332e32
+  t+  0.1s 2A24-model           OK     58.7ms  3637
+  t+  0.1s abbafd01-linkstatus  OK     59.8ms  180000004800f70000
+  t+  1.2s 2A26-fw              OK     49.2ms  36372e32303030312e3235332e32
+  t+  1.2s 2A24-model           OK     59.4ms  3637
+  t+  1.3s abbafd01-linkstatus  OK     59.5ms  180000004800f70000
+  t+  2.3s 2A26-fw              OK     49.2ms  36372e32303030312e3235332e32
+  t+  2.4s 2A24-model           OK     59.6ms  3637
+  t+  2.5s abbafd01-linkstatus  OK     63.6ms  180000004800f70000
+  t+  3.5s 2A26-fw              OK     45.5ms  36372e32303030312e3235332e32
+  t+  3.6s 2A24-model           OK     60.4ms  3637
+  t+  3.6s abbafd01-linkstatus  OK     59.7ms  180000004800f70000
+  t+  4.7s 2A26-fw              OK     48.3ms  36372e32303030312e3235332e32
+  t+  4.7s 2A24-model           OK     59.6ms  3637
+  t+  4.8s abbafd01-linkstatus  OK     60.1ms  180000004800f70000
+  t+  5.9s 2A26-fw              OK     48.7ms  36372e32303030312e3235332e32
+  t+  5.9s 2A24-model           OK     59.8ms  3637
+  t+  6.0s abbafd01-linkstatus  OK     59.8ms  180000004800f70000
+  t+  7.0s 2A26-fw              OK     48.5ms  36372e32303030312e3235332e32
+  t+  7.1s 2A24-model           OK     60.1ms  3637
+  t+  7.1s abbafd01-linkstatus  OK     60.0ms  180000004800f70000
+  t+  8.2s 2A26-fw              OK     48.2ms  36372e32303030312e3235332e32
+  t+  8.2s 2A24-model           OK     60.5ms  3637
+  t+  8.3s abbafd01-linkstatus  OK     59.6ms  180000004800f70000
+  t+  9.4s 2A26-fw              FAIL 5001.3ms  TimeoutError (is_connected=True)
+  t+ 14.4s 2A24-model           FAIL 5001.3ms  TimeoutError (is_connected=True)
+  t+ 19.4s abbafd01-linkstatus  FAIL 5001.3ms  TimeoutError (is_connected=True)
+  t+ 25.4s 2A26-fw              FAIL 5001.3ms  TimeoutError (is_connected=True)
+  t+ 30.4s 2A24-model           FAIL 5001.3ms  TimeoutError (is_connected=True)
+  t+ 35.4s abbafd01-linkstatus  FAIL 5001.9ms  TimeoutError (is_connected=True)
+  t+ 41.4s 2A26-fw              FAIL 5001.4ms  TimeoutError (is_connected=True)
+  t+ 46.4s 2A24-model           FAIL 5000.7ms  TimeoutError (is_connected=True)
+  t+ 51.4s abbafd01-linkstatus  FAIL 5001.4ms  TimeoutError (is_connected=True)
+--- round 2: last OK at t+8.30836296081543s, first FAIL at t+9.369270086288452s ---
+waiting 10s before reconnect...
+scanning for Fitbit Air (0xFD62)...
+
+--- round 3: connecting ---
+connected in 2.01s mtu=247
+  t+  0.0s 2A26-fw              OK     58.4ms  36372e32303030312e3235332e32
+  t+  0.1s 2A24-model           OK     59.9ms  3637
+  t+  0.1s abbafd01-linkstatus  OK     63.1ms  180000004800f70000
+  t+  1.2s 2A26-fw              OK     46.0ms  36372e32303030312e3235332e32
+  t+  1.2s 2A24-model           OK     60.4ms  3637
+  t+  1.3s abbafd01-linkstatus  OK     59.7ms  180000004800f70000
+  t+  2.4s 2A26-fw              OK     48.2ms  36372e32303030312e3235332e32
+  t+  2.4s 2A24-model           OK     59.3ms  3637
+  t+  2.5s abbafd01-linkstatus  OK     60.9ms  180000004800f70000
+  t+  3.5s 2A26-fw              OK     48.1ms  36372e32303030312e3235332e32
+  t+  3.6s 2A24-model           OK     59.7ms  3637
+  t+  3.6s abbafd01-linkstatus  OK     59.8ms  180000004800f70000
+  t+  4.7s 2A26-fw              OK     48.7ms  36372e32303030312e3235332e32
+  t+  4.7s 2A24-model           OK     59.9ms  3637
+  t+  4.8s abbafd01-linkstatus  OK     59.5ms  180000004800f70000
+  t+  5.9s 2A26-fw              OK     49.5ms  36372e32303030312e3235332e32
+  t+  5.9s 2A24-model           OK     58.9ms  3637
+  t+  6.0s abbafd01-linkstatus  OK     60.9ms  180000004800f70000
+  t+  7.0s 2A26-fw              OK     47.8ms  36372e32303030312e3235332e32
+  t+  7.1s 2A24-model           OK     60.0ms  3637
+  t+  7.1s abbafd01-linkstatus  OK     60.0ms  180000004800f70000
+  t+  8.2s 2A26-fw              OK     48.9ms  36372e32303030312e3235332e32
+  t+  8.2s 2A24-model           OK     59.3ms  3637
+  t+  8.3s abbafd01-linkstatus  OK     60.2ms  180000004800f70000
+  t+  9.4s 2A26-fw              FAIL 5001.4ms  TimeoutError (is_connected=True)
+  t+ 14.4s 2A24-model           FAIL 5001.3ms  TimeoutError (is_connected=True)
+  t+ 19.4s abbafd01-linkstatus  FAIL 5001.4ms  TimeoutError (is_connected=True)
+  t+ 25.4s 2A26-fw              FAIL 5001.2ms  TimeoutError (is_connected=True)
+  t+ 30.4s 2A24-model           FAIL 5001.3ms  TimeoutError (is_connected=True)
+  t+ 35.4s abbafd01-linkstatus  FAIL 5001.3ms  TimeoutError (is_connected=True)
+  t+ 41.4s 2A26-fw              FAIL 5001.3ms  TimeoutError (is_connected=True)
+  t+ 46.4s 2A24-model           FAIL 5001.3ms  TimeoutError (is_connected=True)
+  t+ 51.4s abbafd01-linkstatus  FAIL 5000.9ms  TimeoutError (is_connected=True)
+--- round 3: last OK at t+8.308617115020752s, first FAIL at t+9.370138168334961s ---
+
+saved /Users/<user>/Projects/fitbit-air-research/captures/att-window-20260922-172916.jsonl

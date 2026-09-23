@@ -1,0 +1,7 @@
+{"t": 1790032713.163268, "kind": "connected", "mtu": 247}
+{"t": 1790032713.226088, "kind": "rx", "uuid": "abbafd01-e56a-484c-b832-8b17cf6cbfe8", "hex": "180000004800f70000"}
+{"t": 1790032713.284648, "kind": "rx", "uuid": "abbafd02-e56a-484c-b832-8b17cf6cbfe8", "hex": "01000000000000"}
+{"t": 1790032713.402386, "kind": "tx", "uuid": "abbaff01", "hex": "80", "note": "Reset Request"}
+{"t": 1790032714.4071958, "kind": "tx", "uuid": "abbaff01", "hex": "80", "note": "Reset Request (retry)"}
+{"t": 1790032715.411306, "kind": "tx", "uuid": "abbaff01", "hex": "80", "note": "Reset Request (retry)"}
+{"t": 1790032743.5353012, "kind": "end", "state": "AWAITING_RESET_COMPLETE_SELF_INITIATED"}

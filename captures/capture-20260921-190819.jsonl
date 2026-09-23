@@ -1,0 +1,33 @@
+{"kind": "connected", "mtu": 247, "t": 1790032103.966332}
+{"kind": "subscribed", "uuid": "abbafd01-e56a-484c-b832-8b17cf6cbfe8", "t": 1790032104.0259268}
+{"kind": "notify", "uuid": "abbafd01-e56a-484c-b832-8b17cf6cbfe8", "len": 9, "hex": "180000004800f70000", "t": 1790032104.0278919}
+{"kind": "subscribed", "uuid": "abbafd02-e56a-484c-b832-8b17cf6cbfe8", "t": 1790032104.085541}
+{"kind": "notify", "uuid": "abbafd02-e56a-484c-b832-8b17cf6cbfe8", "len": 7, "hex": "01000000000000", "t": 1790032104.087886}
+{"kind": "subscribed", "uuid": "abbaff02-e56a-484c-b832-8b17cf6cbfe8", "t": 1790032104.145144}
+{"kind": "subscribed", "uuid": "00002a37-0000-1000-8000-00805f9b34fb", "t": 1790032104.205377}
+{"kind": "subscribed", "uuid": "4eee1c01-4133-479b-8663-02c84bdc14be", "t": 1790032104.265547}
+{"kind": "subscribed", "uuid": "4eee1c04-4133-479b-8663-02c84bdc14be", "t": 1790032104.325435}
+{"kind": "subscribed", "uuid": "4eee1c05-4133-479b-8663-02c84bdc14be", "t": 1790032104.3863099}
+{"kind": "subscribed", "uuid": "4eee1c06-4133-479b-8663-02c84bdc14be", "t": 1790032104.445469}
+{"kind": "subscribed", "uuid": "4eee1c07-4133-479b-8663-02c84bdc14be", "t": 1790032104.507596}
+{"kind": "label", "label": "still", "phase": "start", "t": 1790032116.521661}
+{"kind": "label", "label": "still", "phase": "end", "t": 1790032131.5229068}
+{"kind": "label", "label": "wave", "phase": "start", "t": 1790032131.52827}
+{"kind": "label", "label": "wave", "phase": "end", "t": 1790032146.529382}
+{"kind": "label", "label": "still", "phase": "start", "t": 1790032146.533986}
+{"kind": "label", "label": "still", "phase": "end", "t": 1790032161.535001}
+{"kind": "label", "label": "punch", "phase": "start", "t": 1790032161.539296}
+{"kind": "label", "label": "punch", "phase": "end", "t": 1790032176.539372}
+{"kind": "label", "label": "still", "phase": "start", "t": 1790032176.543803}
+{"kind": "label", "label": "still", "phase": "end", "t": 1790032191.544863}
+{"kind": "label", "label": "rotation", "phase": "start", "t": 1790032191.549811}
+{"kind": "label", "label": "rotation", "phase": "end", "t": 1790032206.550875}
+{"kind": "label", "label": "still", "phase": "start", "t": 1790032206.5556}
+{"kind": "label", "label": "still", "phase": "end", "t": 1790032221.556061}
+{"kind": "label", "label": "typing", "phase": "start", "t": 1790032221.5613298}
+{"kind": "label", "label": "typing", "phase": "end", "t": 1790032236.562847}
+{"kind": "label", "label": "still", "phase": "start", "t": 1790032236.5676138}
+{"kind": "label", "label": "still", "phase": "end", "t": 1790032251.5687182}
+{"kind": "label", "label": "drink", "phase": "start", "t": 1790032251.573984}
+{"kind": "label", "label": "drink", "phase": "end", "t": 1790032266.5750442}
+{"kind": "done", "counts": {"abbafd01-e56a-484c-b832-8b17cf6cbfe8": 1, "abbafd02-e56a-484c-b832-8b17cf6cbfe8": 1}, "t": 1790032293.590112}

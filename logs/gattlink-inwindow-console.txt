@@ -1,0 +1,51 @@
+scanning...
+
+=== round 1 ===
+connected mtu=247
+  t+ 0.06s  subscribed to Gattlink TX (abbaff02)
+  t+ 0.06s  TX 80  Reset Request #1
+  t+ 1.06s  TX 80  Reset Request #2
+  t+ 2.06s  TX 80  Reset Request #3
+  t+ 3.06s  TX 80  Reset Request #4
+  t+ 4.07s  TX 80  Reset Request #5
+  t+ 5.07s  TX 80  Reset Request #6
+  round 1: 0 packet(s) received on abbaff02
+scanning...
+
+=== round 2 ===
+connected mtu=247
+  t+ 0.06s  subscribed to Gattlink TX (abbaff02)
+  t+ 0.06s  TX 80  Reset Request #1
+  t+ 1.06s  TX 80  Reset Request #2
+  t+ 2.06s  TX 80  Reset Request #3
+  t+ 3.06s  TX 80  Reset Request #4
+  t+ 4.07s  TX 80  Reset Request #5
+  t+ 5.07s  TX 80  Reset Request #6
+  round 2: 0 packet(s) received on abbaff02
+scanning...
+
+=== round 3 ===
+connected mtu=247
+  t+ 0.06s  subscribed to Gattlink TX (abbaff02)
+  t+ 0.06s  TX 80  Reset Request #1
+  t+ 1.06s  TX 80  Reset Request #2
+  t+ 2.06s  TX 80  Reset Request #3
+  t+ 3.06s  TX 80  Reset Request #4
+  t+ 4.07s  TX 80  Reset Request #5
+  t+ 5.07s  TX 80  Reset Request #6
+  round 3: 0 packet(s) received on abbaff02
+scanning...
+
+=== round 4 ===
+connected mtu=247
+  t+ 0.06s  subscribed to Gattlink TX (abbaff02)
+  t+ 0.06s  TX 80  Reset Request #1
+  t+ 1.06s  TX 80  Reset Request #2
+  t+ 2.06s  TX 80  Reset Request #3
+  t+ 3.07s  TX 80  Reset Request #4
+  t+ 4.07s  TX 80  Reset Request #5
+  t+ 5.07s  TX 80  Reset Request #6
+  round 4: 0 packet(s) received on abbaff02
+
+TOTAL Gattlink packets received: 0
+saved /Users/<user>/Projects/fitbit-air-research/captures/gattlink-inwindow-20260922-211532.jsonl

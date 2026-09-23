@@ -1,0 +1,37 @@
+{"kind": "connected", "round": 1, "mtu": 247, "t": 1790126135.063482}
+{"kind": "subscribed", "round": 1, "since": 0.059, "t": 1790126135.1229498}
+{"kind": "tx", "round": 1, "since": 0.06, "hex": "80", "note": "Reset Request #1", "t": 1790126135.123298}
+{"kind": "tx", "round": 1, "since": 1.061, "hex": "80", "note": "Reset Request #2", "t": 1790126136.124745}
+{"kind": "tx", "round": 1, "since": 2.063, "hex": "80", "note": "Reset Request #3", "t": 1790126137.126246}
+{"kind": "tx", "round": 1, "since": 3.064, "hex": "80", "note": "Reset Request #4", "t": 1790126138.127733}
+{"kind": "tx", "round": 1, "since": 4.066, "hex": "80", "note": "Reset Request #5", "t": 1790126139.12923}
+{"kind": "tx", "round": 1, "since": 5.067, "hex": "80", "note": "Reset Request #6", "t": 1790126140.130729}
+{"kind": "round_end", "round": 1, "rx": 0, "t": 1790126160.1710532}
+{"kind": "connected", "round": 2, "mtu": 247, "t": 1790126167.28327}
+{"kind": "subscribed", "round": 2, "since": 0.059, "t": 1790126167.342508}
+{"kind": "tx", "round": 2, "since": 0.059, "hex": "80", "note": "Reset Request #1", "t": 1790126167.342808}
+{"kind": "tx", "round": 2, "since": 1.061, "hex": "80", "note": "Reset Request #2", "t": 1790126168.344301}
+{"kind": "tx", "round": 2, "since": 2.062, "hex": "80", "note": "Reset Request #3", "t": 1790126169.3457541}
+{"kind": "tx", "round": 2, "since": 3.064, "hex": "80", "note": "Reset Request #4", "t": 1790126170.347243}
+{"kind": "tx", "round": 2, "since": 4.065, "hex": "80", "note": "Reset Request #5", "t": 1790126171.348992}
+{"kind": "tx", "round": 2, "since": 5.066, "hex": "80", "note": "Reset Request #6", "t": 1790126172.349847}
+{"kind": "round_end", "round": 2, "rx": 0, "t": 1790126192.390878}
+{"kind": "connected", "round": 3, "mtu": 247, "t": 1790126199.534313}
+{"kind": "subscribed", "round": 3, "since": 0.059, "t": 1790126199.5930712}
+{"kind": "tx", "round": 3, "since": 0.059, "hex": "80", "note": "Reset Request #1", "t": 1790126199.5933812}
+{"kind": "tx", "round": 3, "since": 1.06, "hex": "80", "note": "Reset Request #2", "t": 1790126200.594882}
+{"kind": "tx", "round": 3, "since": 2.062, "hex": "80", "note": "Reset Request #3", "t": 1790126201.596431}
+{"kind": "tx", "round": 3, "since": 3.063, "hex": "80", "note": "Reset Request #4", "t": 1790126202.5980392}
+{"kind": "tx", "round": 3, "since": 4.065, "hex": "80", "note": "Reset Request #5", "t": 1790126203.5995798}
+{"kind": "tx", "round": 3, "since": 5.067, "hex": "80", "note": "Reset Request #6", "t": 1790126204.601126}
+{"kind": "round_end", "round": 3, "rx": 0, "t": 1790126224.638923}
+{"kind": "connected", "round": 4, "mtu": 247, "t": 1790126231.7528179}
+{"kind": "subscribed", "round": 4, "since": 0.061, "t": 1790126231.8139908}
+{"kind": "tx", "round": 4, "since": 0.061, "hex": "80", "note": "Reset Request #1", "t": 1790126231.814288}
+{"kind": "tx", "round": 4, "since": 1.063, "hex": "80", "note": "Reset Request #2", "t": 1790126232.815979}
+{"kind": "tx", "round": 4, "since": 2.065, "hex": "80", "note": "Reset Request #3", "t": 1790126233.817636}
+{"kind": "tx", "round": 4, "since": 3.066, "hex": "80", "note": "Reset Request #4", "t": 1790126234.8192818}
+{"kind": "tx", "round": 4, "since": 4.068, "hex": "80", "note": "Reset Request #5", "t": 1790126235.820907}
+{"kind": "tx", "round": 4, "since": 5.069, "hex": "80", "note": "Reset Request #6", "t": 1790126236.822575}
+{"kind": "round_end", "round": 4, "rx": 0, "t": 1790126256.865618}
+{"kind": "summary", "total_rx": 0, "t": 1790126256.86707}

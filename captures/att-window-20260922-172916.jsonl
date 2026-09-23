@@ -1,0 +1,106 @@
+{"kind": "found", "addr": "FITBIT-AIR-LOCAL-HANDLE", "name": "Google Fitbit Air", "t": 1790112558.672458}
+{"kind": "connected", "round": 1, "connect_secs": 7.113, "mtu": 247, "t": 1790112565.785255}
+{"kind": "read", "round": 1, "since_connect": 0.0, "uuid": "2A26-fw", "ok": true, "latency_ms": 59.5, "value": "36372e32303030312e3235332e32", "t": 1790112565.844982}
+{"kind": "read", "round": 1, "since_connect": 0.06, "uuid": "2A24-model", "ok": true, "latency_ms": 59.7, "value": "3637", "t": 1790112565.904855}
+{"kind": "read", "round": 1, "since_connect": 0.12, "uuid": "abbafd01-linkstatus", "ok": true, "latency_ms": 60.2, "value": "180000004800f70000", "t": 1790112565.9651499}
+{"kind": "read", "round": 1, "since_connect": 1.18, "uuid": "2A26-fw", "ok": true, "latency_ms": 48.7, "value": "36372e32303030312e3235332e32", "t": 1790112567.015181}
+{"kind": "read", "round": 1, "since_connect": 1.23, "uuid": "2A24-model", "ok": true, "latency_ms": 59.7, "value": "3637", "t": 1790112567.075008}
+{"kind": "read", "round": 1, "since_connect": 1.29, "uuid": "abbafd01-linkstatus", "ok": true, "latency_ms": 60.0, "value": "180000004800f70000", "t": 1790112567.135159}
+{"kind": "read", "round": 1, "since_connect": 2.35, "uuid": "2A26-fw", "ok": true, "latency_ms": 49.1, "value": "36372e32303030312e3235332e32", "t": 1790112568.1852212}
+{"kind": "read", "round": 1, "since_connect": 2.4, "uuid": "2A24-model", "ok": true, "latency_ms": 59.8, "value": "3637", "t": 1790112568.245163}
+{"kind": "read", "round": 1, "since_connect": 2.46, "uuid": "abbafd01-linkstatus", "ok": true, "latency_ms": 60.0, "value": "180000004800f70000", "t": 1790112568.305321}
+{"kind": "read", "round": 1, "since_connect": 3.52, "uuid": "2A26-fw", "ok": true, "latency_ms": 48.8, "value": "36372e32303030312e3235332e32", "t": 1790112569.355445}
+{"kind": "read", "round": 1, "since_connect": 3.57, "uuid": "2A24-model", "ok": true, "latency_ms": 60.5, "value": "3637", "t": 1790112569.416144}
+{"kind": "read", "round": 1, "since_connect": 3.63, "uuid": "abbafd01-linkstatus", "ok": true, "latency_ms": 59.7, "value": "180000004800f70000", "t": 1790112569.475976}
+{"kind": "read", "round": 1, "since_connect": 4.69, "uuid": "2A26-fw", "ok": true, "latency_ms": 49.3, "value": "36372e32303030312e3235332e32", "t": 1790112570.525685}
+{"kind": "read", "round": 1, "since_connect": 4.74, "uuid": "2A24-model", "ok": true, "latency_ms": 59.2, "value": "3637", "t": 1790112570.5850399}
+{"kind": "read", "round": 1, "since_connect": 4.8, "uuid": "abbafd01-linkstatus", "ok": true, "latency_ms": 60.3, "value": "180000004800f70000", "t": 1790112570.645487}
+{"kind": "read", "round": 1, "since_connect": 5.86, "uuid": "2A26-fw", "ok": true, "latency_ms": 49.4, "value": "36372e32303030312e3235332e32", "t": 1790112571.69621}
+{"kind": "read", "round": 1, "since_connect": 5.91, "uuid": "2A24-model", "ok": true, "latency_ms": 58.9, "value": "3637", "t": 1790112571.755287}
+{"kind": "read", "round": 1, "since_connect": 5.97, "uuid": "abbafd01-linkstatus", "ok": true, "latency_ms": 59.7, "value": "180000004800f70000", "t": 1790112571.815129}
+{"kind": "read", "round": 1, "since_connect": 7.03, "uuid": "2A26-fw", "ok": true, "latency_ms": 49.0, "value": "36372e32303030312e3235332e32", "t": 1790112572.8654668}
+{"kind": "read", "round": 1, "since_connect": 7.08, "uuid": "2A24-model", "ok": true, "latency_ms": 59.3, "value": "3637", "t": 1790112572.9250429}
+{"kind": "read", "round": 1, "since_connect": 7.14, "uuid": "abbafd01-linkstatus", "ok": true, "latency_ms": 60.1, "value": "180000004800f70000", "t": 1790112572.985298}
+{"kind": "read", "round": 1, "since_connect": 8.2, "uuid": "2A26-fw", "ok": true, "latency_ms": 49.4, "value": "36372e32303030312e3235332e32", "t": 1790112574.0350661}
+{"kind": "read", "round": 1, "since_connect": 8.25, "uuid": "2A24-model", "ok": true, "latency_ms": 59.9, "value": "3637", "t": 1790112574.0951302}
+{"kind": "read", "round": 1, "since_connect": 8.31, "uuid": "abbafd01-linkstatus", "ok": true, "latency_ms": 60.2, "value": "180000004800f70000", "t": 1790112574.1555011}
+{"kind": "read", "round": 1, "since_connect": 9.37, "uuid": "2A26-fw", "ok": false, "latency_ms": 5000.9, "error": "TimeoutError", "still_connected": true, "t": 1790112580.1577752}
+{"kind": "read", "round": 1, "since_connect": 14.37, "uuid": "2A24-model", "ok": false, "latency_ms": 5001.3, "error": "TimeoutError", "still_connected": true, "t": 1790112585.1596212}
+{"kind": "read", "round": 1, "since_connect": 19.37, "uuid": "abbafd01-linkstatus", "ok": false, "latency_ms": 5000.9, "error": "TimeoutError", "still_connected": true, "t": 1790112590.160754}
+{"kind": "read", "round": 1, "since_connect": 25.38, "uuid": "2A26-fw", "ok": false, "latency_ms": 5000.8, "error": "TimeoutError", "still_connected": true, "t": 1790112596.163063}
+{"kind": "read", "round": 1, "since_connect": 30.38, "uuid": "2A24-model", "ok": false, "latency_ms": 5002.0, "error": "TimeoutError", "still_connected": true, "t": 1790112601.1664908}
+{"kind": "read", "round": 1, "since_connect": 35.38, "uuid": "abbafd01-linkstatus", "ok": false, "latency_ms": 5001.3, "error": "TimeoutError", "still_connected": true, "t": 1790112606.1682088}
+{"kind": "read", "round": 1, "since_connect": 41.38, "uuid": "2A26-fw", "ok": false, "latency_ms": 5001.4, "error": "TimeoutError", "still_connected": true, "t": 1790112612.1711318}
+{"kind": "read", "round": 1, "since_connect": 46.39, "uuid": "2A24-model", "ok": false, "latency_ms": 5001.1, "error": "TimeoutError", "still_connected": true, "t": 1790112617.1724522}
+{"kind": "read", "round": 1, "since_connect": 51.39, "uuid": "abbafd01-linkstatus", "ok": false, "latency_ms": 5000.6, "error": "TimeoutError", "still_connected": true, "t": 1790112622.1741881}
+{"kind": "round_summary", "round": 1, "last_ok_at": 8.309827089309692, "first_fail_at": 9.371353149414062, "t": 1790112623.175473}
+{"kind": "connected", "round": 2, "connect_secs": 2.097, "mtu": 247, "t": 1790112635.65737}
+{"kind": "read", "round": 2, "since_connect": 0.0, "uuid": "2A26-fw", "ok": true, "latency_ms": 58.9, "value": "36372e32303030312e3235332e32", "t": 1790112635.7172658}
+{"kind": "read", "round": 2, "since_connect": 0.06, "uuid": "2A24-model", "ok": true, "latency_ms": 58.7, "value": "3637", "t": 1790112635.776063}
+{"kind": "read", "round": 2, "since_connect": 0.12, "uuid": "abbafd01-linkstatus", "ok": true, "latency_ms": 59.8, "value": "180000004800f70000", "t": 1790112635.83604}
+{"kind": "read", "round": 2, "since_connect": 1.18, "uuid": "2A26-fw", "ok": true, "latency_ms": 49.2, "value": "36372e32303030312e3235332e32", "t": 1790112636.886531}
+{"kind": "read", "round": 2, "since_connect": 1.23, "uuid": "2A24-model", "ok": true, "latency_ms": 59.4, "value": "3637", "t": 1790112636.946087}
+{"kind": "read", "round": 2, "since_connect": 1.29, "uuid": "abbafd01-linkstatus", "ok": true, "latency_ms": 59.5, "value": "180000004800f70000", "t": 1790112637.005773}
+{"kind": "read", "round": 2, "since_connect": 2.35, "uuid": "2A26-fw", "ok": true, "latency_ms": 49.2, "value": "36372e32303030312e3235332e32", "t": 1790112638.0562859}
+{"kind": "read", "round": 2, "since_connect": 2.4, "uuid": "2A24-model", "ok": true, "latency_ms": 59.6, "value": "3637", "t": 1790112638.1160781}
+{"kind": "read", "round": 2, "since_connect": 2.46, "uuid": "abbafd01-linkstatus", "ok": true, "latency_ms": 63.6, "value": "180000004800f70000", "t": 1790112638.179762}
+{"kind": "read", "round": 2, "since_connect": 3.52, "uuid": "2A26-fw", "ok": true, "latency_ms": 45.5, "value": "36372e32303030312e3235332e32", "t": 1790112639.226582}
+{"kind": "read", "round": 2, "since_connect": 3.57, "uuid": "2A24-model", "ok": true, "latency_ms": 60.4, "value": "3637", "t": 1790112639.287128}
+{"kind": "read", "round": 2, "since_connect": 3.63, "uuid": "abbafd01-linkstatus", "ok": true, "latency_ms": 59.7, "value": "180000004800f70000", "t": 1790112639.34698}
+{"kind": "read", "round": 2, "since_connect": 4.69, "uuid": "2A26-fw", "ok": true, "latency_ms": 48.3, "value": "36372e32303030312e3235332e32", "t": 1790112640.396493}
+{"kind": "read", "round": 2, "since_connect": 4.74, "uuid": "2A24-model", "ok": true, "latency_ms": 59.6, "value": "3637", "t": 1790112640.456226}
+{"kind": "read", "round": 2, "since_connect": 4.8, "uuid": "abbafd01-linkstatus", "ok": true, "latency_ms": 60.1, "value": "180000004800f70000", "t": 1790112640.516459}
+{"kind": "read", "round": 2, "since_connect": 5.86, "uuid": "2A26-fw", "ok": true, "latency_ms": 48.7, "value": "36372e32303030312e3235332e32", "t": 1790112641.566376}
+{"kind": "read", "round": 2, "since_connect": 5.91, "uuid": "2A24-model", "ok": true, "latency_ms": 59.8, "value": "3637", "t": 1790112641.6263108}
+{"kind": "read", "round": 2, "since_connect": 5.97, "uuid": "abbafd01-linkstatus", "ok": true, "latency_ms": 59.8, "value": "180000004800f70000", "t": 1790112641.686346}
+{"kind": "read", "round": 2, "since_connect": 7.03, "uuid": "2A26-fw", "ok": true, "latency_ms": 48.5, "value": "36372e32303030312e3235332e32", "t": 1790112642.736141}
+{"kind": "read", "round": 2, "since_connect": 7.08, "uuid": "2A24-model", "ok": true, "latency_ms": 60.1, "value": "3637", "t": 1790112642.796333}
+{"kind": "read", "round": 2, "since_connect": 7.14, "uuid": "abbafd01-linkstatus", "ok": true, "latency_ms": 60.0, "value": "180000004800f70000", "t": 1790112642.8564951}
+{"kind": "read", "round": 2, "since_connect": 8.2, "uuid": "2A26-fw", "ok": true, "latency_ms": 48.2, "value": "36372e32303030312e3235332e32", "t": 1790112643.9059489}
+{"kind": "read", "round": 2, "since_connect": 8.25, "uuid": "2A24-model", "ok": true, "latency_ms": 60.5, "value": "3637", "t": 1790112643.966569}
+{"kind": "read", "round": 2, "since_connect": 8.31, "uuid": "abbafd01-linkstatus", "ok": true, "latency_ms": 59.6, "value": "180000004800f70000", "t": 1790112644.0263062}
+{"kind": "read", "round": 2, "since_connect": 9.37, "uuid": "2A26-fw", "ok": false, "latency_ms": 5001.3, "error": "TimeoutError", "still_connected": true, "t": 1790112650.0289779}
+{"kind": "read", "round": 2, "since_connect": 14.37, "uuid": "2A24-model", "ok": false, "latency_ms": 5001.3, "error": "TimeoutError", "still_connected": true, "t": 1790112655.0312572}
+{"kind": "read", "round": 2, "since_connect": 19.37, "uuid": "abbafd01-linkstatus", "ok": false, "latency_ms": 5001.3, "error": "TimeoutError", "still_connected": true, "t": 1790112660.0327628}
+{"kind": "read", "round": 2, "since_connect": 25.38, "uuid": "2A26-fw", "ok": false, "latency_ms": 5001.3, "error": "TimeoutError", "still_connected": true, "t": 1790112666.0348449}
+{"kind": "read", "round": 2, "since_connect": 30.38, "uuid": "2A24-model", "ok": false, "latency_ms": 5001.3, "error": "TimeoutError", "still_connected": true, "t": 1790112671.037279}
+{"kind": "read", "round": 2, "since_connect": 35.38, "uuid": "abbafd01-linkstatus", "ok": false, "latency_ms": 5001.9, "error": "TimeoutError", "still_connected": true, "t": 1790112676.039524}
+{"kind": "read", "round": 2, "since_connect": 41.38, "uuid": "2A26-fw", "ok": false, "latency_ms": 5001.4, "error": "TimeoutError", "still_connected": true, "t": 1790112682.043264}
+{"kind": "read", "round": 2, "since_connect": 46.39, "uuid": "2A24-model", "ok": false, "latency_ms": 5000.7, "error": "TimeoutError", "still_connected": true, "t": 1790112687.0442472}
+{"kind": "read", "round": 2, "since_connect": 51.39, "uuid": "abbafd01-linkstatus", "ok": false, "latency_ms": 5001.4, "error": "TimeoutError", "still_connected": true, "t": 1790112692.046237}
+{"kind": "round_summary", "round": 2, "last_ok_at": 8.30836296081543, "first_fail_at": 9.369270086288452, "t": 1790112693.047646}
+{"kind": "connected", "round": 3, "connect_secs": 2.008, "mtu": 247, "t": 1790112705.437384}
+{"kind": "read", "round": 3, "since_connect": 0.0, "uuid": "2A26-fw", "ok": true, "latency_ms": 58.4, "value": "36372e32303030312e3235332e32", "t": 1790112705.4968178}
+{"kind": "read", "round": 3, "since_connect": 0.06, "uuid": "2A24-model", "ok": true, "latency_ms": 59.9, "value": "3637", "t": 1790112705.55685}
+{"kind": "read", "round": 3, "since_connect": 0.12, "uuid": "abbafd01-linkstatus", "ok": true, "latency_ms": 63.1, "value": "180000004800f70000", "t": 1790112705.620071}
+{"kind": "read", "round": 3, "since_connect": 1.18, "uuid": "2A26-fw", "ok": true, "latency_ms": 46.0, "value": "36372e32303030312e3235332e32", "t": 1790112706.667352}
+{"kind": "read", "round": 3, "since_connect": 1.23, "uuid": "2A24-model", "ok": true, "latency_ms": 60.4, "value": "3637", "t": 1790112706.7279491}
+{"kind": "read", "round": 3, "since_connect": 1.29, "uuid": "abbafd01-linkstatus", "ok": true, "latency_ms": 59.7, "value": "180000004800f70000", "t": 1790112706.7877812}
+{"kind": "read", "round": 3, "since_connect": 2.35, "uuid": "2A26-fw", "ok": true, "latency_ms": 48.2, "value": "36372e32303030312e3235332e32", "t": 1790112707.83727}
+{"kind": "read", "round": 3, "since_connect": 2.4, "uuid": "2A24-model", "ok": true, "latency_ms": 59.3, "value": "3637", "t": 1790112707.8967779}
+{"kind": "read", "round": 3, "since_connect": 2.46, "uuid": "abbafd01-linkstatus", "ok": true, "latency_ms": 60.9, "value": "180000004800f70000", "t": 1790112707.957821}
+{"kind": "read", "round": 3, "since_connect": 3.52, "uuid": "2A26-fw", "ok": true, "latency_ms": 48.1, "value": "36372e32303030312e3235332e32", "t": 1790112709.007242}
+{"kind": "read", "round": 3, "since_connect": 3.57, "uuid": "2A24-model", "ok": true, "latency_ms": 59.7, "value": "3637", "t": 1790112709.0671082}
+{"kind": "read", "round": 3, "since_connect": 3.63, "uuid": "abbafd01-linkstatus", "ok": true, "latency_ms": 59.8, "value": "180000004800f70000", "t": 1790112709.1270459}
+{"kind": "read", "round": 3, "since_connect": 4.69, "uuid": "2A26-fw", "ok": true, "latency_ms": 48.7, "value": "36372e32303030312e3235332e32", "t": 1790112710.1770408}
+{"kind": "read", "round": 3, "since_connect": 4.74, "uuid": "2A24-model", "ok": true, "latency_ms": 59.9, "value": "3637", "t": 1790112710.23713}
+{"kind": "read", "round": 3, "since_connect": 4.8, "uuid": "abbafd01-linkstatus", "ok": true, "latency_ms": 59.5, "value": "180000004800f70000", "t": 1790112710.296777}
+{"kind": "read", "round": 3, "since_connect": 5.86, "uuid": "2A26-fw", "ok": true, "latency_ms": 49.5, "value": "36372e32303030312e3235332e32", "t": 1790112711.3472488}
+{"kind": "read", "round": 3, "since_connect": 5.91, "uuid": "2A24-model", "ok": true, "latency_ms": 58.9, "value": "3637", "t": 1790112711.4067469}
+{"kind": "read", "round": 3, "since_connect": 5.97, "uuid": "abbafd01-linkstatus", "ok": true, "latency_ms": 60.9, "value": "180000004800f70000", "t": 1790112711.467776}
+{"kind": "read", "round": 3, "since_connect": 7.03, "uuid": "2A26-fw", "ok": true, "latency_ms": 47.8, "value": "36372e32303030312e3235332e32", "t": 1790112712.5168881}
+{"kind": "read", "round": 3, "since_connect": 7.08, "uuid": "2A24-model", "ok": true, "latency_ms": 60.0, "value": "3637", "t": 1790112712.577077}
+{"kind": "read", "round": 3, "since_connect": 7.14, "uuid": "abbafd01-linkstatus", "ok": true, "latency_ms": 60.0, "value": "180000004800f70000", "t": 1790112712.637204}
+{"kind": "read", "round": 3, "since_connect": 8.2, "uuid": "2A26-fw", "ok": true, "latency_ms": 48.9, "value": "36372e32303030312e3235332e32", "t": 1790112713.687433}
+{"kind": "read", "round": 3, "since_connect": 8.25, "uuid": "2A24-model", "ok": true, "latency_ms": 59.3, "value": "3637", "t": 1790112713.7469282}
+{"kind": "read", "round": 3, "since_connect": 8.31, "uuid": "abbafd01-linkstatus", "ok": true, "latency_ms": 60.2, "value": "180000004800f70000", "t": 1790112713.80722}
+{"kind": "read", "round": 3, "since_connect": 9.37, "uuid": "2A26-fw", "ok": false, "latency_ms": 5001.4, "error": "TimeoutError", "still_connected": true, "t": 1790112719.809901}
+{"kind": "read", "round": 3, "since_connect": 14.37, "uuid": "2A24-model", "ok": false, "latency_ms": 5001.3, "error": "TimeoutError", "still_connected": true, "t": 1790112724.811488}
+{"kind": "read", "round": 3, "since_connect": 19.37, "uuid": "abbafd01-linkstatus", "ok": false, "latency_ms": 5001.4, "error": "TimeoutError", "still_connected": true, "t": 1790112729.81395}
+{"kind": "read", "round": 3, "since_connect": 25.38, "uuid": "2A26-fw", "ok": false, "latency_ms": 5001.2, "error": "TimeoutError", "still_connected": true, "t": 1790112735.8165052}
+{"kind": "read", "round": 3, "since_connect": 30.38, "uuid": "2A24-model", "ok": false, "latency_ms": 5001.3, "error": "TimeoutError", "still_connected": true, "t": 1790112740.818688}
+{"kind": "read", "round": 3, "since_connect": 35.38, "uuid": "abbafd01-linkstatus", "ok": false, "latency_ms": 5001.3, "error": "TimeoutError", "still_connected": true, "t": 1790112745.820226}
+{"kind": "read", "round": 3, "since_connect": 41.38, "uuid": "2A26-fw", "ok": false, "latency_ms": 5001.3, "error": "TimeoutError", "still_connected": true, "t": 1790112751.823036}
+{"kind": "read", "round": 3, "since_connect": 46.39, "uuid": "2A24-model", "ok": false, "latency_ms": 5001.3, "error": "TimeoutError", "still_connected": true, "t": 1790112756.82538}
+{"kind": "read", "round": 3, "since_connect": 51.39, "uuid": "abbafd01-linkstatus", "ok": false, "latency_ms": 5000.9, "error": "TimeoutError", "still_connected": true, "t": 1790112761.826781}
+{"kind": "round_summary", "round": 3, "last_ok_at": 8.308617115020752, "first_fail_at": 9.370138168334961, "t": 1790112762.828723}

@@ -1,0 +1,14 @@
+{"kind": "connected", "mtu": 247, "t": 1790031754.682548}
+{"kind": "subscribed", "uuid": "abbafd01-e56a-484c-b832-8b17cf6cbfe8", "t": 1790031754.742435}
+{"kind": "notify", "uuid": "abbafd01-e56a-484c-b832-8b17cf6cbfe8", "len": 9, "hex": "180000004800f70000", "t": 1790031754.743493}
+{"kind": "subscribed", "uuid": "abbafd02-e56a-484c-b832-8b17cf6cbfe8", "t": 1790031754.8029382}
+{"kind": "notify", "uuid": "abbafd02-e56a-484c-b832-8b17cf6cbfe8", "len": 7, "hex": "01000000000000", "t": 1790031754.804755}
+{"kind": "subscribed", "uuid": "abbaff02-e56a-484c-b832-8b17cf6cbfe8", "t": 1790031754.862169}
+{"kind": "subscribed", "uuid": "00002a37-0000-1000-8000-00805f9b34fb", "t": 1790031754.922951}
+{"kind": "subscribed", "uuid": "4eee1c01-4133-479b-8663-02c84bdc14be", "t": 1790031754.9826958}
+{"kind": "subscribed", "uuid": "4eee1c04-4133-479b-8663-02c84bdc14be", "t": 1790031755.042176}
+{"kind": "subscribed", "uuid": "4eee1c05-4133-479b-8663-02c84bdc14be", "t": 1790031755.102122}
+{"kind": "subscribed", "uuid": "4eee1c06-4133-479b-8663-02c84bdc14be", "t": 1790031755.1622348}
+{"kind": "subscribed", "uuid": "4eee1c07-4133-479b-8663-02c84bdc14be", "t": 1790031755.222226}
+{"kind": "label", "label": "still", "phase": "start", "t": 1790031755.222328}
+{"kind": "label", "label": "still", "phase": "end", "t": 1790031795.222539}

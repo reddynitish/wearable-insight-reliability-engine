@@ -1,0 +1,22 @@
+subscribed abbafd01-e56a-484c-b832-8b17cf6cbfe8
+subscribed abbafd02-e56a-484c-b832-8b17cf6cbfe8
+subscribed abbaff02-e56a-484c-b832-8b17cf6cbfe8
+subscribed 00002a37-0000-1000-8000-00805f9b34fb
+subscribed 4eee1c01-4133-479b-8663-02c84bdc14be
+subscribed 4eee1c04-4133-479b-8663-02c84bdc14be
+subscribed 4eee1c05-4133-479b-8663-02c84bdc14be
+subscribed 4eee1c06-4133-479b-8663-02c84bdc14be
+subscribed 4eee1c07-4133-479b-8663-02c84bdc14be
+>>> get ready
+>>> still
+>>> wave
+>>> still
+>>> punch
+>>> still
+>>> rotation
+>>> still
+>>> typing
+>>> still
+>>> drink
+>>> stop
+saved /Users/<user>/Projects/fitbit-air-research/captures/capture-20260921-190819.jsonl counts {'abbafd01-e56a-484c-b832-8b17cf6cbfe8': 1, 'abbafd02-e56a-484c-b832-8b17cf6cbfe8': 1}
