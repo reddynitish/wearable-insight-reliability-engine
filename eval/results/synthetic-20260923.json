@@ -2,15 +2,15 @@
   "artifact": "synthetic-evaluation",
   "synthetic": true,
   "warning": "SYNTHETIC EVIDENCE ONLY. These numbers measure agreement between the engine and the claim contract it implements. They are not a measurement of real-world performance and must not be reported as one.",
-  "generated_at": "2026-09-23T18:49:21.419601+00:00",
+  "generated_at": "2026-09-23T19:34:41.265826+00:00",
   "model_version": "reliability-engine-0.1.0",
-  "policy_version": "claim-policy-0.1.0",
+  "policy_version": "claim-policy-0.2.0",
   "python": "3.13.11",
   "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
   "suite": {
     "total_cases": 3120,
-    "scored_cases": 3057,
-    "excluded_borderline": 63,
+    "scored_cases": 3064,
+    "excluded_borderline": 56,
     "seeds": [
       0,
       1,
@@ -51,11 +51,11 @@
       "severe"
     ],
     "cases_by_ground_truth": {
-      "BORDERLINE_EXCLUDED": 63,
+      "BORDERLINE_EXCLUDED": 56,
       "SUPPORTABLE": 825,
-      "UNSUPPORTABLE_CONTRADICTED": 646,
+      "UNSUPPORTABLE_CONTRADICTED": 635,
       "UNSUPPORTABLE_INSUFFICIENT": 1094,
-      "UNSUPPORTABLE_UNTRUSTWORTHY": 492
+      "UNSUPPORTABLE_UNTRUSTWORTHY": 510
     },
     "subjects": 30
   },
@@ -184,29 +184,29 @@
         "ci95_high": 1.0,
         "n": 30
       },
-      "macro_f1": 0.1417,
+      "macro_f1": 0.1414,
       "per_class": {
         "SHOW": {
-          "precision": 0.2699,
+          "precision": 0.2693,
           "recall": 1.0,
-          "f1": 0.425,
+          "f1": 0.4243,
           "support": 825
         },
         "WAIT_FOR_MORE_DATA": {
           "precision": 0.0,
           "recall": 0.0,
           "f1": 0.0,
-          "support": 1586
+          "support": 1604
         },
         "REJECT": {
           "precision": 0.0,
           "recall": 0.0,
           "f1": 0.0,
-          "support": 646
+          "support": 635
         }
       },
       "decisions": {
-        "SHOW": 3057,
+        "SHOW": 3064,
         "SHOW_WITH_WARNING": 0,
         "WAIT_FOR_MORE_DATA": 0,
         "REJECT": 0
@@ -214,17 +214,17 @@
       "latency_ms": {
         "p50": 0.0,
         "p95": 0.0001,
-        "p99": 0.0007
+        "p99": 0.0005
       }
     },
     "B1_data_present": {
       "unsupported_show_rate": {
-        "point": 0.9583,
-        "ci95_low": 0.9436,
+        "point": 0.9585,
+        "ci95_low": 0.9438,
         "ci95_high": 0.9723,
         "n": 30
       },
-      "unsupported_show_rate_strict": 0.9583,
+      "unsupported_show_rate_strict": 0.9585,
       "over_abstention_rate": {
         "point": 0.3309,
         "ci95_low": 0.0884,
@@ -232,42 +232,42 @@
         "n": 30
       },
       "decision_coverage": {
-        "point": 0.8803,
-        "ci95_low": 0.7981,
-        "ci95_high": 0.9496,
+        "point": 0.8805,
+        "ci95_low": 0.7984,
+        "ci95_high": 0.9497,
         "n": 30
       },
-      "macro_f1": 0.1364,
+      "macro_f1": 0.1359,
       "per_class": {
         "SHOW": {
-          "precision": 0.2051,
+          "precision": 0.2046,
           "recall": 0.6691,
-          "f1": 0.314,
+          "f1": 0.3134,
           "support": 825
         },
         "WAIT_FOR_MORE_DATA": {
           "precision": 0.2541,
-          "recall": 0.0586,
-          "f1": 0.0953,
-          "support": 1586
+          "recall": 0.058,
+          "f1": 0.0944,
+          "support": 1604
         },
         "REJECT": {
           "precision": 0.0,
           "recall": 0.0,
           "f1": 0.0,
-          "support": 646
+          "support": 635
         }
       },
       "decisions": {
-        "SHOW": 2691,
+        "SHOW": 2698,
         "SHOW_WITH_WARNING": 0,
         "WAIT_FOR_MORE_DATA": 366,
         "REJECT": 0
       },
       "latency_ms": {
         "p50": 0.0005,
-        "p95": 0.0011,
-        "p99": 0.0041
+        "p95": 0.0013,
+        "p99": 0.0049
       }
     },
     "B2_rules_engine": {
@@ -285,12 +285,12 @@
         "n": 30
       },
       "decision_coverage": {
-        "point": 0.2699,
-        "ci95_low": 0.2065,
-        "ci95_high": 0.3426,
+        "point": 0.2693,
+        "ci95_low": 0.2058,
+        "ci95_high": 0.3421,
         "n": 30
       },
-      "macro_f1": 0.7752,
+      "macro_f1": 0.7754,
       "per_class": {
         "SHOW": {
           "precision": 1.0,
@@ -300,27 +300,27 @@
         },
         "WAIT_FOR_MORE_DATA": {
           "precision": 1.0,
-          "recall": 0.529,
-          "f1": 0.692,
-          "support": 1586
+          "recall": 0.5343,
+          "f1": 0.6965,
+          "support": 1604
         },
         "REJECT": {
-          "precision": 0.4637,
+          "precision": 0.4595,
           "recall": 1.0,
-          "f1": 0.6336,
-          "support": 646
+          "f1": 0.6296,
+          "support": 635
         }
       },
       "decisions": {
         "SHOW": 623,
         "SHOW_WITH_WARNING": 202,
-        "WAIT_FOR_MORE_DATA": 839,
-        "REJECT": 1393
+        "WAIT_FOR_MORE_DATA": 857,
+        "REJECT": 1382
       },
       "latency_ms": {
-        "p50": 0.0729,
-        "p95": 0.1105,
-        "p99": 0.1355
+        "p50": 0.076,
+        "p95": 0.1337,
+        "p99": 0.1534
       },
       "by_claim_type": {
         "ACTIVITY_LOAD_HIGH": {
@@ -342,10 +342,10 @@
           "decision_coverage": 0.6673
         },
         "RESTING_HEART_RATE_ELEVATED": {
-          "cases": 514,
+          "cases": 518,
           "unsupported_show_rate": 0.0,
           "over_abstention_rate": 0.0,
-          "decision_coverage": 0.1265
+          "decision_coverage": 0.1255
         },
         "SLEEP_DURATION_LOW": {
           "cases": 491,
@@ -354,10 +354,10 @@
           "decision_coverage": 0.2016
         },
         "SLEEP_QUALITY_REDUCED": {
-          "cases": 511,
+          "cases": 514,
           "unsupported_show_rate": 0.0,
           "over_abstention_rate": 0.0,
-          "decision_coverage": 0.1546
+          "decision_coverage": 0.1537
         }
       },
       "by_corruption": {
@@ -374,10 +374,10 @@
           "decision_coverage": 0.1389
         },
         "destabilize_baseline": {
-          "cases": 156,
+          "cases": 164,
           "unsupported_show_rate": 0.0,
           "over_abstention_rate": 0.0,
-          "decision_coverage": 0.2949
+          "decision_coverage": 0.2805
         },
         "drop_contiguous": {
           "cases": 180,
@@ -434,10 +434,10 @@
           "decision_coverage": 0.5
         },
         "shift_baseline": {
-          "cases": 163,
+          "cases": 162,
           "unsupported_show_rate": 0.0,
           "over_abstention_rate": 0.0,
-          "decision_coverage": 0.3252
+          "decision_coverage": 0.3272
         },
         "shift_day_boundary": {
           "cases": 180,
@@ -472,16 +472,16 @@
       },
       "by_severity": {
         "mild": {
-          "cases": 996,
+          "cases": 995,
           "unsupported_show_rate": 0.0,
           "over_abstention_rate": 0.0,
-          "decision_coverage": 0.3293
+          "decision_coverage": 0.3296
         },
         "moderate": {
-          "cases": 996,
+          "cases": 1004,
           "unsupported_show_rate": 0.0,
           "over_abstention_rate": 0.0,
-          "decision_coverage": 0.247
+          "decision_coverage": 0.245
         },
         "none": {
           "cases": 60,
@@ -498,10 +498,10 @@
       },
       "by_dimension": {
         "baseline": {
-          "cases": 498,
+          "cases": 505,
           "unsupported_show_rate": 0.0,
           "over_abstention_rate": 0.0,
-          "decision_coverage": 0.2671
+          "decision_coverage": 0.2634
         },
         "consistency": {
           "cases": 171,
@@ -548,7 +548,7 @@
           "decision_coverage": 1.0
         },
         "UNSUPPORTABLE_CONTRADICTED": {
-          "cases": 646,
+          "cases": 635,
           "unsupported_show_rate": 0.0,
           "over_abstention_rate": 0.0,
           "decision_coverage": 0.0
@@ -560,7 +560,7 @@
           "decision_coverage": 0.0
         },
         "UNSUPPORTABLE_UNTRUSTWORTHY": {
-          "cases": 492,
+          "cases": 510,
           "unsupported_show_rate": 0.0,
           "over_abstention_rate": 0.0,
           "decision_coverage": 0.0
@@ -572,8 +572,8 @@
     {
       "warn_above": 0.3,
       "show_above": 0.4,
-      "cases": 3057,
-      "decision_coverage": 0.2699,
+      "cases": 3064,
+      "decision_coverage": 0.2693,
       "unsupported_show_rate": 0.0,
       "over_abstention_rate": 0.0,
       "shown_unsupportable": 0,
@@ -583,8 +583,8 @@
     {
       "warn_above": 0.4,
       "show_above": 0.5,
-      "cases": 3057,
-      "decision_coverage": 0.2699,
+      "cases": 3064,
+      "decision_coverage": 0.2693,
       "unsupported_show_rate": 0.0,
       "over_abstention_rate": 0.0,
       "shown_unsupportable": 0,
@@ -594,8 +594,8 @@
     {
       "warn_above": 0.45,
       "show_above": 0.6,
-      "cases": 3057,
-      "decision_coverage": 0.2699,
+      "cases": 3064,
+      "decision_coverage": 0.2693,
       "unsupported_show_rate": 0.0,
       "over_abstention_rate": 0.0,
       "shown_unsupportable": 0,
@@ -605,8 +605,8 @@
     {
       "warn_above": 0.55,
       "show_above": 0.75,
-      "cases": 3057,
-      "decision_coverage": 0.2699,
+      "cases": 3064,
+      "decision_coverage": 0.2693,
       "unsupported_show_rate": 0.0,
       "over_abstention_rate": 0.0,
       "shown_unsupportable": 0,
@@ -616,8 +616,8 @@
     {
       "warn_above": 0.65,
       "show_above": 0.82,
-      "cases": 3057,
-      "decision_coverage": 0.2676,
+      "cases": 3064,
+      "decision_coverage": 0.267,
       "unsupported_show_rate": 0.0,
       "over_abstention_rate": 0.0085,
       "shown_unsupportable": 0,
@@ -627,8 +627,8 @@
     {
       "warn_above": 0.75,
       "show_above": 0.88,
-      "cases": 3057,
-      "decision_coverage": 0.2676,
+      "cases": 3064,
+      "decision_coverage": 0.267,
       "unsupported_show_rate": 0.0,
       "over_abstention_rate": 0.0085,
       "shown_unsupportable": 0,
@@ -638,18 +638,18 @@
     {
       "warn_above": 0.85,
       "show_above": 0.94,
-      "cases": 3057,
-      "decision_coverage": 0.156,
+      "cases": 3064,
+      "decision_coverage": 0.1593,
       "unsupported_show_rate": 0.0,
-      "over_abstention_rate": 0.4218,
+      "over_abstention_rate": 0.4085,
       "shown_unsupportable": 0,
-      "withheld_supportable": 348,
+      "withheld_supportable": 337,
       "is_default": false
     }
   ],
   "gate_contribution": {
-    "unsupportable_cases": 2232,
-    "withheld_even_at_the_most_permissive_thresholds": 2232,
+    "unsupportable_cases": 2239,
+    "withheld_even_at_the_most_permissive_thresholds": 2239,
     "share_attributable_to_gates": 1.0,
     "note": "Cases still withheld at warn_above=0.30 / show_above=0.40 were withheld by a deterministic gate. That share is the part of the engine's safety that no threshold choice, and no future learned score, can undo."
   },
@@ -774,39 +774,15 @@
     },
     {
       "claim_type": "RESTING_HEART_RATE_ELEVATED",
-      "corruption": "destabilize_baseline",
-      "severity": "moderate",
-      "reason": "the baseline swings so widely that no change can be distinguished from ordinary day-to-day variation (moderate) breached no requirement but left the effect at +0.84 SD, between contradiction and display; excluded from the headline rates"
-    },
-    {
-      "claim_type": "RESTING_HEART_RATE_ELEVATED",
-      "corruption": "destabilize_baseline",
-      "severity": "moderate",
-      "reason": "the baseline swings so widely that no change can be distinguished from ordinary day-to-day variation (moderate) breached no requirement but left the effect at +1.32 SD, between contradiction and display; excluded from the headline rates"
-    },
-    {
-      "claim_type": "RESTING_HEART_RATE_ELEVATED",
-      "corruption": "destabilize_baseline",
-      "severity": "moderate",
-      "reason": "the baseline swings so widely that no change can be distinguished from ordinary day-to-day variation (moderate) breached no requirement but left the effect at +1.06 SD, between contradiction and display; excluded from the headline rates"
+      "corruption": "shift_baseline",
+      "severity": "mild",
+      "reason": "the baseline contains a level shift, so its mean describes neither the earlier nor the later period (mild) breached no requirement but left the effect at +0.58 SD, between contradiction and display; excluded from the headline rates"
     },
     {
       "claim_type": "RESTING_HEART_RATE_ELEVATED",
       "corruption": "shift_baseline",
       "severity": "mild",
-      "reason": "the baseline contains a level shift, so its mean describes neither the earlier nor the later period (mild) breached no requirement but left the effect at +0.52 SD, between contradiction and display; excluded from the headline rates"
-    },
-    {
-      "claim_type": "RESTING_HEART_RATE_ELEVATED",
-      "corruption": "destabilize_baseline",
-      "severity": "moderate",
-      "reason": "the baseline swings so widely that no change can be distinguished from ordinary day-to-day variation (moderate) breached no requirement but left the effect at +0.92 SD, between contradiction and display; excluded from the headline rates"
-    },
-    {
-      "claim_type": "RESTING_HEART_RATE_ELEVATED",
-      "corruption": "destabilize_baseline",
-      "severity": "moderate",
-      "reason": "the baseline swings so widely that no change can be distinguished from ordinary day-to-day variation (moderate) breached no requirement but left the effect at +1.10 SD, between contradiction and display; excluded from the headline rates"
+      "reason": "the baseline contains a level shift, so its mean describes neither the earlier nor the later period (mild) breached no requirement but left the effect at +0.54 SD, between contradiction and display; excluded from the headline rates"
     },
     {
       "claim_type": "SLEEP_DURATION_LOW",
@@ -996,27 +972,9 @@
     },
     {
       "claim_type": "SLEEP_QUALITY_REDUCED",
-      "corruption": "destabilize_baseline",
-      "severity": "moderate",
-      "reason": "the baseline swings so widely that no change can be distinguished from ordinary day-to-day variation (moderate) breached no requirement but left the effect at +0.47 SD, between contradiction and display; excluded from the headline rates"
-    },
-    {
-      "claim_type": "SLEEP_QUALITY_REDUCED",
-      "corruption": "destabilize_baseline",
-      "severity": "moderate",
-      "reason": "the baseline swings so widely that no change can be distinguished from ordinary day-to-day variation (moderate) breached no requirement but left the effect at +0.62 SD, between contradiction and display; excluded from the headline rates"
-    },
-    {
-      "claim_type": "SLEEP_QUALITY_REDUCED",
       "corruption": "shift_baseline",
       "severity": "mild",
       "reason": "the baseline contains a level shift, so its mean describes neither the earlier nor the later period (mild) breached no requirement but left the effect at +1.22 SD, between contradiction and display; excluded from the headline rates"
-    },
-    {
-      "claim_type": "SLEEP_QUALITY_REDUCED",
-      "corruption": "destabilize_baseline",
-      "severity": "moderate",
-      "reason": "the baseline swings so widely that no change can be distinguished from ordinary day-to-day variation (moderate) breached no requirement but left the effect at +0.40 SD, between contradiction and display; excluded from the headline rates"
     },
     {
       "claim_type": "SLEEP_QUALITY_REDUCED",

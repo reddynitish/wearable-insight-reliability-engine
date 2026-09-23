@@ -2,10 +2,10 @@
 
 **SYNTHETIC EVIDENCE ONLY. These numbers measure agreement between the engine and the claim contract it implements. They are not a measurement of real-world performance and must not be reported as one.**
 
-- generated: `2026-09-23T18:49:21.419601+00:00`
+- generated: `2026-09-23T19:34:41.265826+00:00`
 - model version: `reliability-engine-0.1.0`
-- policy version: `claim-policy-0.1.0`
-- cases: 3120 total, 3057 scored, 63 excluded as borderline
+- policy version: `claim-policy-0.2.0`
+- cases: 3120 total, 3064 scored, 56 excluded as borderline
 - subjects: 30 (pseudonymous, synthetic)
 - claim types: 6; corruptions: 17; severities: 3
 
@@ -21,9 +21,9 @@ Reproduce with:
 
 | baseline | unsupported-show rate (95% CI) | over-abstention | decision coverage | macro F1 | p95 latency |
 |---|---|---|---|---|---|
-| `B0_always_show` | 1.0000 [1.0000, 1.0000] | 0.0000 | 1.0000 | 0.1417 | 0.000 ms |
-| `B1_data_present` | 0.9583 [0.9436, 0.9723] | 0.3309 | 0.8803 | 0.1364 | 0.001 ms |
-| `B2_rules_engine` | 0.0000 [0.0000, 0.0000] | 0.0000 | 0.2699 | 0.7752 | 0.111 ms |
+| `B0_always_show` | 1.0000 [1.0000, 1.0000] | 0.0000 | 1.0000 | 0.1414 | 0.000 ms |
+| `B1_data_present` | 0.9585 [0.9438, 0.9723] | 0.3309 | 0.8805 | 0.1359 | 0.001 ms |
+| `B2_rules_engine` | 0.0000 [0.0000, 0.0000] | 0.0000 | 0.2693 | 0.7754 | 0.134 ms |
 
 Not implemented, and not claimed:
 
@@ -37,9 +37,9 @@ Not implemented, and not claimed:
 | `ACTIVITY_LOAD_HIGH` | 510 | 0.0000 | 0.0000 | 0.2412 |
 | `PHYSIOLOGICAL_ANOMALY_REQUIRES_CONFIRMATION` | 511 | 0.0000 | 0.0000 | 0.2192 |
 | `RECOVERY_EVIDENCE_INCOMPLETE` | 520 | 0.0000 | 0.0000 | 0.6673 |
-| `RESTING_HEART_RATE_ELEVATED` | 514 | 0.0000 | 0.0000 | 0.1265 |
+| `RESTING_HEART_RATE_ELEVATED` | 518 | 0.0000 | 0.0000 | 0.1255 |
 | `SLEEP_DURATION_LOW` | 491 | 0.0000 | 0.0000 | 0.2016 |
-| `SLEEP_QUALITY_REDUCED` | 511 | 0.0000 | 0.0000 | 0.1546 |
+| `SLEEP_QUALITY_REDUCED` | 514 | 0.0000 | 0.0000 | 0.1537 |
 
 ## By corruption (engine only)
 
@@ -47,7 +47,7 @@ Not implemented, and not claimed:
 |---|---|---|---|---|
 | `conflict_summary_detail` | 171 | 0.0000 | 0.0000 | 0.2690 |
 | `delay_sync` | 180 | 0.0000 | 0.0000 | 0.1389 |
-| `destabilize_baseline` | 156 | 0.0000 | 0.0000 | 0.2949 |
+| `destabilize_baseline` | 164 | 0.0000 | 0.0000 | 0.2805 |
 | `drop_contiguous` | 180 | 0.0000 | 0.0000 | 0.2222 |
 | `drop_random` | 179 | 0.0000 | 0.0000 | 0.3240 |
 | `drop_timezone` | 180 | 0.0000 | 0.0000 | 0.0833 |
@@ -57,7 +57,7 @@ Not implemented, and not claimed:
 | `implausible_spike` | 180 | 0.0000 | 0.0000 | 0.0833 |
 | `motion_artifact` | 179 | 0.0000 | 0.0000 | 0.3073 |
 | `none` | 60 | 0.0000 | 0.0000 | 0.5000 |
-| `shift_baseline` | 163 | 0.0000 | 0.0000 | 0.3252 |
+| `shift_baseline` | 162 | 0.0000 | 0.0000 | 0.3272 |
 | `shift_day_boundary` | 180 | 0.0000 | 0.0000 | 0.1667 |
 | `shorten_wear` | 180 | 0.0000 | 0.0000 | 0.1944 |
 | `shuffle_order` | 177 | 0.0000 | 0.0000 | 0.5085 |
@@ -68,8 +68,8 @@ Not implemented, and not claimed:
 
 | group | cases | unsupported-show | over-abstention | coverage |
 |---|---|---|---|---|
-| `mild` | 996 | 0.0000 | 0.0000 | 0.3293 |
-| `moderate` | 996 | 0.0000 | 0.0000 | 0.2470 |
+| `mild` | 995 | 0.0000 | 0.0000 | 0.3296 |
+| `moderate` | 1004 | 0.0000 | 0.0000 | 0.2450 |
 | `none` | 60 | 0.0000 | 0.0000 | 0.5000 |
 | `severe` | 1005 | 0.0000 | 0.0000 | 0.2199 |
 
@@ -77,7 +77,7 @@ Not implemented, and not claimed:
 
 | group | cases | unsupported-show | over-abstention | coverage |
 |---|---|---|---|---|
-| `baseline` | 498 | 0.0000 | 0.0000 | 0.2671 |
+| `baseline` | 505 | 0.0000 | 0.0000 | 0.2634 |
 | `consistency` | 171 | 0.0000 | 0.0000 | 0.2690 |
 | `coverage` | 539 | 0.0000 | 0.0000 | 0.2468 |
 | `freshness` | 360 | 0.0000 | 0.0000 | 0.1528 |
@@ -90,9 +90,9 @@ Not implemented, and not claimed:
 | group | cases | unsupported-show | over-abstention | coverage |
 |---|---|---|---|---|
 | `SUPPORTABLE` | 825 | 0.0000 | 0.0000 | 1.0000 |
-| `UNSUPPORTABLE_CONTRADICTED` | 646 | 0.0000 | 0.0000 | 0.0000 |
+| `UNSUPPORTABLE_CONTRADICTED` | 635 | 0.0000 | 0.0000 | 0.0000 |
 | `UNSUPPORTABLE_INSUFFICIENT` | 1094 | 0.0000 | 0.0000 | 0.0000 |
-| `UNSUPPORTABLE_UNTRUSTWORTHY` | 492 | 0.0000 | 0.0000 | 0.0000 |
+| `UNSUPPORTABLE_UNTRUSTWORTHY` | 510 | 0.0000 | 0.0000 | 0.0000 |
 
 ## Corruption catalogue
 
@@ -122,22 +122,22 @@ Display thresholds swept with every deterministic gate held fixed. The shipped d
 
 | warn_above | show_above | coverage | unsupported-show | over-abstention | shown unsupportable | withheld supportable |
 |---|---|---|---|---|---|---|
-| 0.30 | 0.40 | 0.2699 | 0.0000 | 0.0000 | 0 | 0 |
-| 0.40 | 0.50 | 0.2699 | 0.0000 | 0.0000 | 0 | 0 |
-| 0.45 | 0.60 | 0.2699 | 0.0000 | 0.0000 | 0 | 0 |
-| 0.55 **(default)** | 0.75 | 0.2699 | 0.0000 | 0.0000 | 0 | 0 |
-| 0.65 | 0.82 | 0.2676 | 0.0000 | 0.0085 | 0 | 7 |
-| 0.75 | 0.88 | 0.2676 | 0.0000 | 0.0085 | 0 | 7 |
-| 0.85 | 0.94 | 0.1560 | 0.0000 | 0.4218 | 0 | 348 |
+| 0.30 | 0.40 | 0.2693 | 0.0000 | 0.0000 | 0 | 0 |
+| 0.40 | 0.50 | 0.2693 | 0.0000 | 0.0000 | 0 | 0 |
+| 0.45 | 0.60 | 0.2693 | 0.0000 | 0.0000 | 0 | 0 |
+| 0.55 **(default)** | 0.75 | 0.2693 | 0.0000 | 0.0000 | 0 | 0 |
+| 0.65 | 0.82 | 0.2670 | 0.0000 | 0.0085 | 0 | 7 |
+| 0.75 | 0.88 | 0.2670 | 0.0000 | 0.0085 | 0 | 7 |
+| 0.85 | 0.94 | 0.1593 | 0.0000 | 0.4085 | 0 | 337 |
 
-Of 2232 unsupportable cases, 2232 (100.0%) are withheld even at the most permissive thresholds in this sweep, so they were withheld by a deterministic gate rather than by a threshold choice. That share is the part of the engine's safety that no threshold tuning, and no future learned score, can undo.
+Of 2239 unsupportable cases, 2239 (100.0%) are withheld even at the most permissive thresholds in this sweep, so they were withheld by a deterministic gate rather than by a threshold choice. That share is the part of the engine's safety that no threshold tuning, and no future learned score, can undo.
 
 The curve is flat wherever gates already decide the case. That is the point of the design rather than a limitation of the sweep -- but it also means this synthetic suite cannot recommend an operating point. Choosing one needs real data and an explicit cost for a wrong SHOW against a needless abstention.
 
 
 ## Excluded borderline cases
 
-63 case(s) breached no contract clause but landed between the contradiction and display thresholds. Neither showing nor abstaining is demonstrably correct for them, so they are excluded from the rates above rather than scored against a label we cannot justify.
+56 case(s) breached no contract clause but landed between the contradiction and display thresholds. Neither showing nor abstaining is demonstrably correct for them, so they are excluded from the rates above rather than scored against a label we cannot justify.
 
 - `ACTIVITY_LOAD_HIGH` / `shift_baseline` / moderate: the baseline contains a level shift, so its mean describes neither the earlier nor the later period (moderate) breached no requirement but left the effect at +0.55 SD, between contradiction and display; excluded from the headline rates
 - `ACTIVITY_LOAD_HIGH` / `shift_baseline` / severe: the baseline contains a level shift, so its mean describes neither the earlier nor the later period (severe) breached no requirement but left the effect at +0.75 SD, between contradiction and display; excluded from the headline rates
@@ -158,8 +158,8 @@ The curve is flat wherever gates already decide the case. That is the point of t
 - `PHYSIOLOGICAL_ANOMALY_REQUIRES_CONFIRMATION` / `destabilize_baseline` / mild: the baseline swings so widely that no change can be distinguished from ordinary day-to-day variation (mild) breached no requirement but left the effect at +1.43 SD, between contradiction and display; excluded from the headline rates
 - `PHYSIOLOGICAL_ANOMALY_REQUIRES_CONFIRMATION` / `destabilize_baseline` / severe: the baseline swings so widely that no change can be distinguished from ordinary day-to-day variation (severe) breached no requirement but left the effect at +1.38 SD, between contradiction and display; excluded from the headline rates
 - `PHYSIOLOGICAL_ANOMALY_REQUIRES_CONFIRMATION` / `destabilize_baseline` / mild: the baseline swings so widely that no change can be distinguished from ordinary day-to-day variation (mild) breached no requirement but left the effect at +2.68 SD, between contradiction and display; excluded from the headline rates
-- `RESTING_HEART_RATE_ELEVATED` / `destabilize_baseline` / moderate: the baseline swings so widely that no change can be distinguished from ordinary day-to-day variation (moderate) breached no requirement but left the effect at +0.84 SD, between contradiction and display; excluded from the headline rates
-- ... and 43 more (see the JSON artifact)
+- `RESTING_HEART_RATE_ELEVATED` / `shift_baseline` / mild: the baseline contains a level shift, so its mean describes neither the earlier nor the later period (mild) breached no requirement but left the effect at +0.58 SD, between contradiction and display; excluded from the headline rates
+- ... and 36 more (see the JSON artifact)
 
 ## How to read these numbers
 

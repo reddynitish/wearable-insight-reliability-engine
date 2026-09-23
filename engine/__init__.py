@@ -9,7 +9,7 @@ frozen claim contracts.
 """
 
 MODEL_VERSION = "reliability-engine-0.1.0"
-POLICY_VERSION = "claim-policy-0.1.0"
+POLICY_VERSION = "claim-policy-0.2.0"
 
 SCOPE_NOTE = (
     "This is a data-reliability assessment, not a medical assessment. It reports "

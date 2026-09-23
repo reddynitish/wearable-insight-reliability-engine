@@ -37,7 +37,7 @@ SETTINGS = settings(deadline=None,
 
 @given(
     z=st.floats(-4, 6, allow_nan=False),
-    baseline=st.integers(0, 40),
+    baseline=st.integers(0, 60),
     worn=st.floats(0, 1440),
     overnight=st.floats(0, 480),
     eval_offset=st.floats(-10, 200),
@@ -65,7 +65,7 @@ def test_a_fatal_reason_never_coexists_with_a_displayed_claim(
 
 @given(
     z=st.floats(-4, 6, allow_nan=False),
-    baseline=st.integers(0, 40),
+    baseline=st.integers(0, 60),
     worn=st.floats(0, 1440),
 )
 @SETTINGS
@@ -118,7 +118,7 @@ def test_removing_coverage_never_improves_the_decision(z, worn_high, drop):
     assert RANK[worse.decision] <= RANK[better.decision]
 
 
-@given(z=st.floats(1.6, 5, allow_nan=False), days=st.integers(1, 20), extra=st.integers(1, 20))
+@given(z=st.floats(1.6, 5, allow_nan=False), days=st.integers(1, 40), extra=st.integers(1, 30))
 @SETTINGS
 def test_lengthening_the_baseline_never_worsens_the_decision(z, days, extra):
     shorter = evaluate(rhr_request(z=z, n_baseline=days))
@@ -147,7 +147,7 @@ def test_support_increases_with_effect_size_on_identical_evidence(z):
 
 @given(
     z=st.floats(-4, 6, allow_nan=False),
-    baseline=st.integers(0, 40),
+    baseline=st.integers(0, 60),
     worn=st.floats(0, 1440),
     tz=st.sampled_from([None, "UTC", "America/New_York", "Mars/Olympus_Mons"]),
     sync=st.one_of(st.none(), st.floats(-30, 30, allow_nan=False)),
@@ -178,7 +178,7 @@ def test_every_response_is_internally_consistent(z, baseline, worn, tz, sync):
 
 @given(
     z=st.floats(-3, 5, allow_nan=False),
-    baseline=st.integers(0, 30),
+    baseline=st.integers(0, 60),
     worn=st.floats(0, 1440),
 )
 @SETTINGS
@@ -188,7 +188,7 @@ def test_evaluation_is_deterministic(z, baseline, worn):
     assert first.model_dump(mode="json") == second.model_dump(mode="json")
 
 
-@given(z=st.floats(-3, 5, allow_nan=False), baseline=st.integers(0, 30))
+@given(z=st.floats(-3, 5, allow_nan=False), baseline=st.integers(0, 60))
 @SETTINGS
 def test_reason_codes_are_reported_in_a_stable_order(z, baseline):
     from engine.reasons import sort_key
@@ -258,11 +258,11 @@ def test_confidence_is_high_when_there_is_nothing_to_go_on():
 
 def test_confidence_is_lowest_near_a_decision_boundary():
     near = evaluate(
-        rhr_request(z=1.5, n_baseline=30, worn_minutes=1440.0, overnight_minutes=480.0,
+        rhr_request(z=1.5, n_baseline=60, worn_minutes=1440.0, overnight_minutes=480.0,
                     sync_offset_hours=2.0, evaluated_offset_hours=2.5)
     )
     far = evaluate(
-        rhr_request(z=4.0, n_baseline=30, worn_minutes=1440.0, overnight_minutes=480.0,
+        rhr_request(z=4.0, n_baseline=60, worn_minutes=1440.0, overnight_minutes=480.0,
                     sync_offset_hours=2.0, evaluated_offset_hours=2.5)
     )
     assert near.confidence < far.confidence

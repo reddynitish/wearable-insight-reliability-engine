@@ -1,0 +1,847 @@
+{
+  "artifact": "pmdata-evaluation",
+  "synthetic": false,
+  "dataset": "PMData",
+  "citation": "Thambawita et al., 'PMData: A Sports Logging Dataset', Proceedings of the 11th ACM Multimedia Systems Conference (MMSys '20), 2020, pp. 231-236. doi:10.1145/3339825.3394926. Licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/); no changes were made to the data.",
+  "licence": "CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/); no changes made",
+  "timezone_assumed": "Europe/Oslo",
+  "generated_at": "2026-09-23T19:34:45.981210+00:00",
+  "model_version": "reliability-engine-0.1.0",
+  "policy_version": "claim-policy-0.2.0",
+  "python": "3.13.11",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "subjects": 16,
+  "thresholds": {
+    "subject_days": 2186,
+    "per_subject": {
+      "pmdata-p01": {
+        "days_with_heart_rate": 152,
+        "days_with_resting_heart_rate": 152,
+        "sleep_nights": 150,
+        "median_wear_ratio": 0.981,
+        "median_baseline_sd_bpm": 1.125
+      },
+      "pmdata-p02": {
+        "days_with_heart_rate": 148,
+        "days_with_resting_heart_rate": 89,
+        "sleep_nights": 142,
+        "median_wear_ratio": 0.981,
+        "median_baseline_sd_bpm": 1.527
+      },
+      "pmdata-p03": {
+        "days_with_heart_rate": 122,
+        "days_with_resting_heart_rate": 101,
+        "sleep_nights": 78,
+        "median_wear_ratio": 0.654,
+        "median_baseline_sd_bpm": 2.052
+      },
+      "pmdata-p04": {
+        "days_with_heart_rate": 147,
+        "days_with_resting_heart_rate": 35,
+        "sleep_nights": 144,
+        "median_wear_ratio": 0.99,
+        "median_baseline_sd_bpm": 2.417
+      },
+      "pmdata-p05": {
+        "days_with_heart_rate": 145,
+        "days_with_resting_heart_rate": 86,
+        "sleep_nights": 118,
+        "median_wear_ratio": 0.963,
+        "median_baseline_sd_bpm": 2.485
+      },
+      "pmdata-p06": {
+        "days_with_heart_rate": 152,
+        "days_with_resting_heart_rate": 150,
+        "sleep_nights": 150,
+        "median_wear_ratio": 0.992,
+        "median_baseline_sd_bpm": 1.498
+      },
+      "pmdata-p07": {
+        "days_with_heart_rate": 147,
+        "days_with_resting_heart_rate": 144,
+        "sleep_nights": 142,
+        "median_wear_ratio": 0.983,
+        "median_baseline_sd_bpm": 1.77
+      },
+      "pmdata-p08": {
+        "days_with_heart_rate": 139,
+        "days_with_resting_heart_rate": 139,
+        "sleep_nights": 133,
+        "median_wear_ratio": 0.97,
+        "median_baseline_sd_bpm": 2.416
+      },
+      "pmdata-p09": {
+        "days_with_heart_rate": 151,
+        "days_with_resting_heart_rate": 147,
+        "sleep_nights": 136,
+        "median_wear_ratio": 0.913,
+        "median_baseline_sd_bpm": 2.606
+      },
+      "pmdata-p10": {
+        "days_with_heart_rate": 114,
+        "days_with_resting_heart_rate": 110,
+        "sleep_nights": 99,
+        "median_wear_ratio": 0.959,
+        "median_baseline_sd_bpm": 1.933
+      },
+      "pmdata-p11": {
+        "days_with_heart_rate": 123,
+        "days_with_resting_heart_rate": 80,
+        "sleep_nights": 119,
+        "median_wear_ratio": 0.988,
+        "median_baseline_sd_bpm": 2.392
+      },
+      "pmdata-p12": {
+        "days_with_heart_rate": 134,
+        "days_with_resting_heart_rate": 0,
+        "sleep_nights": 8,
+        "median_wear_ratio": 0.579,
+        "median_baseline_sd_bpm": null
+      },
+      "pmdata-p13": {
+        "days_with_heart_rate": 81,
+        "days_with_resting_heart_rate": 0,
+        "sleep_nights": 51,
+        "median_wear_ratio": 0.951,
+        "median_baseline_sd_bpm": null
+      },
+      "pmdata-p14": {
+        "days_with_heart_rate": 135,
+        "days_with_resting_heart_rate": 129,
+        "sleep_nights": 121,
+        "median_wear_ratio": 0.91,
+        "median_baseline_sd_bpm": 2.808
+      },
+      "pmdata-p15": {
+        "days_with_heart_rate": 144,
+        "days_with_resting_heart_rate": 144,
+        "sleep_nights": 143,
+        "median_wear_ratio": 0.958,
+        "median_baseline_sd_bpm": 1.417
+      },
+      "pmdata-p16": {
+        "days_with_heart_rate": 152,
+        "days_with_resting_heart_rate": 152,
+        "sleep_nights": 147,
+        "median_wear_ratio": 0.887,
+        "median_baseline_sd_bpm": 1.575
+      }
+    },
+    "checks": [
+      {
+        "threshold": "min_wear_coverage",
+        "contract_value": 0.6,
+        "observed": {
+          "n": 2186,
+          "mean": 0.868,
+          "sd": 0.198,
+          "min": 0.0,
+          "p05": 0.412,
+          "p25": 0.852,
+          "median": 0.959,
+          "p75": 0.985,
+          "p95": 0.996,
+          "max": 1.0
+        },
+        "share_below_threshold": 0.1061,
+        "verdict_note": "Share of real subject-days the coverage gate would reject outright."
+      },
+      {
+        "threshold": "min_overnight_coverage",
+        "contract_value": 0.5,
+        "observed": {
+          "n": 2186,
+          "mean": 0.866,
+          "sd": 0.277,
+          "min": 0.0,
+          "p05": 0.025,
+          "p25": 0.933,
+          "median": 0.985,
+          "p75": 0.996,
+          "p95": 1.0,
+          "max": 1.0
+        },
+        "share_below_threshold": 0.1171
+      },
+      {
+        "threshold": "max_gap_minutes",
+        "contract_value": 240.0,
+        "observed": {
+          "n": 2186,
+          "mean": 59.118,
+          "sd": 113.97,
+          "min": 0.0,
+          "p05": 2.64,
+          "p25": 3.67,
+          "median": 11.97,
+          "p75": 62.71,
+          "p95": 287.317,
+          "max": 936.1
+        },
+        "share_above_threshold": 0.0682
+      },
+      {
+        "threshold": "max_baseline_sd (resting heart rate, bpm)",
+        "contract_value": 5.0,
+        "observed": {
+          "n": 1253,
+          "mean": 1.942,
+          "sd": 0.678,
+          "min": 1.004,
+          "p05": 1.113,
+          "p25": 1.446,
+          "median": 1.787,
+          "p75": 2.33,
+          "p95": 3.323,
+          "max": 4.039
+        },
+        "share_above_threshold": 0.0,
+        "verdict_note": "Share of real subject-days whose own history the engine would call too unstable to compare against."
+      },
+      {
+        "threshold": "max_baseline_shift (resting heart rate, bpm)",
+        "contract_value": 6.0,
+        "observed": {
+          "n": 1253,
+          "mean": 1.537,
+          "sd": 1.279,
+          "min": 0.001,
+          "p05": 0.121,
+          "p25": 0.559,
+          "median": 1.244,
+          "p75": 2.194,
+          "p95": 3.926,
+          "max": 7.182
+        },
+        "share_above_threshold": 0.0104
+      },
+      {
+        "threshold": "show_z (resting heart rate)",
+        "contract_value": 1.5,
+        "observed": {
+          "n": 1253,
+          "mean": -0.057,
+          "sd": 1.171,
+          "min": -3.494,
+          "p05": -1.9,
+          "p25": -0.842,
+          "median": -0.126,
+          "p75": 0.718,
+          "p95": 1.939,
+          "max": 3.698
+        },
+        "share_above_threshold": 0.1053,
+        "verdict_note": "How often a real person would see this claim if only effect size gated it. An insight firing on a large share of all days is not an insight."
+      },
+      {
+        "threshold": "min_absolute_delta (resting heart rate, bpm)",
+        "contract_value": 3.0,
+        "observed": {
+          "n": 1253,
+          "mean": 1.877,
+          "sd": 1.547,
+          "min": 0.002,
+          "p05": 0.104,
+          "p25": 0.672,
+          "median": 1.465,
+          "p75": 2.729,
+          "p95": 4.983,
+          "max": 9.184
+        },
+        "share_below_threshold": 0.7869
+      },
+      {
+        "threshold": "max_baseline_sd (sleep duration, minutes)",
+        "contract_value": 120.0,
+        "observed": {
+          "n": 1769,
+          "mean": 73.951,
+          "sd": 24.353,
+          "min": 23.682,
+          "p05": 44.432,
+          "p25": 56.274,
+          "median": 68.625,
+          "p75": 87.4,
+          "p95": 126.236,
+          "max": 173.837
+        },
+        "share_above_threshold": 0.0644
+      }
+    ]
+  },
+  "baseline_stability": {
+    "per_subject": {
+      "pmdata-p01": {
+        "valid_days": 151,
+        "sd_60_day_bpm": 1.178,
+        "days_until_sd_settles": 43
+      },
+      "pmdata-p02": {
+        "valid_days": 89,
+        "sd_60_day_bpm": 1.544,
+        "days_until_sd_settles": 52
+      },
+      "pmdata-p03": {
+        "valid_days": 68,
+        "sd_60_day_bpm": 2.323,
+        "days_until_sd_settles": 49
+      },
+      "pmdata-p05": {
+        "valid_days": 83,
+        "sd_60_day_bpm": 2.786,
+        "days_until_sd_settles": 57
+      },
+      "pmdata-p06": {
+        "valid_days": 150,
+        "sd_60_day_bpm": 1.528,
+        "days_until_sd_settles": 45
+      },
+      "pmdata-p07": {
+        "valid_days": 143,
+        "sd_60_day_bpm": 2.102,
+        "days_until_sd_settles": 56
+      },
+      "pmdata-p08": {
+        "valid_days": 135,
+        "sd_60_day_bpm": 1.794,
+        "days_until_sd_settles": 49
+      },
+      "pmdata-p09": {
+        "valid_days": 126,
+        "sd_60_day_bpm": 2.302,
+        "days_until_sd_settles": 58
+      },
+      "pmdata-p10": {
+        "valid_days": 103,
+        "sd_60_day_bpm": 2.035,
+        "days_until_sd_settles": 43
+      },
+      "pmdata-p11": {
+        "valid_days": 79,
+        "sd_60_day_bpm": 2.269,
+        "days_until_sd_settles": 48
+      },
+      "pmdata-p14": {
+        "valid_days": 117,
+        "sd_60_day_bpm": 3.144,
+        "days_until_sd_settles": 44
+      },
+      "pmdata-p15": {
+        "valid_days": 143,
+        "sd_60_day_bpm": 1.43,
+        "days_until_sd_settles": 48
+      },
+      "pmdata-p16": {
+        "valid_days": 150,
+        "sd_60_day_bpm": 1.608,
+        "days_until_sd_settles": 48
+      }
+    },
+    "days_until_settled": {
+      "n": 13,
+      "mean": 49.231,
+      "sd": 5.15,
+      "min": 43.0,
+      "p05": 43.0,
+      "p25": 45.0,
+      "median": 48.0,
+      "p75": 52.0,
+      "p95": 57.4,
+      "max": 58.0
+    },
+    "contract_min_baseline_days": 14,
+    "note": "A settling day count above the contract's 14 means the engine starts comparing against a personal normal that is still moving."
+  },
+  "decisions_without_sync_field": {
+    "assume_sync": false,
+    "evaluated_requests": 7812,
+    "by_claim": {
+      "RESTING_HEART_RATE_ELEVATED": {
+        "evaluated_days": 1658,
+        "decisions": {
+          "SHOW": 0,
+          "SHOW_WITH_WARNING": 120,
+          "WAIT_FOR_MORE_DATA": 542,
+          "REJECT": 996
+        },
+        "decision_coverage": 0.0724,
+        "top_reason_codes": {
+          "SYNC_STATE_UNKNOWN": 1658,
+          "CLAIM_CONTRADICTED": 987,
+          "BASELINE_NOT_MATURE": 422,
+          "INSUFFICIENT_HISTORICAL_COVERAGE": 228,
+          "EFFECT_BELOW_RELIABLE_THRESHOLD": 131,
+          "LONG_DATA_GAP": 116,
+          "INSUFFICIENT_OVERNIGHT_COVERAGE": 86,
+          "INSUFFICIENT_COVERAGE": 86
+        }
+      },
+      "ACTIVITY_LOAD_HIGH": {
+        "evaluated_days": 2396,
+        "decisions": {
+          "SHOW": 0,
+          "SHOW_WITH_WARNING": 195,
+          "WAIT_FOR_MORE_DATA": 744,
+          "REJECT": 1457
+        },
+        "decision_coverage": 0.0814,
+        "top_reason_codes": {
+          "SYNC_STATE_UNKNOWN": 2396,
+          "CLAIM_CONTRADICTED": 1439,
+          "INSUFFICIENT_HISTORICAL_COVERAGE": 615,
+          "BASELINE_NOT_MATURE": 341,
+          "INSUFFICIENT_COVERAGE": 316,
+          "BASELINE_SHIFT_DETECTED": 301,
+          "COVERAGE_UNKNOWN": 210,
+          "LONG_DATA_GAP": 149
+        }
+      },
+      "SLEEP_DURATION_LOW": {
+        "evaluated_days": 1879,
+        "decisions": {
+          "SHOW": 0,
+          "SHOW_WITH_WARNING": 264,
+          "WAIT_FOR_MORE_DATA": 535,
+          "REJECT": 1080
+        },
+        "decision_coverage": 0.1405,
+        "top_reason_codes": {
+          "SYNC_STATE_UNKNOWN": 1879,
+          "CLAIM_CONTRADICTED": 1065,
+          "BASELINE_UNSTABLE": 119,
+          "BASELINE_NOT_MATURE": 114,
+          "INSUFFICIENT_HISTORICAL_COVERAGE": 83,
+          "EFFECT_BELOW_RELIABLE_THRESHOLD": 33,
+          "BASELINE_STATISTICS_UNAVAILABLE": 16,
+          "CONTEXT_CONFLICT": 15
+        }
+      },
+      "SLEEP_QUALITY_REDUCED": {
+        "evaluated_days": 1879,
+        "decisions": {
+          "SHOW": 0,
+          "SHOW_WITH_WARNING": 67,
+          "WAIT_FOR_MORE_DATA": 667,
+          "REJECT": 1145
+        },
+        "decision_coverage": 0.0357,
+        "top_reason_codes": {
+          "LOW_REFERENCE_AGREEMENT": 1879,
+          "SYNC_STATE_UNKNOWN": 1879,
+          "CLAIM_CONTRADICTED": 1137,
+          "EFFECT_BELOW_RELIABLE_THRESHOLD": 281,
+          "BASELINE_NOT_MATURE": 219,
+          "INSUFFICIENT_HISTORICAL_COVERAGE": 159,
+          "SUMMARY_DETAIL_MISMATCH": 47,
+          "BASELINE_STATISTICS_UNAVAILABLE": 16
+        }
+      }
+    },
+    "per_subject_decision_coverage": {
+      "pmdata-p01": {
+        "RESTING_HEART_RATE_ELEVATED": 0.0066,
+        "ACTIVITY_LOAD_HIGH": 0.1382,
+        "SLEEP_DURATION_LOW": 0.1333,
+        "SLEEP_QUALITY_REDUCED": 0.0133
+      },
+      "pmdata-p02": {
+        "RESTING_HEART_RATE_ELEVATED": 0.0562,
+        "ACTIVITY_LOAD_HIGH": 0.1316,
+        "SLEEP_DURATION_LOW": 0.1197,
+        "SLEEP_QUALITY_REDUCED": 0.0704
+      },
+      "pmdata-p03": {
+        "RESTING_HEART_RATE_ELEVATED": 0.0,
+        "ACTIVITY_LOAD_HIGH": 0.0,
+        "SLEEP_DURATION_LOW": 0.1026,
+        "SLEEP_QUALITY_REDUCED": 0.0513
+      },
+      "pmdata-p04": {
+        "RESTING_HEART_RATE_ELEVATED": 0.0,
+        "ACTIVITY_LOAD_HIGH": 0.1382,
+        "SLEEP_DURATION_LOW": 0.0903,
+        "SLEEP_QUALITY_REDUCED": 0.0278
+      },
+      "pmdata-p05": {
+        "RESTING_HEART_RATE_ELEVATED": 0.1977,
+        "ACTIVITY_LOAD_HIGH": 0.1316,
+        "SLEEP_DURATION_LOW": 0.1441,
+        "SLEEP_QUALITY_REDUCED": 0.0339
+      },
+      "pmdata-p06": {
+        "RESTING_HEART_RATE_ELEVATED": 0.08,
+        "ACTIVITY_LOAD_HIGH": 0.1053,
+        "SLEEP_DURATION_LOW": 0.1333,
+        "SLEEP_QUALITY_REDUCED": 0.0067
+      },
+      "pmdata-p07": {
+        "RESTING_HEART_RATE_ELEVATED": 0.1181,
+        "ACTIVITY_LOAD_HIGH": 0.0405,
+        "SLEEP_DURATION_LOW": 0.1549,
+        "SLEEP_QUALITY_REDUCED": 0.0423
+      },
+      "pmdata-p08": {
+        "RESTING_HEART_RATE_ELEVATED": 0.1295,
+        "ACTIVITY_LOAD_HIGH": 0.035,
+        "SLEEP_DURATION_LOW": 0.1278,
+        "SLEEP_QUALITY_REDUCED": 0.0226
+      },
+      "pmdata-p09": {
+        "RESTING_HEART_RATE_ELEVATED": 0.1156,
+        "ACTIVITY_LOAD_HIGH": 0.0921,
+        "SLEEP_DURATION_LOW": 0.1176,
+        "SLEEP_QUALITY_REDUCED": 0.0809
+      },
+      "pmdata-p10": {
+        "RESTING_HEART_RATE_ELEVATED": 0.0364,
+        "ACTIVITY_LOAD_HIGH": 0.1014,
+        "SLEEP_DURATION_LOW": 0.2121,
+        "SLEEP_QUALITY_REDUCED": 0.0606
+      },
+      "pmdata-p11": {
+        "RESTING_HEART_RATE_ELEVATED": 0.0875,
+        "ACTIVITY_LOAD_HIGH": 0.0592,
+        "SLEEP_DURATION_LOW": 0.1261,
+        "SLEEP_QUALITY_REDUCED": 0.0252
+      },
+      "pmdata-p12": {
+        "RESTING_HEART_RATE_ELEVATED": 0.0,
+        "ACTIVITY_LOAD_HIGH": 0.0,
+        "SLEEP_DURATION_LOW": 0.0,
+        "SLEEP_QUALITY_REDUCED": 0.0
+      },
+      "pmdata-p13": {
+        "RESTING_HEART_RATE_ELEVATED": 0.0,
+        "ACTIVITY_LOAD_HIGH": 0.0,
+        "SLEEP_DURATION_LOW": 0.0784,
+        "SLEEP_QUALITY_REDUCED": 0.0
+      },
+      "pmdata-p14": {
+        "RESTING_HEART_RATE_ELEVATED": 0.1085,
+        "ACTIVITY_LOAD_HIGH": 0.1071,
+        "SLEEP_DURATION_LOW": 0.1833,
+        "SLEEP_QUALITY_REDUCED": 0.0667
+      },
+      "pmdata-p15": {
+        "RESTING_HEART_RATE_ELEVATED": 0.0,
+        "ACTIVITY_LOAD_HIGH": 0.1586,
+        "SLEEP_DURATION_LOW": 0.1831,
+        "SLEEP_QUALITY_REDUCED": 0.0
+      },
+      "pmdata-p16": {
+        "RESTING_HEART_RATE_ELEVATED": 0.0526,
+        "ACTIVITY_LOAD_HIGH": 0.0658,
+        "SLEEP_DURATION_LOW": 0.1769,
+        "SLEEP_QUALITY_REDUCED": 0.034
+      }
+    }
+  },
+  "decisions_with_assumed_sync": {
+    "assume_sync": true,
+    "evaluated_requests": 7812,
+    "by_claim": {
+      "RESTING_HEART_RATE_ELEVATED": {
+        "evaluated_days": 1658,
+        "decisions": {
+          "SHOW": 91,
+          "SHOW_WITH_WARNING": 33,
+          "WAIT_FOR_MORE_DATA": 544,
+          "REJECT": 990
+        },
+        "decision_coverage": 0.0748,
+        "top_reason_codes": {
+          "CLAIM_CONTRADICTED": 987,
+          "BASELINE_NOT_MATURE": 422,
+          "INSUFFICIENT_HISTORICAL_COVERAGE": 228,
+          "EFFECT_BELOW_RELIABLE_THRESHOLD": 131,
+          "LONG_DATA_GAP": 116,
+          "MARGINAL_SUPPORT": 93,
+          "INSUFFICIENT_OVERNIGHT_COVERAGE": 86,
+          "INSUFFICIENT_COVERAGE": 86
+        }
+      },
+      "ACTIVITY_LOAD_HIGH": {
+        "evaluated_days": 2396,
+        "decisions": {
+          "SHOW": 127,
+          "SHOW_WITH_WARNING": 90,
+          "WAIT_FOR_MORE_DATA": 730,
+          "REJECT": 1449
+        },
+        "decision_coverage": 0.0906,
+        "top_reason_codes": {
+          "CLAIM_CONTRADICTED": 1439,
+          "INSUFFICIENT_HISTORICAL_COVERAGE": 615,
+          "BASELINE_NOT_MATURE": 341,
+          "INSUFFICIENT_COVERAGE": 316,
+          "BASELINE_SHIFT_DETECTED": 301,
+          "COVERAGE_UNKNOWN": 210,
+          "LONG_DATA_GAP": 149,
+          "MARGINAL_SUPPORT": 97
+        }
+      },
+      "SLEEP_DURATION_LOW": {
+        "evaluated_days": 1879,
+        "decisions": {
+          "SHOW": 207,
+          "SHOW_WITH_WARNING": 66,
+          "WAIT_FOR_MORE_DATA": 539,
+          "REJECT": 1067
+        },
+        "decision_coverage": 0.1453,
+        "top_reason_codes": {
+          "CLAIM_CONTRADICTED": 1065,
+          "BASELINE_UNSTABLE": 119,
+          "BASELINE_NOT_MATURE": 114,
+          "MARGINAL_SUPPORT": 88,
+          "INSUFFICIENT_HISTORICAL_COVERAGE": 83,
+          "EFFECT_BELOW_RELIABLE_THRESHOLD": 33,
+          "BASELINE_STATISTICS_UNAVAILABLE": 16,
+          "CONTEXT_CONFLICT": 15
+        }
+      },
+      "SLEEP_QUALITY_REDUCED": {
+        "evaluated_days": 1879,
+        "decisions": {
+          "SHOW": 0,
+          "SHOW_WITH_WARNING": 67,
+          "WAIT_FOR_MORE_DATA": 674,
+          "REJECT": 1138
+        },
+        "decision_coverage": 0.0357,
+        "top_reason_codes": {
+          "LOW_REFERENCE_AGREEMENT": 1879,
+          "CLAIM_CONTRADICTED": 1137,
+          "EFFECT_BELOW_RELIABLE_THRESHOLD": 281,
+          "BASELINE_NOT_MATURE": 219,
+          "INSUFFICIENT_HISTORICAL_COVERAGE": 159,
+          "SUMMARY_DETAIL_MISMATCH": 47,
+          "BASELINE_STATISTICS_UNAVAILABLE": 16,
+          "BASELINE_UNSTABLE": 4
+        }
+      }
+    },
+    "per_subject_decision_coverage": {
+      "pmdata-p01": {
+        "RESTING_HEART_RATE_ELEVATED": 0.0066,
+        "ACTIVITY_LOAD_HIGH": 0.1513,
+        "SLEEP_DURATION_LOW": 0.1333,
+        "SLEEP_QUALITY_REDUCED": 0.0133
+      },
+      "pmdata-p02": {
+        "RESTING_HEART_RATE_ELEVATED": 0.0562,
+        "ACTIVITY_LOAD_HIGH": 0.1447,
+        "SLEEP_DURATION_LOW": 0.1197,
+        "SLEEP_QUALITY_REDUCED": 0.0704
+      },
+      "pmdata-p03": {
+        "RESTING_HEART_RATE_ELEVATED": 0.0,
+        "ACTIVITY_LOAD_HIGH": 0.0,
+        "SLEEP_DURATION_LOW": 0.1154,
+        "SLEEP_QUALITY_REDUCED": 0.0513
+      },
+      "pmdata-p04": {
+        "RESTING_HEART_RATE_ELEVATED": 0.0,
+        "ACTIVITY_LOAD_HIGH": 0.1513,
+        "SLEEP_DURATION_LOW": 0.0903,
+        "SLEEP_QUALITY_REDUCED": 0.0278
+      },
+      "pmdata-p05": {
+        "RESTING_HEART_RATE_ELEVATED": 0.2093,
+        "ACTIVITY_LOAD_HIGH": 0.1447,
+        "SLEEP_DURATION_LOW": 0.1525,
+        "SLEEP_QUALITY_REDUCED": 0.0339
+      },
+      "pmdata-p06": {
+        "RESTING_HEART_RATE_ELEVATED": 0.08,
+        "ACTIVITY_LOAD_HIGH": 0.1118,
+        "SLEEP_DURATION_LOW": 0.14,
+        "SLEEP_QUALITY_REDUCED": 0.0067
+      },
+      "pmdata-p07": {
+        "RESTING_HEART_RATE_ELEVATED": 0.1181,
+        "ACTIVITY_LOAD_HIGH": 0.0608,
+        "SLEEP_DURATION_LOW": 0.1549,
+        "SLEEP_QUALITY_REDUCED": 0.0423
+      },
+      "pmdata-p08": {
+        "RESTING_HEART_RATE_ELEVATED": 0.1295,
+        "ACTIVITY_LOAD_HIGH": 0.049,
+        "SLEEP_DURATION_LOW": 0.1278,
+        "SLEEP_QUALITY_REDUCED": 0.0226
+      },
+      "pmdata-p09": {
+        "RESTING_HEART_RATE_ELEVATED": 0.1224,
+        "ACTIVITY_LOAD_HIGH": 0.0987,
+        "SLEEP_DURATION_LOW": 0.125,
+        "SLEEP_QUALITY_REDUCED": 0.0809
+      },
+      "pmdata-p10": {
+        "RESTING_HEART_RATE_ELEVATED": 0.0364,
+        "ACTIVITY_LOAD_HIGH": 0.1149,
+        "SLEEP_DURATION_LOW": 0.2323,
+        "SLEEP_QUALITY_REDUCED": 0.0606
+      },
+      "pmdata-p11": {
+        "RESTING_HEART_RATE_ELEVATED": 0.1125,
+        "ACTIVITY_LOAD_HIGH": 0.0592,
+        "SLEEP_DURATION_LOW": 0.1261,
+        "SLEEP_QUALITY_REDUCED": 0.0252
+      },
+      "pmdata-p12": {
+        "RESTING_HEART_RATE_ELEVATED": 0.0,
+        "ACTIVITY_LOAD_HIGH": 0.0,
+        "SLEEP_DURATION_LOW": 0.0,
+        "SLEEP_QUALITY_REDUCED": 0.0
+      },
+      "pmdata-p13": {
+        "RESTING_HEART_RATE_ELEVATED": 0.0,
+        "ACTIVITY_LOAD_HIGH": 0.0,
+        "SLEEP_DURATION_LOW": 0.0784,
+        "SLEEP_QUALITY_REDUCED": 0.0
+      },
+      "pmdata-p14": {
+        "RESTING_HEART_RATE_ELEVATED": 0.1085,
+        "ACTIVITY_LOAD_HIGH": 0.1071,
+        "SLEEP_DURATION_LOW": 0.2,
+        "SLEEP_QUALITY_REDUCED": 0.0667
+      },
+      "pmdata-p15": {
+        "RESTING_HEART_RATE_ELEVATED": 0.0,
+        "ACTIVITY_LOAD_HIGH": 0.1931,
+        "SLEEP_DURATION_LOW": 0.1831,
+        "SLEEP_QUALITY_REDUCED": 0.0
+      },
+      "pmdata-p16": {
+        "RESTING_HEART_RATE_ELEVATED": 0.0526,
+        "ACTIVITY_LOAD_HIGH": 0.0658,
+        "SLEEP_DURATION_LOW": 0.1837,
+        "SLEEP_QUALITY_REDUCED": 0.034
+      }
+    }
+  },
+  "corruptions_on_real_evidence": {
+    "real_days_used_as_base": 124,
+    "by_corruption": {
+      "delay_sync/moderate": {
+        "cases": 124,
+        "withheld": 124,
+        "displayed": 0
+      },
+      "delay_sync/severe": {
+        "cases": 124,
+        "withheld": 124,
+        "displayed": 0
+      },
+      "drop_timezone/moderate": {
+        "cases": 124,
+        "withheld": 124,
+        "displayed": 0
+      },
+      "drop_timezone/severe": {
+        "cases": 124,
+        "withheld": 124,
+        "displayed": 0
+      },
+      "duplicate_samples/moderate": {
+        "cases": 124,
+        "withheld": 0,
+        "displayed": 124
+      },
+      "duplicate_samples/severe": {
+        "cases": 124,
+        "withheld": 0,
+        "displayed": 124
+      },
+      "implausible_spike/moderate": {
+        "cases": 124,
+        "withheld": 124,
+        "displayed": 0
+      },
+      "implausible_spike/severe": {
+        "cases": 124,
+        "withheld": 124,
+        "displayed": 0
+      },
+      "shorten_wear/moderate": {
+        "cases": 124,
+        "withheld": 124,
+        "displayed": 0
+      },
+      "shorten_wear/severe": {
+        "cases": 124,
+        "withheld": 124,
+        "displayed": 0
+      },
+      "shuffle_order/moderate": {
+        "cases": 124,
+        "withheld": 0,
+        "displayed": 124
+      },
+      "shuffle_order/severe": {
+        "cases": 124,
+        "withheld": 0,
+        "displayed": 124
+      },
+      "stale_data/moderate": {
+        "cases": 124,
+        "withheld": 124,
+        "displayed": 0
+      },
+      "stale_data/severe": {
+        "cases": 124,
+        "withheld": 124,
+        "displayed": 0
+      },
+      "truncate_baseline/moderate": {
+        "cases": 124,
+        "withheld": 124,
+        "displayed": 0
+      },
+      "truncate_baseline/severe": {
+        "cases": 124,
+        "withheld": 124,
+        "displayed": 0
+      }
+    },
+    "harmful_corruption_cases": 1488,
+    "unsupported_show_rate_on_real_evidence": 0.0,
+    "violations": [],
+    "benign_corruptions_that_changed_the_decision": []
+  },
+  "exploratory_wellness": {
+    "caveat": "Self-reported wellness is collected at a varying time of day, on ordinal 1-5 scales, and is not a reference standard for resting heart rate. No significance testing, no correction for multiple comparisons, no control for subject. This is a look, not a result, and nothing here validates the engine.",
+    "days_with_claim_displayed": 106,
+    "days_without": 1183,
+    "means": {
+      "fatigue": {
+        "displayed": 2.726,
+        "not_displayed": 2.71
+      },
+      "mood": {
+        "displayed": 3.33,
+        "not_displayed": 3.246
+      },
+      "readiness": {
+        "displayed": 4.623,
+        "not_displayed": 5.019
+      },
+      "sleep_duration_h": {
+        "displayed": 6.745,
+        "not_displayed": 6.84
+      },
+      "sleep_quality": {
+        "displayed": 3.066,
+        "not_displayed": 3.063
+      },
+      "soreness": {
+        "displayed": 2.906,
+        "not_displayed": 2.834
+      },
+      "stress": {
+        "displayed": 3.038,
+        "not_displayed": 2.94
+      }
+    }
+  }
+}

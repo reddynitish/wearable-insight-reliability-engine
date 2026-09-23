@@ -63,7 +63,7 @@ def test_claim_types_endpoint_exposes_the_contract(client):
     assert len(body) == len(supported_claim_types())
     rhr = next(c for c in body if c["claim_type"] == "RESTING_HEART_RATE_ELEVATED")
     assert rhr["required_signals"] == ["resting_heart_rate"]
-    assert rhr["requirements"]["min_baseline_days"] == 14
+    assert rhr["requirements"]["min_baseline_days"] == 28
     assert rhr["requirements"]["show_z"] == 1.5
     assert rhr["known_confounders"]
 

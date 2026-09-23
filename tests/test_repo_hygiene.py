@@ -85,11 +85,22 @@ def test_the_required_documentation_exists():
         assert (REPO / path).is_file(), f"missing {path}"
 
 
-def test_the_dataset_manifest_marks_every_row_unverified_until_checked():
-    """No dataset may be cited as fact before its licence and citation are confirmed."""
+def test_unverified_datasets_are_still_marked_unverified():
+    """No dataset may be cited as fact before its licence and citation are confirmed.
+
+    PMData is now verified against its primary source and in use, so the blanket
+    "nothing downloaded" statement is gone. The remaining rows must still carry the mark.
+    """
     text = (REPO / "data" / "DATASETS.md").read_text()
     assert "UNVERIFIED" in text
-    assert "nothing in this table has been downloaded yet" in text.lower()
+    assert "Remaining candidates (unverified, not downloaded)" in text
+
+
+def test_the_verified_dataset_records_its_licence_and_citation():
+    text = (REPO / "data" / "DATASETS.md").read_text()
+    assert "CC BY 4.0" in text
+    assert "10.1145/3339825.3394926" in text
+    assert "VERIFIED" in text
 
 
 def test_no_dataset_files_are_committed():

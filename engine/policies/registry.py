@@ -22,17 +22,25 @@ RESTING_HEART_RATE_ELEVATED = ClaimPolicy(
     min_wear_coverage=0.60,
     good_wear_coverage=0.90,
     min_overnight_coverage=0.50,
-    min_baseline_days=14,
-    warn_baseline_days=7,
-    good_baseline_days=28,
-    max_baseline_sd=8.0,
+    # policy-0.2.0, set from PMData (16 subjects, ~5 months each). A personal resting
+    # heart rate SD takes a median of 48 days to settle within 10% of its 60-day value,
+    # so 14 days compared against a normal that was still moving. Requiring 48 would deny
+    # every new user a claim for seven weeks, so the mature bar is 28 and the disclosed
+    # band is 14-27. See eval/results/pmdata-policy-comparison-*.md.
+    min_baseline_days=28,
+    warn_baseline_days=14,
+    good_baseline_days=56,
+    # policy-0.2.0: 8.0 bpm fired on 0.0% of 1451 real subject-days -- it sat at twice the
+    # observed maximum and could never act. Observed: median 1.78, p95 3.29, max 4.04.
+    max_baseline_sd=5.0,
     max_baseline_shift=6.0,
     contradict_z=0.5,
     warn_z=1.0,
     show_z=1.5,
-    # A 2 bpm move can clear z=1.5 against a 1 bpm baseline SD, and 2 bpm is inside
-    # optical-sensor error. The absolute floor stops a tight baseline from manufacturing
-    # a statistically large but physically meaningless effect.
+    # Evidenced in policy-0.2.0 rather than changed: consecutive-day absolute change in
+    # real resting heart rate is median 0.75, p95 2.32 bpm, so 3.0 sits just above ordinary
+    # daily fluctuation. Note that at the median personal SD of 1.78 bpm this corresponds
+    # to z=1.68, so this floor -- not show_z -- is what actually binds for a typical person.
     min_absolute_delta=3.0,
     consistency_rules=("rhr_vs_heart_rate_detail", "rhr_vs_hrv", "wear_vs_reported_gaps"),
     known_confounders=(
@@ -99,7 +107,9 @@ SLEEP_QUALITY_REDUCED = ClaimPolicy(
     min_baseline_days=14,
     warn_baseline_days=10,
     good_baseline_days=28,
-    max_baseline_sd=12.0,
+    # policy-0.2.0: 12 points fired on 0.3% of 1663 real subject-nights. Observed baseline
+    # SD of Fitbit's own sleep-efficiency score: median 2.56, p95 4.41, max 12.82.
+    max_baseline_sd=6.0,
     max_baseline_shift=8.0,
     contradict_z=0.25,
     warn_z=0.7,
@@ -135,7 +145,12 @@ ACTIVITY_LOAD_HIGH = ClaimPolicy(
     min_baseline_days=14,
     warn_baseline_days=7,
     good_baseline_days=28,
-    max_baseline_sd=45.0,
+    # policy-0.2.0: 45 minutes fired on 48.7% of 2055 real subject-days and was the single
+    # most common reason an activity claim was withheld. Observed: median 44.45, p95 73.84,
+    # max 90.97. Day-to-day variation in activity is the phenomenon this claim is about,
+    # not a defect in the evidence, so a stability gate calibrated like a physiological
+    # signal's was simply the wrong shape.
+    max_baseline_sd=90.0,
     max_baseline_shift=30.0,
     contradict_z=0.5,
     warn_z=1.0,

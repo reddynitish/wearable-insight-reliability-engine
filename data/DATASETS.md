@@ -1,15 +1,17 @@
 # Dataset manifest
 
-**Download status: nothing in this table has been downloaded yet.** The v0.1 rules
-engine is validated on seeded synthetic evidence only (see
-`docs/evaluation-protocol.md`). This file exists so that the first download is a
-documented, license-checked act rather than an accident.
+**One dataset is verified and downloaded: PMData.** The rest of this table remains
+unverified and untouched.
 
-**Verification status of the metadata below: UNVERIFIED.** The citations, URLs, sizes,
+**Verification status of the remaining rows: UNVERIFIED.** Their citations, URLs, sizes,
 and license names were drafted from memory during AI-assisted planning. Every row must
-be checked against its primary source and marked `VERIFIED <date> <initials>` *before*
-any file is fetched, any derived artifact is published, or any dataset name appears in
-a README, paper, or resume bullet. Do not treat an unverified row as a fact.
+be checked against its primary source and marked `VERIFIED <date>` *before* any file is
+fetched, any derived artifact is published, or any dataset name appears in a README,
+paper, or resume bullet. Do not treat an unverified row as a fact.
+
+The PMData row below shows why that rule exists: a web search summary reported its licence
+as CC BY-NC 4.0, and the dataset's own page states CC BY 4.0. The primary source wins, and
+the discrepancy is recorded rather than quietly resolved.
 
 No dataset file, subject-level record, or derived feature table from any of these
 sources is committed to this repository. `data/datasets/` is gitignored.
@@ -25,7 +27,53 @@ sources is committed to this repository. `data/datasets/` is gitignored.
 7. Confirm whether derived features may be published, and at what aggregation level.
 8. Flip the row's status to `VERIFIED`.
 
-## Table
+## Verified and in use
+
+### PMData
+
+| field | value |
+|---|---|
+| Status | **VERIFIED 2026-09-23, downloaded** |
+| Canonical page | https://datasets.simula.no/pmdata/ |
+| Direct download | `https://datasets.simula.no/downloads/pmdata.zip` |
+| Size | 1.4 GB (zip), as stated on the page and confirmed on download |
+| Licence | **CC BY 4.0** — https://creativecommons.org/licenses/by/4.0/ — per the dataset's own page. Permits use, adaptation and redistribution with attribution. A search summary claimed CC BY-NC 4.0; the primary source says otherwise and is authoritative here. |
+| Required citation | Thambawita, Hicks, Borgli, Stensland, Jha, Svensen, Pettersen, Johansen, Johansen, Pettersen, Nordvang, Pedersen, Gjerdrum, Grønli, Fredriksen, Eg, Hansen, Fagernes, Claudi, Biørn-Hansen, Nguyen, Kupka, Hammer, Jain, Riegler, Halvorsen. **"PMData: A Sports Logging Dataset."** *Proceedings of the 11th ACM Multimedia Systems Conference (MMSys '20)*, 2020, pp. 231–236. DOI [10.1145/3339825.3394926](https://dl.acm.org/doi/10.1145/3339825.3394926) |
+| Attribution requirement | The licence text on the page requires that any document or paper using or reporting results from PMData cite the article above, link the licence, and indicate if changes were made. This repository does all three: here, in the README, and in every evaluation artifact produced from it. |
+| Ethics | Participants signed a form permitting collection and publication (stated on the dataset page). |
+| Credentials required | None. Public direct download. |
+| Subjects | 16 participants |
+| Duration | ~5 months per participant, November 2019 – March 2020 |
+| Device | Fitbit Versa 2 |
+| Scale | 20,991,392 heart-rate measurements; 1,836 days of sleep scores; 2,440 activity sessions |
+
+**Why this dataset, specifically.** Almost every wearable dataset gives one session or one
+night per person. This engine's claims are defined against a *personal baseline* of 7 to 14
+valid days, so a single session cannot exercise them at all — the engine would correctly
+abstain on every case and the evaluation would learn nothing. PMData gives roughly five
+months per subject, which is the first thing that makes the baseline-dependent claims
+testable. It is also Fitbit data, the same device family as the personal integration path,
+so the field semantics carry over.
+
+**Files used, per participant:**
+
+| file | canonical signal | feeds |
+|---|---|---|
+| `fitbit/resting_heart_rate.json` | `resting_heart_rate` (daily) | `RESTING_HEART_RATE_ELEVATED` |
+| `fitbit/sleep.json` | `sleep_duration`, `sleep_efficiency` (per night) | `SLEEP_DURATION_LOW`, `SLEEP_QUALITY_REDUCED` |
+| `fitbit/*_active_minutes.json` | `active_minutes` (daily) | `ACTIVITY_LOAD_HIGH` |
+| `fitbit/heart_rate.json` | `heart_rate` (intraday) | consistency checks, wear-time estimation |
+| `fitbit/steps.json` | `steps` (per minute) | wear-time proxy, activity consistency |
+
+**Not used:** food images, `googledocs/reporting.csv`, and the PMSys subjective reports
+(`wellness.csv`, `srpe.csv`, `injury.csv`). They are self-reported rather than sensor-derived,
+and this engine judges sensor evidence.
+
+**Handling.** `data/datasets/` is gitignored; no PMData file, participant record, or
+derived per-subject table is committed. Participant identifiers are used as the dataset's
+own pseudonyms (`p01`…`p16`), rewritten to `pmdata-pNN` on ingest.
+
+## Remaining candidates (unverified, not downloaded)
 
 | Dataset | Status | Signals / reference | Intended use in this project | Access notes to verify |
 |---|---|---|---|---|
@@ -55,3 +103,4 @@ sources is committed to this repository. `data/datasets/` is gitignored.
 | date | change |
 |---|---|
 | 2026-09-23 | manifest created; all rows unverified; no downloads performed |
+| 2026-09-23 | PMData verified against its primary source and downloaded; licence discrepancy between a search summary (CC BY-NC 4.0) and the dataset page (CC BY 4.0) recorded, primary source adopted |

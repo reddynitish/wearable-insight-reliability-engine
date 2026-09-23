@@ -8,6 +8,7 @@ from engine import explain, features as features_mod, gates as gates_mod, suppor
 from engine.decide import decide
 from engine.normalize import normalize
 from engine.policies import get_policy, supported_claim_types
+from engine.policies.base import ClaimPolicy
 from engine.reasons import Outcome, ReasonCode, spec
 from engine.schemas import (
     Decision,
@@ -20,15 +21,24 @@ from engine.schemas import (
 )
 
 
-def evaluate(request: EvaluationRequest, now: datetime | None = None) -> DecisionResponse:
+def evaluate(
+    request: EvaluationRequest,
+    now: datetime | None = None,
+    policy: "ClaimPolicy | None" = None,
+) -> DecisionResponse:
     """Decide whether the submitted evidence supports `request.claim`.
 
     Never raises on unsupported input that a caller could plausibly send: an unknown
     claim type produces a typed REJECT, because a caller that cannot parse a 422 still
     needs a decision it can branch on.
+
+    `policy` overrides the registry lookup. It exists so a proposed threshold revision can
+    be evaluated against the same data as the shipped one before anything is changed --
+    editing the registry to find out what a change does would mean the comparison is run
+    against a policy that has already been adopted.
     """
     evaluated_at = request.evaluated_at or now or datetime.now(timezone.utc)
-    policy = get_policy(request.claim.type)
+    policy = policy or get_policy(request.claim.type)
     if policy is None:
         return _unsupported_claim_type(request, evaluated_at)
 

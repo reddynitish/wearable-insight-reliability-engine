@@ -132,7 +132,9 @@ def rhr_elevated(seed: int = 0, *, supportable: bool = True) -> SyntheticCase:
     """A clean, fully-evidenced resting-heart-rate case."""
     rng = random.Random(seed)
     window = _day_window(datetime(2026, 9, 23, tzinfo=U))
-    base_mean, base_sd, days = 58.0, 2.5, 21
+    # 40 days clears policy-0.2.0's 28-day mature bar. The bar moved because PMData
+    # showed a personal resting-heart-rate baseline takes ~48 days to settle.
+    base_mean, base_sd, days = 58.0, 2.5, 40
     baseline = _baseline(Signal.RESTING_HEART_RATE, days, base_mean, base_sd, rng, window.end)
     # +2.2 SD clears show_z=1.5 and the 3 bpm absolute floor; -0.1 SD sits below
     # contradict_z=0.5, so the evidence argues against the claim.

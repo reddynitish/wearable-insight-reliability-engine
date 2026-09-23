@@ -58,7 +58,7 @@ def rhr_request(
     z: float = 2.2,
     baseline_mean: float = 58.0,
     baseline_sd: float = 2.5,
-    n_baseline: int = 21,
+    n_baseline: int = 40,
     n_valid: int | None = None,
     worn_minutes: float | None = 1362.0,
     overnight_minutes: float | None = 468.0,

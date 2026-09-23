@@ -50,18 +50,19 @@ def test_support_is_never_advertised_as_calibrated():
 @pytest.mark.parametrize(
     "days,expected",
     [
-        (30, Decision.SHOW),
-        (14, Decision.SHOW),
-        (13, Decision.SHOW_WITH_WARNING),   # warn band: 7..13
-        (7, Decision.SHOW_WITH_WARNING),
-        (6, Decision.WAIT_FOR_MORE_DATA),   # below the floor: fatal
+        (60, Decision.SHOW),
+        (28, Decision.SHOW),                # policy-0.2.0 mature bar
+        (27, Decision.SHOW_WITH_WARNING),   # warn band: 14..27
+        (14, Decision.SHOW_WITH_WARNING),
+        (13, Decision.WAIT_FOR_MORE_DATA),  # below the floor: fatal
         (2, Decision.WAIT_FOR_MORE_DATA),
     ],
 )
 def test_baseline_length_moves_the_decision_through_the_documented_bands(days, expected):
+    """policy-0.2.0 bands, set from PMData's observed baseline settling time."""
     response = evaluate(rhr_request(n_baseline=days))
     assert response.decision is expected, codes(response)
-    if days < 14:
+    if days < 28:
         assert ReasonCode.BASELINE_NOT_MATURE.value in codes(response)
 
 
@@ -83,20 +84,20 @@ def test_declared_baseline_count_without_values_cannot_produce_a_show():
 
 
 def test_patchy_history_reports_insufficient_historical_coverage():
-    response = evaluate(rhr_request(n_baseline=30, n_valid=10))
+    response = evaluate(rhr_request(n_baseline=40, n_valid=12))
     assert ReasonCode.INSUFFICIENT_HISTORICAL_COVERAGE.value in codes(response)
     assert response.decision is not Decision.SHOW
 
 
 def test_unstable_baseline_blocks_the_claim():
-    wide = [58.0 + (18 if i % 2 else -18) for i in range(21)]
+    wide = [58.0 + (18 if i % 2 else -18) for i in range(40)]
     response = evaluate(rhr_request(baseline_values=wide, rhr_value=95.0))
     assert response.decision is Decision.WAIT_FOR_MORE_DATA
     assert ReasonCode.BASELINE_UNSTABLE.value in codes(response)
 
 
 def test_baseline_level_shift_blocks_the_claim():
-    shifted = [52.0] * 10 + [66.0] * 10
+    shifted = [52.0] * 20 + [66.0] * 20
     response = evaluate(rhr_request(baseline_values=shifted, rhr_value=75.0))
     assert ReasonCode.BASELINE_SHIFT_DETECTED.value in codes(response)
     assert response.decision is Decision.WAIT_FOR_MORE_DATA
@@ -224,7 +225,7 @@ def test_a_stuck_sensor_is_caught_even_though_the_values_look_steady():
 
 def test_summary_that_contradicts_the_interval_detail_blocks_the_claim():
     """A daily RHR far above the day's own low heart rate cannot describe that day."""
-    response = evaluate(rhr_request(rhr_value=110.0, n_baseline=21))
+    response = evaluate(rhr_request(rhr_value=110.0, n_baseline=40))
     assert ReasonCode.SUMMARY_DETAIL_MISMATCH.value in codes(response)
     assert response.decision is not Decision.SHOW
 
@@ -288,7 +289,7 @@ def test_an_implausibly_tight_baseline_cannot_manufacture_a_large_effect():
 
     Without the floor, a 0.12 bpm baseline SD would turn this into a nine-sigma event.
     """
-    tight = [58.0, 58.3, 58.1, 58.2, 58.0, 58.3, 58.1] * 3
+    tight = [58.0, 58.3, 58.1, 58.2, 58.0, 58.3, 58.1] * 6
     response = evaluate(rhr_request(baseline_values=tight, rhr_value=59.2))
     assert response.decision is Decision.WAIT_FOR_MORE_DATA
     assert response.trace.features["baseline"]["effective_sd"] == pytest.approx(1.5)
@@ -297,7 +298,7 @@ def test_an_implausibly_tight_baseline_cannot_manufacture_a_large_effect():
 
 def test_a_statistically_large_but_physically_tiny_change_is_not_shown():
     """1.6 SD against a real 1.84 bpm baseline SD is still only 2.9 bpm of movement."""
-    narrow = [58.0 + (1.8 if i % 2 else -1.8) for i in range(20)]
+    narrow = [58.0 + (1.8 if i % 2 else -1.8) for i in range(40)]
     response = evaluate(rhr_request(baseline_values=narrow, rhr_value=60.9))
     assert response.trace.features["claim_support"]["z_directional"] >= 1.0
     assert response.trace.features["claim_support"]["absolute_delta"] < 3.0
@@ -332,7 +333,7 @@ def test_effect_size_thresholds_are_inclusive_on_the_documented_side(z, expected
     response = evaluate(
         rhr_request(
             z=z,
-            n_baseline=30,
+            n_baseline=60,
             worn_minutes=1440.0,
             overnight_minutes=480.0,
             sync_offset_hours=2.0,
@@ -345,10 +346,10 @@ def test_effect_size_thresholds_are_inclusive_on_the_documented_side(z, expected
 def test_evidence_shortfall_shifts_the_bands_upward_not_downward():
     """Fail-closed: imperfect evidence needs a larger effect for the same decision."""
     perfect = evaluate(
-        rhr_request(z=1.0, n_baseline=30, worn_minutes=1440.0, overnight_minutes=480.0,
+        rhr_request(z=1.0, n_baseline=60, worn_minutes=1440.0, overnight_minutes=480.0,
                     sync_offset_hours=2.0, evaluated_offset_hours=2.5)
     )
-    imperfect = evaluate(rhr_request(z=1.0, n_baseline=14))
+    imperfect = evaluate(rhr_request(z=1.0, n_baseline=28))
     assert perfect.claim_support_probability > imperfect.claim_support_probability
 
 
@@ -431,7 +432,7 @@ def test_a_marginal_show_states_its_own_limitation():
     Announcing "supportable, with limitations" and then listing none would leave a reader
     with a qualified claim and no qualification.
     """
-    response = evaluate(rhr_request(z=2.0, n_baseline=14, worn_minutes=864.0, tz="UTC",
+    response = evaluate(rhr_request(z=2.0, n_baseline=28, worn_minutes=864.0, tz="UTC",
                                     sync_offset_hours=0.0))
     assert response.decision is Decision.SHOW_WITH_WARNING
     assert ReasonCode.MARGINAL_SUPPORT.value in codes(response)
