@@ -39,6 +39,12 @@ class GroundTruth(str, Enum):
     UNSUPPORTABLE_INSUFFICIENT = "UNSUPPORTABLE_INSUFFICIENT"
     UNSUPPORTABLE_CONTRADICTED = "UNSUPPORTABLE_CONTRADICTED"
     UNSUPPORTABLE_UNTRUSTWORTHY = "UNSUPPORTABLE_UNTRUSTWORTHY"
+    # Not one of the protocol's four states: a case whose evidence breaks no contract
+    # clause but whose achieved effect lands between the policy's contradiction and
+    # display thresholds. Neither SHOW nor abstain is the single right answer, so these
+    # are reported separately and excluded from the headline rates rather than scored
+    # against a label we cannot justify. See docs/evaluation-protocol.md section 9.
+    BORDERLINE_EXCLUDED = "BORDERLINE_EXCLUDED"
 
 
 @dataclass
@@ -51,6 +57,12 @@ class SyntheticCase:
     corruption: str | None = None
     severity: str | None = None
     tags: list[str] = field(default_factory=list)
+    breaches: list[str] = field(default_factory=list)
+    measurements: dict[str, Any] = field(default_factory=dict)
+
+    @property
+    def scored(self) -> bool:
+        return self.truth is not GroundTruth.BORDERLINE_EXCLUDED
 
     def manifest_row(self) -> dict[str, Any]:
         return {
@@ -63,6 +75,8 @@ class SyntheticCase:
             "corruption": self.corruption,
             "severity": self.severity,
             "tags": list(self.tags),
+            "breaches": list(self.breaches),
+            "measurements": dict(self.measurements),
             "synthetic": True,
         }
 

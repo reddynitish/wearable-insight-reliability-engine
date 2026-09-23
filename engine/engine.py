@@ -37,7 +37,7 @@ def evaluate(request: EvaluationRequest, now: datetime | None = None) -> Decisio
     fired = gates_mod.evaluate(norm, request, policy, feats)
 
     if policy.mode == "insufficiency":
-        adequacy = gates_mod.assess_inputs(norm, request, policy)
+        adequacy = gates_mod.assess_inputs(norm, request, policy, feats)
         support, components = support_mod.insufficiency_support(adequacy, feats)
         components["per_input"] = [
             {

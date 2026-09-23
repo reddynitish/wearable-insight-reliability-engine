@@ -37,6 +37,8 @@ class NormalizedEvidence:
     implausible_fraction: dict[Signal, float] = field(default_factory=dict)
     submitted_counts: dict[Signal, int] = field(default_factory=dict)
     attributed_after_window: int = 0
+    misaligned_aggregates: int = 0
+    worst_alignment: float | None = None
     subject_tz: ZoneInfo | None = None
     timezone_name: str | None = None
     timezone_invalid: bool = False
@@ -61,6 +63,12 @@ class NormalizedEvidence:
 # counted and reported, never silent, because the same leniency is how genuine
 # day-boundary and timezone bugs hide.
 REPORTING_ALLOWANCE_HOURS = 12.0
+
+# An interval aggregate must describe substantially the same period as the claim window.
+# Mere overlap is not enough: a full-day summary overlaps a window shifted three hours by
+# 87.5%, and accepting that is how a claim about Tuesday gets answered with Monday's
+# numbers after a timezone or DST error.
+WINDOW_ALIGNMENT_MIN = 0.90
 
 
 def normalize(request: EvaluationRequest, now: datetime | None = None) -> NormalizedEvidence:
@@ -122,7 +130,13 @@ def normalize(request: EvaluationRequest, now: datetime | None = None) -> Normal
         norm.all_plausible[signal] = plausible
         inside = []
         for obs in plausible:
-            placement = _placement(obs, window)
+            placement, alignment = _placement(obs, window)
+            if alignment is not None:
+                if norm.worst_alignment is None or alignment < norm.worst_alignment:
+                    norm.worst_alignment = alignment
+            if placement == "misaligned":
+                norm.misaligned_aggregates += 1
+                continue
             if placement == "outside":
                 continue
             if placement == "attributed":
@@ -139,6 +153,11 @@ def normalize(request: EvaluationRequest, now: datetime | None = None) -> Normal
         )
     if norm.out_of_order_detected:
         norm.notes.append("observations were not in chronological order and were sorted")
+    if norm.misaligned_aggregates:
+        norm.notes.append(
+            f"{norm.misaligned_aggregates} interval aggregate(s) describe a period that "
+            "does not line up with the target window and were excluded"
+        )
     if norm.attributed_after_window:
         norm.notes.append(
             f"{norm.attributed_after_window} aggregate observation(s) timestamped after "
@@ -177,21 +196,36 @@ def normalize(request: EvaluationRequest, now: datetime | None = None) -> Normal
     return norm
 
 
-def _placement(obs: Observation, window: TimeWindow) -> str:
-    """Where an observation sits relative to the target window.
+def _placement(obs: Observation, window: TimeWindow) -> tuple[str, float | None]:
+    """Where an observation sits relative to the target window, and how well it aligns.
 
-    Returns "inside", "attributed" (stamped after the window but attributed to it under
-    the sync-reporting allowance), or "outside".
+    Returns one of "inside", "attributed" (stamped after the window but attributed to it
+    under the sync-reporting allowance), "misaligned" (an interval aggregate describing a
+    materially different period), or "outside", plus the alignment ratio for aggregates.
     """
     if obs.window_start is not None and obs.window_end is not None:
-        overlaps = obs.window_start < window.end and obs.window_end > window.start
-        return "inside" if overlaps else "outside"
+        overlap = (
+            min(obs.window_end, window.end) - max(obs.window_start, window.start)
+        ).total_seconds()
+        if overlap <= 0:
+            return "outside", 0.0
+        own = max(1.0, (obs.window_end - obs.window_start).total_seconds())
+        target = max(1.0, (window.end - window.start).total_seconds())
+        alignment = min(overlap / own, overlap / target)
+        if alignment < WINDOW_ALIGNMENT_MIN:
+            return "misaligned", alignment
+        return "inside", alignment
     if window.contains(obs.measured_at):
-        return "inside"
+        return "inside", None
     lag_hours = (obs.measured_at - window.end).total_seconds() / 3600.0
-    if 0 <= lag_hours <= REPORTING_ALLOWANCE_HOURS:
-        return "inside" if lag_hours == 0 else "attributed"
-    return "outside"
+    # The allowance is also capped at half the window: a value stamped more than half a
+    # window past the end is at least as likely to describe the *next* window. Without
+    # this cap a flat 12-hour allowance would pull samples from two hours after a
+    # two-hour interval into it.
+    allowance = min(REPORTING_ALLOWANCE_HOURS, 0.5 * window.duration_minutes / 60.0)
+    if 0 <= lag_hours <= allowance:
+        return ("inside" if lag_hours == 0 else "attributed"), None
+    return "outside", None
 
 
 def _day_key(moment: datetime, tz: ZoneInfo | None) -> datetime:

@@ -68,6 +68,7 @@ class ReasonCode(str, Enum):
     OUT_OF_ORDER_OBSERVATIONS = "OUT_OF_ORDER_OBSERVATIONS"        # extension
     TIMEZONE_UNKNOWN = "TIMEZONE_UNKNOWN"                          # extension
     OBSERVATIONS_OUTSIDE_WINDOW = "OBSERVATIONS_OUTSIDE_WINDOW"    # extension
+    WINDOW_MISALIGNED = "WINDOW_MISALIGNED"                        # extension
 
     # --- coverage ---
     INSUFFICIENT_COVERAGE = "INSUFFICIENT_COVERAGE"
@@ -143,6 +144,11 @@ SPECS: dict[ReasonCode, ReasonSpec] = {
         _D.INTEGRITY, _O.WAIT, 0.95, "PT1H", ("subject_timezone",)
     ),
     _R.OBSERVATIONS_OUTSIDE_WINDOW: ReasonSpec(_D.INTEGRITY, _O.NOTE, 0.70, None),
+
+    _R.WINDOW_MISALIGNED: ReasonSpec(
+        _D.INTEGRITY, _O.WAIT, 0.92, "PT12H",
+        ("an_aggregate_whose_interval_matches_the_target_window",),
+    ),
 
     _R.INSUFFICIENT_COVERAGE: ReasonSpec(
         _D.COVERAGE, _O.WAIT, 0.92, "PT12H", ("additional_wear_time_in_target_window",)
@@ -240,6 +246,7 @@ NEVER_WARN_ONLY = frozenset(
         _R.SYNC_INCOMPLETE,
         _R.WINDOW_NOT_CLOSED,
         _R.SINGLE_SAMPLE_EXCURSION,
+        _R.WINDOW_MISALIGNED,
     }
 )
 

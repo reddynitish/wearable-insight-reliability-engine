@@ -101,7 +101,10 @@ _PERMANENT_DETAIL = {
 
 def _integrity_gates(norm: NormalizedEvidence, policy: ClaimPolicy) -> list[Gate]:
     gates: list[Gate] = []
-    if not norm.all_plausible:
+    # An empty bundle is a reason to abstain on every claim except the one that asserts
+    # the evidence is inadequate: there, no data at all is the strongest possible support
+    # for the claim, not a reason to withhold it.
+    if not norm.all_plausible and policy.mode != "insufficiency":
         gates.append(
             _gate(
                 ReasonCode.NO_OBSERVATIONS,
@@ -132,6 +135,22 @@ def _integrity_gates(norm: NormalizedEvidence, policy: ClaimPolicy) -> list[Gate
                 f"{norm.outside_window} observation(s) fell outside the target window and "
                 "were not used",
                 {"outside_window": norm.outside_window},
+            )
+        )
+    if norm.misaligned_aggregates:
+        gates.append(
+            _gate(
+                ReasonCode.WINDOW_MISALIGNED,
+                f"{norm.misaligned_aggregates} summary value(s) describe a period that "
+                "overlaps the target window by too little to stand in for it"
+                + (
+                    f" (best alignment {norm.worst_alignment:.0%})"
+                    if norm.worst_alignment is not None
+                    else ""
+                ),
+                {"misaligned_aggregates": norm.misaligned_aggregates,
+                 "worst_alignment": None if norm.worst_alignment is None
+                 else round(norm.worst_alignment, 3)},
             )
         )
     if policy.requires_timezone and (norm.subject_tz is None or norm.timezone_invalid):
@@ -532,7 +551,10 @@ class InputAdequacy:
 
 
 def assess_inputs(
-    norm: NormalizedEvidence, request: EvaluationRequest, policy: ClaimPolicy
+    norm: NormalizedEvidence,
+    request: EvaluationRequest,
+    policy: ClaimPolicy,
+    features: EvidenceFeatures | None = None,
 ) -> list[InputAdequacy]:
     """Per-input adequacy for the insufficiency claim.
 
@@ -541,6 +563,35 @@ def assess_inputs(
     """
     out: list[InputAdequacy] = []
     now = norm.evaluated_at
+    # Coverage and signal quality are properties of the bundle rather than of one input,
+    # so a shortfall in either makes every recovery input inadequate. The claim contract
+    # lists "below coverage" as one of the ways an input fails, so leaving these out would
+    # let a fully motion-contaminated day read as complete recovery evidence.
+    bundle_notes: list[str] = []
+    if features is not None:
+        if (
+            features.coverage.wear_ratio is not None
+            and features.coverage.wear_ratio < policy.min_wear_coverage
+        ):
+            bundle_notes.append(
+                f"wear coverage {features.coverage.wear_ratio:.0%} is below the "
+                f"{policy.min_wear_coverage:.0%} these inputs require"
+            )
+        if features.quality.raw_quality < policy.min_signal_quality:
+            bundle_notes.append(
+                f"signal quality {features.quality.raw_quality:.2f} is below the "
+                f"{policy.min_signal_quality:.2f} floor"
+            )
+        if features.quality.artifact_fraction > policy.flagged_wait_fraction:
+            bundle_notes.append(
+                f"{features.quality.artifact_fraction:.0%} of measurements are flagged "
+                "for artifact"
+            )
+        if features.quality.dropout_fraction > 0.20:
+            bundle_notes.append(
+                f"{features.quality.dropout_fraction:.0%} of measurements are flagged "
+                "for dropout"
+            )
     for signal in policy.insufficiency_inputs:
         obs = norm.in_window.get(signal, [])
         present = bool(obs)
@@ -561,8 +612,15 @@ def assess_inputs(
             reasons.append(
                 f"{label(signal)} has {valid_days} of {policy.min_baseline_days} baseline days"
             )
+        reasons.extend(bundle_notes)
         out.append(
-            InputAdequacy(signal, present, fresh, mature, tuple(reasons))
+            InputAdequacy(
+                signal,
+                present and not bundle_notes,
+                fresh and not bundle_notes,
+                mature,
+                tuple(reasons),
+            )
         )
     return out
 
@@ -583,7 +641,7 @@ def _insufficiency_gates(
                 "before the window closes would be true but uninformative",
             )
         )
-    adequacy = assess_inputs(norm, request, policy)
+    adequacy = assess_inputs(norm, request, policy, features)
     inadequate = [a for a in adequacy if not a.adequate]
     if not inadequate:
         gates.append(
