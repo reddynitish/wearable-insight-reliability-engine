@@ -173,23 +173,36 @@ def index() -> str:
  @media (prefers-color-scheme: dark) {{
    :root {{ --bg:#141414; --fg:#ececec; --muted:#9a9a9a; --line:#2e2e2e; --card:#1d1d1d;
             --show:#5ad68b; --warn:#e0b04a; --wait:#7db4f0; --reject:#f08a8a; }} }}
+ * {{ box-sizing:border-box; }}
  body {{ background:var(--bg); color:var(--fg); font:15px/1.55 -apple-system,
-        BlinkMacSystemFont,"Segoe UI",sans-serif; margin:0; padding:24px 16px; }}
+        BlinkMacSystemFont,"Segoe UI",sans-serif; margin:0; padding:24px 16px;
+        overflow-x:hidden; }}
  main {{ max-width:860px; margin:0 auto; }}
  h1 {{ font-size:1.5rem; margin:0 0 .25rem; }}
  p.sub {{ color:var(--muted); margin:0 0 1.5rem; }}
  fieldset {{ border:1px solid var(--line); border-radius:8px; padding:12px 14px;
              margin:0 0 16px; }}
- label {{ display:inline-block; margin-right:14px; font-size:.9rem; }}
+ label {{ display:inline-flex; align-items:center; gap:6px; margin:0 14px 8px 0;
+           font-size:.9rem; max-width:100%; }}
  select, button {{ font:inherit; padding:5px 8px; border:1px solid var(--line);
-                   border-radius:6px; background:var(--card); color:var(--fg); }}
- button {{ cursor:pointer; font-weight:600; }}
+                   border-radius:6px; background:var(--card); color:var(--fg);
+                   max-width:100%; min-width:0; }}
+ select {{ flex:1 1 auto; }}
+ button {{ cursor:pointer; font-weight:600; flex:0 0 auto; }}
+ @media (max-width: 560px) {{
+   /* One control per row. body has overflow-x:hidden, which would otherwise hide a
+      clipped control rather than reveal that it did not fit. */
+   label {{ display:flex; width:100%; margin-right:0; }}
+   label:has(input[type="checkbox"]) {{ width:auto; }}
+   select {{ width:100%; }}
+ }}
  .decision {{ font-size:1.2rem; font-weight:700; }}
  .SHOW {{ color:var(--show); }} .SHOW_WITH_WARNING {{ color:var(--warn); }}
  .WAIT_FOR_MORE_DATA {{ color:var(--wait); }} .REJECT {{ color:var(--reject); }}
  .card {{ background:var(--card); border:1px solid var(--line); border-radius:8px;
           padding:14px; margin-bottom:14px; }}
- table {{ border-collapse:collapse; width:100%; font-size:.88rem; }}
+ table {{ border-collapse:collapse; width:100%; font-size:.88rem; table-layout:fixed; }}
+ td,th {{ overflow-wrap:anywhere; }}
  td,th {{ text-align:left; padding:4px 8px; border-bottom:1px solid var(--line); }}
  code {{ font-size:.85rem; }}
  pre {{ overflow:auto; font-size:.78rem; background:var(--bg); padding:10px;
