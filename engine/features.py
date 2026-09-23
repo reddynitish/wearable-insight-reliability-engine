@@ -141,6 +141,11 @@ class BaselineFeatures:
     source: str = "none"
     score: float = 0.0
 
+    # Set by _baseline(): whether these statistics are fit to standardise a change
+    # against. A baseline below the policy's floor, or one that is unstable or contains a
+    # level shift, has a mean and an SD but no meaning.
+    usable: bool = False
+
     @property
     def statistics_available(self) -> bool:
         return self.mean is not None and self.effective_sd is not None
@@ -156,6 +161,7 @@ class BaselineFeatures:
             "half_shift": _r(self.half_shift, 2),
             "source": self.source,
             "statistics_available": self.statistics_available,
+            "usable": self.usable,
             "score": round(self.score, 3),
         }
 
@@ -493,6 +499,23 @@ def _baseline(
     feats.score = band_score(
         feats.valid_days, policy.min_baseline_days, policy.good_baseline_days
     )
+    unstable = (
+        policy.max_baseline_sd is not None
+        and feats.sd is not None
+        and feats.sd > policy.max_baseline_sd
+    )
+    shifted = (
+        policy.max_baseline_shift is not None
+        and feats.half_shift is not None
+        and feats.half_shift > policy.max_baseline_shift
+    )
+    feats.usable = (
+        feats.statistics_available
+        and feats.source == "samples"
+        and feats.valid_days >= policy.warn_baseline_days
+        and not unstable
+        and not shifted
+    )
     return feats
 
 
@@ -512,7 +535,10 @@ def _support(
     feats.target_value = _aggregate(values, policy.target_aggregation)
 
     base = _baseline(norm, request, policy, target_signal)
-    if not base.statistics_available:
+    if not base.usable:
+        # Without a usable baseline there is no defensible effect size. Reporting one
+        # anyway -- "4.7 SD above a one-day baseline" -- would dress an arbitrary number
+        # up as a measurement, and the support score would inherit that fiction.
         return feats
     assert base.mean is not None and base.effective_sd is not None
     feats.delta = feats.target_value - base.mean

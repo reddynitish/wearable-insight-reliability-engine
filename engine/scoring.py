@@ -69,7 +69,9 @@ def percentile(values: Sequence[float], q: float) -> float:
     low = int(pos)
     high = min(low + 1, len(ordered) - 1)
     frac = pos - low
-    return ordered[low] * (1 - frac) + ordered[high] * frac
+    # a + (b - a) * frac rather than a*(1-frac) + b*frac: the latter can overshoot the
+    # data by one ulp when a == b, which puts the "percentile" outside the sample.
+    return ordered[low] + (ordered[high] - ordered[low]) * frac
 
 
 def interpolate(x: float, anchors: Sequence[tuple[float, float]]) -> float:

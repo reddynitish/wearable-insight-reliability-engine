@@ -33,6 +33,13 @@ _DECISION_RANK = {
 # Support within this distance of a cut point makes the decision genuinely borderline.
 BOUNDARY_WIDTH = 0.12
 
+# Threshold comparisons are made with a tolerance so that a support score landing exactly
+# on a cut point falls on the side docs/claim-contracts.md section 4 specifies, rather
+# than on whichever side floating-point rounding puts it. Without this, a value the
+# formula produces as exactly 0.55 arrives as 0.5499999999999999 and silently takes the
+# conservative branch, making the documented band unreachable at its own boundary.
+THRESHOLD_EPS = 1e-9
+
 
 @dataclass
 class DecisionOutcome:
@@ -112,12 +119,13 @@ def decide(
 
 
 def _score_decision(support: float, policy: ClaimPolicy) -> Decision:
+    """The score-only decision, with the documented inclusive sides of each cut point."""
     t = policy.thresholds
-    if support <= t.reject_below:
+    if support <= t.reject_below + THRESHOLD_EPS:
         return Decision.REJECT
-    if support < t.warn_above:
+    if support < t.warn_above - THRESHOLD_EPS:
         return Decision.WAIT_FOR_MORE_DATA
-    if support < t.show_above:
+    if support < t.show_above - THRESHOLD_EPS:
         return Decision.SHOW_WITH_WARNING
     return Decision.SHOW
 

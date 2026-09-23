@@ -270,7 +270,7 @@ def measure(request: EvaluationRequest, policy: ClaimPolicy, now: datetime | Non
         summary = _mean(rhr)
         pos = (len(hr) - 1) * 0.10
         low, high = int(pos), min(int(pos) + 1, len(hr) - 1)
-        p10 = hr[low] * (1 - (pos - low)) + hr[high] * (pos - low)
+        p10 = hr[low] + (hr[high] - hr[low]) * (pos - low)
         m.summary_detail_gap = summary - p10
         if summary > p10 + 20 or summary < hr[0] - 10:
             m.breaches.append("summary_detail_mismatch")
