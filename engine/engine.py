@@ -53,6 +53,9 @@ def evaluate(request: EvaluationRequest, now: datetime | None = None) -> Decisio
         support, components = support_mod.deviation_support(feats, policy)
 
     outcome = decide(support, fired, policy, fallback_retry=_fallback_retry(feats, policy))
+    # decide() may add a gate of its own (marginal support), so the trace and the
+    # explanation are built from what it reports, not from the pre-aggregation list.
+    fired = outcome.gates
     reported = [c.value for c in outcome.reason_codes]
 
     trace = DecisionTrace(

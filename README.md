@@ -162,6 +162,8 @@ curl -s localhost:8000/v1/claim-types | jq '.[0]'
 
 ## How a decision is made
 
+Diagram and module map: [docs/architecture.md](docs/architecture.md).
+
 ```text
 request ──> normalise ──> evidence features ──> deterministic gates ──┐
             (dedupe,      (coverage, freshness,                       │
@@ -278,7 +280,7 @@ engine/            the engine: schemas, policies, features, gates, decisions, ex
   corruptions.py   17 seeded failure injections
   synth.py         seeded synthetic evidence generators
 eval/              suite builder, baselines, metrics, report writer
-tests/             238 tests
+tests/             268 tests
 docs/              claim contracts, evaluation protocol, related work, cards, ADRs
 demo/              Google Health demonstration script
 tools/             secret scanner
@@ -291,9 +293,15 @@ google_health/     the supported API client (unchanged)
 ## Development
 
 ```bash
-./.venv/bin/python -m pytest                    # 238 tests
+./.venv/bin/python -m pytest                    # 268 tests
 ./.venv/bin/python -m eval.run_eval --seeds 5   # evaluation artifacts
 ./.venv/bin/python tools/secret_scan.py         # pre-publish gate
+```
+
+Or in a container, which carries no credentials and no personal data:
+
+```bash
+docker build -t reliability-engine . && docker run --rm -p 8000:8000 reliability-engine
 ```
 
 ## Limitations and scope
@@ -314,6 +322,7 @@ reports whether measurements support a statement, never whether a person has a c
 - [docs/related-work.md](docs/related-work.md) — scoping review; **citations unverified**
 - [docs/model-card.md](docs/model-card.md) / [docs/data-card.md](docs/data-card.md)
 - [docs/limitations.md](docs/limitations.md)
+- [docs/architecture.md](docs/architecture.md) — diagram and module map
 - [docs/decisions/](docs/decisions/) — architecture decision records
 - [data/DATASETS.md](data/DATASETS.md) — dataset manifest; **nothing downloaded, nothing verified**
 - [FITBIT_AIR_RESEARCH.md](FITBIT_AIR_RESEARCH.md) — the completed BLE feasibility research

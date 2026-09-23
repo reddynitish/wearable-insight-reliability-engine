@@ -2,7 +2,7 @@
 
 **SYNTHETIC EVIDENCE ONLY. These numbers measure agreement between the engine and the claim contract it implements. They are not a measurement of real-world performance and must not be reported as one.**
 
-- generated: `2026-09-23T18:36:50.479869+00:00`
+- generated: `2026-09-23T18:45:35.284577+00:00`
 - model version: `reliability-engine-0.1.0`
 - policy version: `claim-policy-0.1.0`
 - cases: 3120 total, 3057 scored, 63 excluded as borderline
@@ -23,7 +23,7 @@ Reproduce with:
 |---|---|---|---|---|---|
 | `B0_always_show` | 1.0000 [1.0000, 1.0000] | 0.0000 | 1.0000 | 0.1417 | 0.000 ms |
 | `B1_data_present` | 0.9583 [0.9436, 0.9723] | 0.3309 | 0.8803 | 0.1364 | 0.001 ms |
-| `B2_rules_engine` | 0.0000 [0.0000, 0.0000] | 0.0000 | 0.2699 | 0.7752 | 0.107 ms |
+| `B2_rules_engine` | 0.0000 [0.0000, 0.0000] | 0.0000 | 0.2699 | 0.7752 | 0.110 ms |
 
 Not implemented, and not claimed:
 

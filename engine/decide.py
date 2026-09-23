@@ -44,6 +44,8 @@ THRESHOLD_EPS = 1e-9
 @dataclass
 class DecisionOutcome:
     decision: Decision
+    # The gates as reported, which may include one synthesised here; see decide().
+    gates: list[Gate]
     confidence: float
     reason_codes: list[ReasonCode]
     determining_gates: list[Gate]
@@ -65,6 +67,26 @@ def decide(
     caller most needs to be told what would help, and without it the response would defer
     while saying nothing about what to wait for.
     """
+    gates = list(gates)
+    t_early = policy.thresholds
+    # The warn band can be entered by the support score alone, with no gate fired. Left
+    # as-is, the response would announce "supportable, with limitations" and then list
+    # none, which is an incoherent thing to put in front of a reader. So the marginality
+    # itself becomes an explicit, traceable limitation.
+    if _score_decision(support, policy) is Decision.SHOW_WITH_WARNING and not any(
+        g.outcome is Outcome.WARN for g in gates
+    ):
+        gates.append(
+            Gate(
+                ReasonCode.MARGINAL_SUPPORT,
+                Outcome.WARN,
+                f"the evidence supports this claim only marginally: it scored "
+                f"{support:.2f} against the {t_early.show_above:.2f} needed to state it "
+                "without qualification",
+                {"support": round(support, 4), "show_above": t_early.show_above},
+            )
+        )
+
     rejects = [g for g in gates if g.outcome is Outcome.REJECT]
     waits = [g for g in gates if g.outcome is Outcome.WAIT]
     warns = [g for g in gates if g.outcome is Outcome.WARN]
@@ -110,6 +132,7 @@ def decide(
 
     return DecisionOutcome(
         decision=decision,
+        gates=gates,
         confidence=confidence,
         reason_codes=reason_codes,
         determining_gates=determining,

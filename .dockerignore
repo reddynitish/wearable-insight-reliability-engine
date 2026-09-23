@@ -1,0 +1,26 @@
+# Secrets and personal data must never enter an image layer.
+google_health/
+**/credentials.json
+**/token.json
+.env
+.env.*
+data/datasets/
+data/personal/
+
+# The completed BLE research is not part of the service.
+scripts/
+captures/
+logs/
+repos/
+ref/
+
+.venv/
+.git/
+.github/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+tests/
+demo/
+.DS_Store

@@ -423,3 +423,26 @@ def test_unsupported_claim_type_is_a_typed_reject_listing_what_is_supported():
     assert ReasonCode.UNSUPPORTED_CLAIM_TYPE.value in codes(response)
     assert "RESTING_HEART_RATE_ELEVATED" in response.explanation
     assert response.retry.recommended is False
+
+
+def test_a_marginal_show_states_its_own_limitation():
+    """The warn band can be entered by the score alone; it must still say why.
+
+    Announcing "supportable, with limitations" and then listing none would leave a reader
+    with a qualified claim and no qualification.
+    """
+    response = evaluate(rhr_request(z=2.0, n_baseline=14, worn_minutes=864.0, tz="UTC",
+                                    sync_offset_hours=0.0))
+    assert response.decision is Decision.SHOW_WITH_WARNING
+    assert ReasonCode.MARGINAL_SUPPORT.value in codes(response)
+    assert response.limitations
+    assert "only marginally" in response.explanation
+    assert str(round(response.claim_support_probability, 2)) in response.explanation
+
+
+def test_a_gated_warning_does_not_also_claim_marginal_support():
+    """When a real limitation fired, the score's marginality is not added on top of it."""
+    response = evaluate(rhr_request(sync_offset_hours=None))
+    assert response.decision is Decision.SHOW_WITH_WARNING
+    assert ReasonCode.SYNC_STATE_UNKNOWN.value in codes(response)
+    assert ReasonCode.MARGINAL_SUPPORT.value not in codes(response)

@@ -187,6 +187,11 @@ effect size and evidence quality.
 | `SHOW_WITH_WARNING` | `warn_above` ≤ support < `show_above` (default 0.75), or support ≥ `show_above` with ≥ 1 nonfatal limitation |
 | `SHOW` | support ≥ `show_above`, no gate fired, no nonfatal limitation |
 
+A `SHOW_WITH_WARNING` reached by the support score alone, with no gate fired, carries the
+reason code `MARGINAL_SUPPORT` and a limitation stating the score and the display threshold.
+Announcing "supportable, with limitations" and then listing none would be incoherent, and
+the marginality is itself the limitation worth disclosing.
+
 Gate precedence: reject gates outrank wait gates. Within a decision the reason codes
 are reported in the order the dimensions are evaluated (coverage, freshness, quality,
 consistency, baseline, claim support), which keeps traces diffable across versions.
@@ -201,3 +206,4 @@ the two numbers are always reported separately.
 | policy_version | date | change |
 |---|---|---|
 | `claim-policy-0.1.0` | 2026-09-23 | initial freeze: six claim families, thresholds above |
+| `claim-policy-0.1.0` | 2026-09-23 | reporting clarification, no threshold change: a score-driven `SHOW_WITH_WARNING` now reports `MARGINAL_SUPPORT`; a `WINDOW_MISALIGNED` finding is fatal only when it removes a signal the claim requires, and a note otherwise |

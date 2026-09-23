@@ -26,7 +26,9 @@ RANK = {
     Decision.SHOW_WITH_WARNING: 2,
     Decision.SHOW: 3,
 }
-SETTINGS = settings(max_examples=120, deadline=None,
+# No max_examples here on purpose: the profile registered in conftest.py governs how hard
+# the search runs, so --hypothesis-profile=search actually widens it.
+SETTINGS = settings(deadline=None,
                     suppress_health_check=[HealthCheck.function_scoped_fixture])
 
 
@@ -79,7 +81,7 @@ def test_a_wait_or_reject_gate_always_wins_over_the_score(z, baseline, worn):
 
 
 @given(support=st.floats(0, 1, allow_nan=False))
-@settings(max_examples=200, deadline=None)
+@settings(deadline=None)
 def test_no_support_score_can_reach_show_when_a_reject_gate_fired(support):
     """Stated at the aggregation layer, where a learned model would plug in."""
     from engine.gates import Gate
@@ -91,7 +93,7 @@ def test_no_support_score_can_reach_show_when_a_reject_gate_fired(support):
 
 
 @given(support=st.floats(0, 1, allow_nan=False))
-@settings(max_examples=200, deadline=None)
+@settings(deadline=None)
 def test_no_support_score_can_reach_show_when_a_wait_gate_fired(support):
     from engine.gates import Gate
 

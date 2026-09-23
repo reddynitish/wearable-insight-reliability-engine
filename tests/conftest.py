@@ -4,6 +4,7 @@ from __future__ import annotations
 from datetime import datetime, timedelta, timezone
 
 import pytest
+from hypothesis import Verbosity, settings
 
 from engine.schemas import (
     BaselineSample,
@@ -16,6 +17,18 @@ from engine.schemas import (
 )
 from engine.scoring import sample_sd
 from engine.signals import Signal, spec
+
+# Property tests run derandomised by default so that a green suite stays green and a
+# failure is reproducible from the test name alone -- a randomised search that finds a new
+# counterexample on the third CI run looks like flakiness and gets ignored, which is worse
+# than a narrower search that is trusted. To search harder, on purpose:
+#
+#     ./.venv/bin/python -m pytest -p no:randomly --hypothesis-profile=search
+#
+settings.register_profile("default", derandomize=True, deadline=None, max_examples=120)
+settings.register_profile("search", derandomize=False, deadline=None, max_examples=2000,
+                          verbosity=Verbosity.normal)
+settings.load_profile("default")
 
 U = timezone.utc
 DAY_END = datetime(2026, 9, 23, tzinfo=U)

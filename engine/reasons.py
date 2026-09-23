@@ -108,6 +108,7 @@ class ReasonCode(str, Enum):
     EVIDENCE_COMPLETE = "EVIDENCE_COMPLETE"                        # extension
     CONFOUNDER_UNRESOLVED = "CONFOUNDER_UNRESOLVED"                # extension
     SINGLE_SAMPLE_EXCURSION = "SINGLE_SAMPLE_EXCURSION"            # extension
+    MARGINAL_SUPPORT = "MARGINAL_SUPPORT"                          # extension
 
 
 class ReasonSpec(NamedTuple):
@@ -228,6 +229,10 @@ SPECS: dict[ReasonCode, ReasonSpec] = {
     _R.EVIDENCE_COMPLETE: ReasonSpec(_D.CLAIM_SUPPORT, _O.REJECT, 0.92, None),
     _R.SINGLE_SAMPLE_EXCURSION: ReasonSpec(
         _D.CLAIM_SUPPORT, _O.WAIT, 0.91, "PT2H", ("a_second_independent_measurement",)
+    ),
+    _R.MARGINAL_SUPPORT: ReasonSpec(
+        _D.CLAIM_SUPPORT, _O.WARN, 0.70, "P1D",
+        ("a_larger_effect_or_stronger_evidence",),
     ),
     _R.CONFOUNDER_UNRESOLVED: ReasonSpec(
         _D.CLAIM_SUPPORT, _O.WARN, 0.80, "P1D", ("confounder_resolution",)

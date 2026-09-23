@@ -2,7 +2,7 @@
   "artifact": "synthetic-evaluation",
   "synthetic": true,
   "warning": "SYNTHETIC EVIDENCE ONLY. These numbers measure agreement between the engine and the claim contract it implements. They are not a measurement of real-world performance and must not be reported as one.",
-  "generated_at": "2026-09-23T18:36:50.479869+00:00",
+  "generated_at": "2026-09-23T18:45:35.284577+00:00",
   "model_version": "reliability-engine-0.1.0",
   "policy_version": "claim-policy-0.1.0",
   "python": "3.13.11",
@@ -214,7 +214,7 @@
       "latency_ms": {
         "p50": 0.0,
         "p95": 0.0001,
-        "p99": 0.0006
+        "p99": 0.0001
       }
     },
     "B1_data_present": {
@@ -266,8 +266,8 @@
       },
       "latency_ms": {
         "p50": 0.0005,
-        "p95": 0.0013,
-        "p99": 0.0043
+        "p95": 0.001,
+        "p99": 0.0039
       }
     },
     "B2_rules_engine": {
@@ -318,9 +318,9 @@
         "REJECT": 1393
       },
       "latency_ms": {
-        "p50": 0.07,
-        "p95": 0.1067,
-        "p99": 0.1334
+        "p50": 0.0726,
+        "p95": 0.1098,
+        "p99": 0.1397
       },
       "by_claim_type": {
         "ACTIVITY_LOAD_HIGH": {
