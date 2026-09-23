@@ -2,7 +2,7 @@
 
 **SYNTHETIC EVIDENCE ONLY. These numbers measure agreement between the engine and the claim contract it implements. They are not a measurement of real-world performance and must not be reported as one.**
 
-- generated: `2026-09-23T18:30:21.658586+00:00`
+- generated: `2026-09-23T18:36:50.479869+00:00`
 - model version: `reliability-engine-0.1.0`
 - policy version: `claim-policy-0.1.0`
 - cases: 3120 total, 3057 scored, 63 excluded as borderline
@@ -21,9 +21,9 @@ Reproduce with:
 
 | baseline | unsupported-show rate (95% CI) | over-abstention | decision coverage | macro F1 | p95 latency |
 |---|---|---|---|---|---|
-| `B0_always_show` | 1.0000 [1.0000, 1.0000] | 0.0000 | 1.0000 | 0.1376 | 0.000 ms |
-| `B1_data_present` | 0.9523 [0.9349, 0.9681] | 0.3245 | 0.8803 | 0.1390 | 0.001 ms |
-| `B2_rules_engine` | 0.0000 [0.0000, 0.0000] | 0.0000 | 0.2601 | 0.7777 | 0.104 ms |
+| `B0_always_show` | 1.0000 [1.0000, 1.0000] | 0.0000 | 1.0000 | 0.1417 | 0.000 ms |
+| `B1_data_present` | 0.9583 [0.9436, 0.9723] | 0.3309 | 0.8803 | 0.1364 | 0.001 ms |
+| `B2_rules_engine` | 0.0000 [0.0000, 0.0000] | 0.0000 | 0.2699 | 0.7752 | 0.107 ms |
 
 Not implemented, and not claimed:
 
@@ -36,7 +36,7 @@ Not implemented, and not claimed:
 |---|---|---|---|---|
 | `ACTIVITY_LOAD_HIGH` | 510 | 0.0000 | 0.0000 | 0.2412 |
 | `PHYSIOLOGICAL_ANOMALY_REQUIRES_CONFIRMATION` | 511 | 0.0000 | 0.0000 | 0.2192 |
-| `RECOVERY_EVIDENCE_INCOMPLETE` | 520 | 0.0000 | 0.0000 | 0.6096 |
+| `RECOVERY_EVIDENCE_INCOMPLETE` | 520 | 0.0000 | 0.0000 | 0.6673 |
 | `RESTING_HEART_RATE_ELEVATED` | 514 | 0.0000 | 0.0000 | 0.1265 |
 | `SLEEP_DURATION_LOW` | 491 | 0.0000 | 0.0000 | 0.2016 |
 | `SLEEP_QUALITY_REDUCED` | 511 | 0.0000 | 0.0000 | 0.1546 |
@@ -58,7 +58,7 @@ Not implemented, and not claimed:
 | `motion_artifact` | 179 | 0.0000 | 0.0000 | 0.3073 |
 | `none` | 60 | 0.0000 | 0.0000 | 0.5000 |
 | `shift_baseline` | 163 | 0.0000 | 0.0000 | 0.3252 |
-| `shift_day_boundary` | 180 | 0.0000 | 0.0000 | 0.0000 |
+| `shift_day_boundary` | 180 | 0.0000 | 0.0000 | 0.1667 |
 | `shorten_wear` | 180 | 0.0000 | 0.0000 | 0.1944 |
 | `shuffle_order` | 177 | 0.0000 | 0.0000 | 0.5085 |
 | `stale_data` | 180 | 0.0000 | 0.0000 | 0.1667 |
@@ -68,10 +68,10 @@ Not implemented, and not claimed:
 
 | group | cases | unsupported-show | over-abstention | coverage |
 |---|---|---|---|---|
-| `mild` | 996 | 0.0000 | 0.0000 | 0.3193 |
-| `moderate` | 996 | 0.0000 | 0.0000 | 0.2369 |
+| `mild` | 996 | 0.0000 | 0.0000 | 0.3293 |
+| `moderate` | 996 | 0.0000 | 0.0000 | 0.2470 |
 | `none` | 60 | 0.0000 | 0.0000 | 0.5000 |
-| `severe` | 1005 | 0.0000 | 0.0000 | 0.2100 |
+| `severe` | 1005 | 0.0000 | 0.0000 | 0.2199 |
 
 ## By evidence dimension (engine only)
 
@@ -81,7 +81,7 @@ Not implemented, and not claimed:
 | `consistency` | 171 | 0.0000 | 0.0000 | 0.2690 |
 | `coverage` | 539 | 0.0000 | 0.0000 | 0.2468 |
 | `freshness` | 360 | 0.0000 | 0.0000 | 0.1528 |
-| `integrity` | 714 | 0.0000 | 0.0000 | 0.2731 |
+| `integrity` | 714 | 0.0000 | 0.0000 | 0.3151 |
 | `none` | 60 | 0.0000 | 0.0000 | 0.5000 |
 | `signal_quality` | 715 | 0.0000 | 0.0000 | 0.2839 |
 
@@ -89,9 +89,9 @@ Not implemented, and not claimed:
 
 | group | cases | unsupported-show | over-abstention | coverage |
 |---|---|---|---|---|
-| `SUPPORTABLE` | 795 | 0.0000 | 0.0000 | 1.0000 |
+| `SUPPORTABLE` | 825 | 0.0000 | 0.0000 | 1.0000 |
 | `UNSUPPORTABLE_CONTRADICTED` | 646 | 0.0000 | 0.0000 | 0.0000 |
-| `UNSUPPORTABLE_INSUFFICIENT` | 1124 | 0.0000 | 0.0000 | 0.0000 |
+| `UNSUPPORTABLE_INSUFFICIENT` | 1094 | 0.0000 | 0.0000 | 0.0000 |
 | `UNSUPPORTABLE_UNTRUSTWORTHY` | 492 | 0.0000 | 0.0000 | 0.0000 |
 
 ## Corruption catalogue

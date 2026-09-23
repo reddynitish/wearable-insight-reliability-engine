@@ -53,8 +53,11 @@ def evaluate(
 ) -> list[Gate]:
     """All gates that fire, in dimension order."""
     gates: list[Gate] = []
+    target_signal = (
+        request.claim.signal if policy.mode == "anomaly" else policy.target_signal
+    )
     gates += _scope_gates(request, policy)
-    gates += _integrity_gates(norm, policy)
+    gates += _integrity_gates(norm, policy, target_signal)
     if policy.mode == "insufficiency":
         gates += _insufficiency_gates(norm, request, policy, features)
         return gates
@@ -99,7 +102,9 @@ _PERMANENT_DETAIL = {
 # --------------------------------------------------------------------------- integrity
 
 
-def _integrity_gates(norm: NormalizedEvidence, policy: ClaimPolicy) -> list[Gate]:
+def _integrity_gates(
+    norm: NormalizedEvidence, policy: ClaimPolicy, target_signal: Signal | None = None
+) -> list[Gate]:
     gates: list[Gate] = []
     # An empty bundle is a reason to abstain on every claim except the one that asserts
     # the evidence is inadequate: there, no data at all is the strongest possible support
@@ -138,19 +143,45 @@ def _integrity_gates(norm: NormalizedEvidence, policy: ClaimPolicy) -> list[Gate
             )
         )
     if norm.misaligned_aggregates:
+        # Fatal only when the misalignment cost this claim evidence it needs. A 30-minute
+        # intraday sample straddling midnight, or a daily summary of a signal this claim
+        # merely finds supportive, is worth recording and nothing more; excluding it does
+        # not change what the claim can be decided on.
+        material = {
+            s for s in norm.misaligned_by_signal
+            if s in set(policy.required_signals) | ({target_signal} if target_signal else set())
+        }
+        affected = sorted(norm.misaligned_by_signal, key=lambda s: s.value)
+        detail = (
+            f"{norm.misaligned_aggregates} summary value(s) "
+            f"({', '.join(s.value for s in affected)}) describe a period that overlaps the "
+            "target window by too little to stand in for it"
+            + (
+                f" (closest alignment {norm.worst_alignment:.0%})"
+                if norm.worst_alignment is not None
+                else ""
+            )
+        )
+        if material:
+            detail += (
+                "; this claim requires "
+                + ", ".join(sorted(s.value for s in material))
+                + ", so there is nothing left to decide on"
+            )
         gates.append(
             _gate(
                 ReasonCode.WINDOW_MISALIGNED,
-                f"{norm.misaligned_aggregates} summary value(s) describe a period that "
-                "overlaps the target window by too little to stand in for it"
-                + (
-                    f" (best alignment {norm.worst_alignment:.0%})"
-                    if norm.worst_alignment is not None
-                    else ""
-                ),
-                {"misaligned_aggregates": norm.misaligned_aggregates,
-                 "worst_alignment": None if norm.worst_alignment is None
-                 else round(norm.worst_alignment, 3)},
+                detail,
+                {
+                    "misaligned_aggregates": norm.misaligned_aggregates,
+                    "misaligned_signals": {s.value: n for s, n in
+                                           sorted(norm.misaligned_by_signal.items(),
+                                                  key=lambda kv: kv[0].value)},
+                    "affects_required_signal": sorted(s.value for s in material),
+                    "worst_alignment": None if norm.worst_alignment is None
+                    else round(norm.worst_alignment, 3),
+                },
+                None if material else Outcome.NOTE,
             )
         )
     if policy.requires_timezone and (norm.subject_tz is None or norm.timezone_invalid):

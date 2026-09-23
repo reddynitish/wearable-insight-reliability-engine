@@ -52,7 +52,7 @@ def evaluate(request: EvaluationRequest, now: datetime | None = None) -> Decisio
     else:
         support, components = support_mod.deviation_support(feats, policy)
 
-    outcome = decide(support, fired, policy)
+    outcome = decide(support, fired, policy, fallback_retry=_fallback_retry(feats, policy))
     reported = [c.value for c in outcome.reason_codes]
 
     trace = DecisionTrace(
@@ -114,6 +114,37 @@ def evaluate(request: EvaluationRequest, now: datetime | None = None) -> Decisio
         policy_version=POLICY_VERSION,
         support_is_calibrated=False,
     )
+
+
+# Dimension label -> what a caller would have to supply more of.
+_DIMENSION_EVIDENCE = {
+    "coverage": "more_wear_time_in_the_target_window",
+    "freshness": "a_more_recent_measurement",
+    "signal_quality": "higher_quality_measurements",
+    "consistency": "agreement_between_related_signals",
+    "baseline_maturity": "a_longer_personal_baseline",
+}
+
+
+def _fallback_retry(feats: features_mod.EvidenceFeatures, policy) -> Retry:
+    """Retry guidance for an abstention driven by the support score rather than a gate.
+
+    Names the weakest evidence dimension, plus the effect itself when one was computable,
+    because a mid-band score usually means "the evidence is adequate but the change is
+    small" and the caller should know which of the two to chase.
+    """
+    scores = {
+        "coverage": feats.coverage.score,
+        "freshness": feats.freshness.score,
+        "signal_quality": feats.quality.score,
+        "consistency": feats.consistency.score,
+        "baseline_maturity": feats.baseline.score,
+    }
+    weakest = min(scores, key=lambda k: scores[k])
+    required = [_DIMENSION_EVIDENCE[weakest]]
+    if feats.support.available:
+        required.append("a_change_larger_than_the_current_one")
+    return Retry(recommended=True, after="P1D", required_evidence=required)
 
 
 def _unsupported_claim_type(

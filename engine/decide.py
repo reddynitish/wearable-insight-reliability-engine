@@ -53,8 +53,18 @@ class DecisionOutcome:
 
 
 def decide(
-    support: float, gates: list[Gate], policy: ClaimPolicy
+    support: float,
+    gates: list[Gate],
+    policy: ClaimPolicy,
+    fallback_retry: Retry | None = None,
 ) -> DecisionOutcome:
+    """Aggregate gates and the support score into one decision.
+
+    `fallback_retry` supplies retry guidance for an abstention that no gate caused -- one
+    driven purely by a support score in the middle band. Those are the cases where the
+    caller most needs to be told what would help, and without it the response would defer
+    while saying nothing about what to wait for.
+    """
     rejects = [g for g in gates if g.outcome is Outcome.REJECT]
     waits = [g for g in gates if g.outcome is Outcome.WAIT]
     warns = [g for g in gates if g.outcome is Outcome.WARN]
@@ -79,9 +89,14 @@ def decide(
 
     confidence = _confidence(decision, driver, determining, support, policy)
 
-    # A gate that must never be reduced to a footnote next to a displayed claim.
+    # A gate that must never be reduced to a footnote next to a displayed claim. NOTE
+    # outcomes are exempt: a gate that recorded an immaterial finding (a misaligned
+    # aggregate of a signal this claim does not need) did not find a problem to warn about.
     if decision in (Decision.SHOW, Decision.SHOW_WITH_WARNING):
-        offenders = [g.code for g in gates if g.code in NEVER_WARN_ONLY]
+        offenders = [
+            g.code for g in gates
+            if g.code in NEVER_WARN_ONLY and g.outcome is not Outcome.NOTE
+        ]
         if offenders:
             raise AssertionError(
                 "internal invariant violated: a claim reached "
@@ -98,7 +113,7 @@ def decide(
         confidence=confidence,
         reason_codes=reason_codes,
         determining_gates=determining,
-        retry=_retry(decision, determining),
+        retry=_retry(decision, determining, gates, fallback_retry),
         limitations=[g.detail for g in warns],
         rationale={
             "driver": driver,
@@ -152,15 +167,32 @@ def _confidence(
     return clamp(score_confidence, 0.0, 0.99)
 
 
-def _retry(decision: Decision, determining: list[Gate]) -> Retry:
+def _retry(
+    decision: Decision,
+    determining: list[Gate],
+    all_gates: list[Gate],
+    fallback: Retry | None,
+) -> Retry:
     """What, if anything, would let the caller ask again usefully."""
     if decision is Decision.SHOW:
         return Retry(recommended=False)
-    durations = [spec(g.code).retry_after for g in determining]
+    # A gate-driven decision names its own remedy. A score-driven abstention has no
+    # determining gate, so any nonfatal gate's remedy is used, and failing that the
+    # caller-supplied fallback.
+    sources = determining or (
+        # NOTE gates are excluded: they recorded something immaterial, so asking the
+        # caller to go and fix it would be misleading advice.
+        [g for g in all_gates
+         if spec(g.code).retry_after and g.outcome is not Outcome.NOTE]
+        if decision is Decision.WAIT_FOR_MORE_DATA
+        else []
+    )
     required: list[str] = []
-    for gate in determining:
+    for gate in sources:
         for item in spec(gate.code).required_evidence:
             if item not in required:
                 required.append(item)
-    after = longest_duration([d for d in durations if d])
+    after = longest_duration([spec(g.code).retry_after for g in sources])
+    if after is None and decision is Decision.WAIT_FOR_MORE_DATA and fallback is not None:
+        return fallback
     return Retry(recommended=after is not None, after=after, required_evidence=required)

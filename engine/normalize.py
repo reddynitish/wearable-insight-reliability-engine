@@ -38,6 +38,7 @@ class NormalizedEvidence:
     submitted_counts: dict[Signal, int] = field(default_factory=dict)
     attributed_after_window: int = 0
     misaligned_aggregates: int = 0
+    misaligned_by_signal: dict[Signal, int] = field(default_factory=dict)
     worst_alignment: float | None = None
     subject_tz: ZoneInfo | None = None
     timezone_name: str | None = None
@@ -64,10 +65,15 @@ class NormalizedEvidence:
 # day-boundary and timezone bugs hide.
 REPORTING_ALLOWANCE_HOURS = 12.0
 
-# An interval aggregate must describe substantially the same period as the claim window.
-# Mere overlap is not enough: a full-day summary overlaps a window shifted three hours by
-# 87.5%, and accepting that is how a claim about Tuesday gets answered with Monday's
-# numbers after a timezone or DST error.
+# An interval aggregate must lie substantially INSIDE the window it is used for: at least
+# this fraction of the aggregate's own span must fall within the claim window.
+#
+# Measured against the aggregate's own duration, not the window's, so that a 30-minute
+# intraday sample inside a 24-hour window is a sub-interval sample (fully contained, fine)
+# while a 24-hour summary against a window shifted three hours is only 87.5% contained and
+# is refused. Accepting mere overlap is how a claim about Tuesday gets answered with
+# Monday's numbers after a timezone or DST error; measuring against the window instead
+# would also wrongly reject every intraday sample.
 WINDOW_ALIGNMENT_MIN = 0.90
 
 
@@ -136,6 +142,9 @@ def normalize(request: EvaluationRequest, now: datetime | None = None) -> Normal
                     norm.worst_alignment = alignment
             if placement == "misaligned":
                 norm.misaligned_aggregates += 1
+                norm.misaligned_by_signal[signal] = (
+                    norm.misaligned_by_signal.get(signal, 0) + 1
+                )
                 continue
             if placement == "outside":
                 continue
@@ -210,8 +219,7 @@ def _placement(obs: Observation, window: TimeWindow) -> tuple[str, float | None]
         if overlap <= 0:
             return "outside", 0.0
         own = max(1.0, (obs.window_end - obs.window_start).total_seconds())
-        target = max(1.0, (window.end - window.start).total_seconds())
-        alignment = min(overlap / own, overlap / target)
+        alignment = overlap / own
         if alignment < WINDOW_ALIGNMENT_MIN:
             return "misaligned", alignment
         return "inside", alignment

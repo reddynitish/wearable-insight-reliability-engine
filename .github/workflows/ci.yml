@@ -1,0 +1,28 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Scan tracked files for secrets and personal health data
+        run: python tools/secret_scan.py
+      - name: Tests
+        run: python -m pytest
+      - name: Evaluation must still show no unsupported claims
+        run: python -m eval.run_eval --seeds 3
+      - name: Offline demo
+        run: python -m engine.cli --no-color demo --claim RESTING_HEART_RATE_ELEVATED

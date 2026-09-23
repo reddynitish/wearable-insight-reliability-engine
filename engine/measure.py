@@ -109,11 +109,16 @@ def measure(request: EvaluationRequest, policy: ClaimPolicy, now: datetime | Non
             if overlap <= 0:
                 continue
             own = max(1.0, (o.window_end - o.window_start).total_seconds())
-            alignment = min(overlap / own, overlap / max(1.0, window_seconds))
+            alignment = overlap / own
             if m.worst_alignment is None or alignment < m.worst_alignment:
                 m.worst_alignment = alignment
             if alignment < WINDOW_ALIGNMENT_MIN:
-                if "window_misaligned" not in m.breaches:
+                # Only a misaligned aggregate of a signal the claim needs is a breach;
+                # see the matching rule in engine/gates.py.
+                material = o.signal in set(policy.required_signals) | (
+                    {target} if target else set()
+                )
+                if material and "window_misaligned" not in m.breaches:
                     m.breaches.append("window_misaligned")
                 continue
         else:

@@ -1,0 +1,9 @@
+# Runtime
+pydantic>=2.7
+fastapi>=0.115
+uvicorn[standard]>=0.30
+
+# Development and evaluation
+pytest>=8.0
+hypothesis>=6.100
+httpx>=0.27
