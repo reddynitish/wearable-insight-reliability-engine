@@ -1,1 +1,156 @@
-[]
+[
+  {
+    "name": "users/me/dataTypes/sleep/dataPoints/fixture",
+    "sleep": {
+      "interval": {
+        "startTime": "2026-09-09T23:00:00Z",
+        "endTime": "2026-09-10T06:30:00Z"
+      },
+      "minutesAsleep": 417.7,
+      "efficiency": 88.5
+    }
+  },
+  {
+    "name": "users/me/dataTypes/sleep/dataPoints/fixture",
+    "sleep": {
+      "interval": {
+        "startTime": "2026-09-10T23:00:00Z",
+        "endTime": "2026-09-11T06:30:00Z"
+      },
+      "minutesAsleep": 387.4,
+      "efficiency": 89.0
+    }
+  },
+  {
+    "name": "users/me/dataTypes/sleep/dataPoints/fixture",
+    "sleep": {
+      "interval": {
+        "startTime": "2026-09-11T23:00:00Z",
+        "endTime": "2026-09-12T06:30:00Z"
+      },
+      "minutesAsleep": 413.6,
+      "efficiency": 90.7
+    }
+  },
+  {
+    "name": "users/me/dataTypes/sleep/dataPoints/fixture",
+    "sleep": {
+      "interval": {
+        "startTime": "2026-09-12T23:00:00Z",
+        "endTime": "2026-09-13T06:30:00Z"
+      },
+      "minutesAsleep": 424.4,
+      "efficiency": 89.4
+    }
+  },
+  {
+    "name": "users/me/dataTypes/sleep/dataPoints/fixture",
+    "sleep": {
+      "interval": {
+        "startTime": "2026-09-13T23:00:00Z",
+        "endTime": "2026-09-14T06:30:00Z"
+      },
+      "minutesAsleep": 428.3,
+      "efficiency": 90.0
+    }
+  },
+  {
+    "name": "users/me/dataTypes/sleep/dataPoints/fixture",
+    "sleep": {
+      "interval": {
+        "startTime": "2026-09-14T23:00:00Z",
+        "endTime": "2026-09-15T06:30:00Z"
+      },
+      "minutesAsleep": 370.3,
+      "efficiency": 89.8
+    }
+  },
+  {
+    "name": "users/me/dataTypes/sleep/dataPoints/fixture",
+    "sleep": {
+      "interval": {
+        "startTime": "2026-09-15T23:00:00Z",
+        "endTime": "2026-09-16T06:30:00Z"
+      },
+      "minutesAsleep": 436.5,
+      "efficiency": 88.8
+    }
+  },
+  {
+    "name": "users/me/dataTypes/sleep/dataPoints/fixture",
+    "sleep": {
+      "interval": {
+        "startTime": "2026-09-16T23:00:00Z",
+        "endTime": "2026-09-17T06:30:00Z"
+      },
+      "minutesAsleep": 414.8,
+      "efficiency": 91.3
+    }
+  },
+  {
+    "name": "users/me/dataTypes/sleep/dataPoints/fixture",
+    "sleep": {
+      "interval": {
+        "startTime": "2026-09-17T23:00:00Z",
+        "endTime": "2026-09-18T06:30:00Z"
+      },
+      "minutesAsleep": 393.1,
+      "efficiency": 92.0
+    }
+  },
+  {
+    "name": "users/me/dataTypes/sleep/dataPoints/fixture",
+    "sleep": {
+      "interval": {
+        "startTime": "2026-09-18T23:00:00Z",
+        "endTime": "2026-09-19T06:30:00Z"
+      },
+      "minutesAsleep": 417.1,
+      "efficiency": 90.6
+    }
+  },
+  {
+    "name": "users/me/dataTypes/sleep/dataPoints/fixture",
+    "sleep": {
+      "interval": {
+        "startTime": "2026-09-19T23:00:00Z",
+        "endTime": "2026-09-20T06:30:00Z"
+      },
+      "minutesAsleep": 410.9,
+      "efficiency": 91.1
+    }
+  },
+  {
+    "name": "users/me/dataTypes/sleep/dataPoints/fixture",
+    "sleep": {
+      "interval": {
+        "startTime": "2026-09-20T23:00:00Z",
+        "endTime": "2026-09-21T06:30:00Z"
+      },
+      "minutesAsleep": 431.9,
+      "efficiency": 91.7
+    }
+  },
+  {
+    "name": "users/me/dataTypes/sleep/dataPoints/fixture",
+    "sleep": {
+      "interval": {
+        "startTime": "2026-09-21T23:00:00Z",
+        "endTime": "2026-09-22T06:30:00Z"
+      },
+      "minutesAsleep": 399.9,
+      "efficiency": 89.8
+    }
+  },
+  {
+    "name": "users/me/dataTypes/sleep/dataPoints/fixture",
+    "sleep": {
+      "interval": {
+        "startTime": "2026-09-22T23:00:00Z",
+        "endTime": "2026-09-23T06:30:00Z"
+      },
+      "minutesAsleep": 411.6,
+      "efficiency": 89.3
+    }
+  }
+]

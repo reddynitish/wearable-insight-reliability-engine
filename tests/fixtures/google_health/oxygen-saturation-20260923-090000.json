@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "name": "users/me/dataTypes/oxygen-saturation/dataPoints/fixture",
+    "oxygen_saturation": {
+      "interval": {
+        "startTime": "2026-09-22T00:00:00Z",
+        "endTime": "2026-09-23T00:00:00Z"
+      },
+      "notes": "no number here"
+    }
+  }
+]

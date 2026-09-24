@@ -106,3 +106,51 @@ def test_the_verified_dataset_records_its_licence_and_citation():
 def test_no_dataset_files_are_committed():
     assert not [p for p in tracked() if p.startswith("data/datasets/")]
     assert not [p for p in tracked() if p.endswith((".parquet", ".h5", ".pkl"))]
+
+
+# --------------------------------------------------------------------------- privacy
+
+
+def test_no_third_party_device_data_is_tracked():
+    """A BLE scan records every device in range, not only the one being researched.
+
+    These logs once carried 193 nearby devices including neighbours' names and a CPAP
+    serial number. The scanner now fails the build if any of that reappears.
+    """
+    result = subprocess.run(
+        ["python", "tools/secret_scan.py"], cwd=REPO, capture_output=True, text=True
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
+
+
+def test_the_ble_log_sanitiser_is_idempotent():
+    """Running it twice must not remove anything the first run kept.
+
+    The first version of the sanitiser failed this: it did not recognise its own
+    placeholder, so a second run began deleting the Fitbit records it existed to preserve.
+    """
+    result = subprocess.run(
+        ["python", "tools/sanitize_ble_logs.py"], cwd=REPO, capture_output=True, text=True
+    )
+    assert result.returncode == 0, result.stdout
+    assert "0 file(s) would change" in result.stdout, result.stdout
+
+
+def test_no_absolute_home_paths_are_tracked():
+    """They leak the machine's account name through every stack trace."""
+    import re
+
+    pattern = re.compile(r"/Users/(?!<user>)[A-Za-z0-9._-]+")
+    offenders = []
+    for path in tracked():
+        full = REPO / path
+        if full.suffix.lower() not in {".py", ".md", ".txt", ".json", ".jsonl", ".yml", ".html"}:
+            continue
+        if path in {"tools/secret_scan.py", "tools/sanitize_ble_logs.py"}:
+            continue
+        try:
+            if pattern.search(full.read_text(errors="replace")):
+                offenders.append(path)
+        except OSError:
+            continue
+    assert not offenders, offenders

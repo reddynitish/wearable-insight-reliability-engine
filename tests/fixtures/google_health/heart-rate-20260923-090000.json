@@ -1,1 +1,482 @@
-[]
+[
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T00:00:00Z",
+        "endTime": "2026-09-22T00:30:00Z"
+      },
+      "beatsPerMinute": 66.5
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T00:30:00Z",
+        "endTime": "2026-09-22T01:00:00Z"
+      },
+      "beatsPerMinute": 64.1
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T01:00:00Z",
+        "endTime": "2026-09-22T01:30:00Z"
+      },
+      "beatsPerMinute": 66.5
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T01:30:00Z",
+        "endTime": "2026-09-22T02:00:00Z"
+      },
+      "beatsPerMinute": 65.9
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T02:00:00Z",
+        "endTime": "2026-09-22T02:30:00Z"
+      },
+      "beatsPerMinute": 66.6
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T02:30:00Z",
+        "endTime": "2026-09-22T03:00:00Z"
+      },
+      "beatsPerMinute": 63.8
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T03:00:00Z",
+        "endTime": "2026-09-22T03:30:00Z"
+      },
+      "beatsPerMinute": 66.6
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T03:30:00Z",
+        "endTime": "2026-09-22T04:00:00Z"
+      },
+      "beatsPerMinute": 64.3
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T04:00:00Z",
+        "endTime": "2026-09-22T04:30:00Z"
+      },
+      "beatsPerMinute": 66.5
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T04:30:00Z",
+        "endTime": "2026-09-22T05:00:00Z"
+      },
+      "beatsPerMinute": 66.3
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T05:00:00Z",
+        "endTime": "2026-09-22T05:30:00Z"
+      },
+      "beatsPerMinute": 67.4
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T05:30:00Z",
+        "endTime": "2026-09-22T06:00:00Z"
+      },
+      "beatsPerMinute": 62.9
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T06:00:00Z",
+        "endTime": "2026-09-22T06:30:00Z"
+      },
+      "beatsPerMinute": 65.2
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T06:30:00Z",
+        "endTime": "2026-09-22T07:00:00Z"
+      },
+      "beatsPerMinute": 68.3
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T07:00:00Z",
+        "endTime": "2026-09-22T07:30:00Z"
+      },
+      "beatsPerMinute": 66.3
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T07:30:00Z",
+        "endTime": "2026-09-22T08:00:00Z"
+      },
+      "beatsPerMinute": 70.2
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T08:00:00Z",
+        "endTime": "2026-09-22T08:30:00Z"
+      },
+      "beatsPerMinute": 73.7
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T08:30:00Z",
+        "endTime": "2026-09-22T09:00:00Z"
+      },
+      "beatsPerMinute": 72.3
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T09:00:00Z",
+        "endTime": "2026-09-22T09:30:00Z"
+      },
+      "beatsPerMinute": 74.9
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T09:30:00Z",
+        "endTime": "2026-09-22T10:00:00Z"
+      },
+      "beatsPerMinute": 75.4
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T10:00:00Z",
+        "endTime": "2026-09-22T10:30:00Z"
+      },
+      "beatsPerMinute": 82.5
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T10:30:00Z",
+        "endTime": "2026-09-22T11:00:00Z"
+      },
+      "beatsPerMinute": 86.5
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T11:00:00Z",
+        "endTime": "2026-09-22T11:30:00Z"
+      },
+      "beatsPerMinute": 84.1
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T11:30:00Z",
+        "endTime": "2026-09-22T12:00:00Z"
+      },
+      "beatsPerMinute": 89.8
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T12:00:00Z",
+        "endTime": "2026-09-22T12:30:00Z"
+      },
+      "beatsPerMinute": 87.9
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T12:30:00Z",
+        "endTime": "2026-09-22T13:00:00Z"
+      },
+      "beatsPerMinute": 91.2
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T13:00:00Z",
+        "endTime": "2026-09-22T13:30:00Z"
+      },
+      "beatsPerMinute": 95.1
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T13:30:00Z",
+        "endTime": "2026-09-22T14:00:00Z"
+      },
+      "beatsPerMinute": 97.3
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T14:00:00Z",
+        "endTime": "2026-09-22T14:30:00Z"
+      },
+      "beatsPerMinute": 101.7
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T14:30:00Z",
+        "endTime": "2026-09-22T15:00:00Z"
+      },
+      "beatsPerMinute": 97.7
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T15:00:00Z",
+        "endTime": "2026-09-22T15:30:00Z"
+      },
+      "beatsPerMinute": 105.3
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T15:30:00Z",
+        "endTime": "2026-09-22T16:00:00Z"
+      },
+      "beatsPerMinute": 105.6
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T16:00:00Z",
+        "endTime": "2026-09-22T16:30:00Z"
+      },
+      "beatsPerMinute": 109.0
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T16:30:00Z",
+        "endTime": "2026-09-22T17:00:00Z"
+      },
+      "beatsPerMinute": 109.1
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T17:00:00Z",
+        "endTime": "2026-09-22T17:30:00Z"
+      },
+      "beatsPerMinute": 109.4
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T17:30:00Z",
+        "endTime": "2026-09-22T18:00:00Z"
+      },
+      "beatsPerMinute": 115.4
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T18:00:00Z",
+        "endTime": "2026-09-22T18:30:00Z"
+      },
+      "beatsPerMinute": 116.9
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T18:30:00Z",
+        "endTime": "2026-09-22T19:00:00Z"
+      },
+      "beatsPerMinute": 116.6
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T19:00:00Z",
+        "endTime": "2026-09-22T19:30:00Z"
+      },
+      "beatsPerMinute": 113.6
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T19:30:00Z",
+        "endTime": "2026-09-22T20:00:00Z"
+      },
+      "beatsPerMinute": 116.2
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T20:00:00Z",
+        "endTime": "2026-09-22T20:30:00Z"
+      },
+      "beatsPerMinute": 116.2
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T20:30:00Z",
+        "endTime": "2026-09-22T21:00:00Z"
+      },
+      "beatsPerMinute": 118.5
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T21:00:00Z",
+        "endTime": "2026-09-22T21:30:00Z"
+      },
+      "beatsPerMinute": 116.4
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T21:30:00Z",
+        "endTime": "2026-09-22T22:00:00Z"
+      },
+      "beatsPerMinute": 113.8
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T22:00:00Z",
+        "endTime": "2026-09-22T22:30:00Z"
+      },
+      "beatsPerMinute": 114.5
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T22:30:00Z",
+        "endTime": "2026-09-22T23:00:00Z"
+      },
+      "beatsPerMinute": 116.4
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T23:00:00Z",
+        "endTime": "2026-09-22T23:30:00Z"
+      },
+      "beatsPerMinute": 114.5
+    }
+  },
+  {
+    "name": "users/me/dataTypes/heart-rate/dataPoints/fixture",
+    "heart_rate": {
+      "interval": {
+        "startTime": "2026-09-22T23:30:00Z",
+        "endTime": "2026-09-23T00:00:00Z"
+      },
+      "beatsPerMinute": 116.9
+    }
+  }
+]

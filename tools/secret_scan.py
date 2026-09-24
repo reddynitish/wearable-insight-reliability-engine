@@ -48,12 +48,28 @@ CONTENT_RULES = (
             ['"][^'"\s{}$<>]{12,}['"]"""
     )),
     ("email address", re.compile(r"\b[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}\b")),
+    # --- personal and third-party data, added after the pre-publication audit ---
+    # A BLE scan records every advertising device in range, so these logs once carried
+    # neighbours' device names and a CPAP serial number. See tools/sanitize_ble_logs.py.
+    ("absolute home path", re.compile(r"/Users/(?!<user>)[A-Za-z0-9._-]+")),
+    ("bluetooth device handle", re.compile(
+        r"\b(?!0000|ABBA|ADAB|8E40|FD62)[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-"
+        r"[0-9A-F]{4}-[0-9A-F]{12}\b")),
+    ("named personal device", re.compile(
+        r"(?i)\b(AirPods|Apple\s*Watch'|iPad \(|Nanoleaf|OBDeleven|ResMed|TRACKR|"
+        r"iTrack|xiaomi\.toothbrush)")),
 )
 
 # Files where a pattern is legitimate: the scanner's own rules, and docs that name the
 # files to avoid. Each entry is (path prefix, rule name) or (path prefix, "*").
 ALLOWLIST = (
     ("tools/secret_scan.py", "*"),
+    # The sanitiser has to name the things it removes in order to remove them.
+    ("tools/sanitize_ble_logs.py", "*"),
+    # Dataset descriptions legitimately mention Apple Watch as a data source.
+    ("PROJECT_BRIEF.md", "named personal device"),
+    ("data/DATASETS.md", "named personal device"),
+    ("docs/", "named personal device"),
     ("google_health/README.md", "email address"),
     ("tests/test_schemas.py", "email address"),
     ("tests/test_api.py", "email address"),

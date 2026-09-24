@@ -1,1 +1,222 @@
-[]
+[
+  {
+    "name": "users/me/dataTypes/steps/dataPoints/fixture",
+    "steps": {
+      "interval": {
+        "startTime": "2026-09-01T00:00:00Z",
+        "endTime": "2026-09-02T00:00:00Z"
+      },
+      "count": 7779
+    }
+  },
+  {
+    "name": "users/me/dataTypes/steps/dataPoints/fixture",
+    "steps": {
+      "interval": {
+        "startTime": "2026-09-02T00:00:00Z",
+        "endTime": "2026-09-03T00:00:00Z"
+      },
+      "count": 9462
+    }
+  },
+  {
+    "name": "users/me/dataTypes/steps/dataPoints/fixture",
+    "steps": {
+      "interval": {
+        "startTime": "2026-09-03T00:00:00Z",
+        "endTime": "2026-09-04T00:00:00Z"
+      },
+      "count": 9459
+    }
+  },
+  {
+    "name": "users/me/dataTypes/steps/dataPoints/fixture",
+    "steps": {
+      "interval": {
+        "startTime": "2026-09-04T00:00:00Z",
+        "endTime": "2026-09-05T00:00:00Z"
+      },
+      "count": 10101
+    }
+  },
+  {
+    "name": "users/me/dataTypes/steps/dataPoints/fixture",
+    "steps": {
+      "interval": {
+        "startTime": "2026-09-05T00:00:00Z",
+        "endTime": "2026-09-06T00:00:00Z"
+      },
+      "count": 9104
+    }
+  },
+  {
+    "name": "users/me/dataTypes/steps/dataPoints/fixture",
+    "steps": {
+      "interval": {
+        "startTime": "2026-09-06T00:00:00Z",
+        "endTime": "2026-09-07T00:00:00Z"
+      },
+      "count": 11223
+    }
+  },
+  {
+    "name": "users/me/dataTypes/steps/dataPoints/fixture",
+    "steps": {
+      "interval": {
+        "startTime": "2026-09-07T00:00:00Z",
+        "endTime": "2026-09-08T00:00:00Z"
+      },
+      "count": 11014
+    }
+  },
+  {
+    "name": "users/me/dataTypes/steps/dataPoints/fixture",
+    "steps": {
+      "interval": {
+        "startTime": "2026-09-08T00:00:00Z",
+        "endTime": "2026-09-09T00:00:00Z"
+      },
+      "count": 7823
+    }
+  },
+  {
+    "name": "users/me/dataTypes/steps/dataPoints/fixture",
+    "steps": {
+      "interval": {
+        "startTime": "2026-09-09T00:00:00Z",
+        "endTime": "2026-09-10T00:00:00Z"
+      },
+      "count": 6900
+    }
+  },
+  {
+    "name": "users/me/dataTypes/steps/dataPoints/fixture",
+    "steps": {
+      "interval": {
+        "startTime": "2026-09-10T00:00:00Z",
+        "endTime": "2026-09-11T00:00:00Z"
+      },
+      "count": 10359
+    }
+  },
+  {
+    "name": "users/me/dataTypes/steps/dataPoints/fixture",
+    "steps": {
+      "interval": {
+        "startTime": "2026-09-11T00:00:00Z",
+        "endTime": "2026-09-12T00:00:00Z"
+      },
+      "count": 6201
+    }
+  },
+  {
+    "name": "users/me/dataTypes/steps/dataPoints/fixture",
+    "steps": {
+      "interval": {
+        "startTime": "2026-09-12T00:00:00Z",
+        "endTime": "2026-09-13T00:00:00Z"
+      },
+      "count": 6208
+    }
+  },
+  {
+    "name": "users/me/dataTypes/steps/dataPoints/fixture",
+    "steps": {
+      "interval": {
+        "startTime": "2026-09-13T00:00:00Z",
+        "endTime": "2026-09-14T00:00:00Z"
+      },
+      "count": 7493
+    }
+  },
+  {
+    "name": "users/me/dataTypes/steps/dataPoints/fixture",
+    "steps": {
+      "interval": {
+        "startTime": "2026-09-14T00:00:00Z",
+        "endTime": "2026-09-15T00:00:00Z"
+      },
+      "count": 6405
+    }
+  },
+  {
+    "name": "users/me/dataTypes/steps/dataPoints/fixture",
+    "steps": {
+      "interval": {
+        "startTime": "2026-09-15T00:00:00Z",
+        "endTime": "2026-09-16T00:00:00Z"
+      },
+      "count": 7828
+    }
+  },
+  {
+    "name": "users/me/dataTypes/steps/dataPoints/fixture",
+    "steps": {
+      "interval": {
+        "startTime": "2026-09-16T00:00:00Z",
+        "endTime": "2026-09-17T00:00:00Z"
+      },
+      "count": 8642
+    }
+  },
+  {
+    "name": "users/me/dataTypes/steps/dataPoints/fixture",
+    "steps": {
+      "interval": {
+        "startTime": "2026-09-17T00:00:00Z",
+        "endTime": "2026-09-18T00:00:00Z"
+      },
+      "count": 6833
+    }
+  },
+  {
+    "name": "users/me/dataTypes/steps/dataPoints/fixture",
+    "steps": {
+      "interval": {
+        "startTime": "2026-09-18T00:00:00Z",
+        "endTime": "2026-09-19T00:00:00Z"
+      },
+      "count": 7670
+    }
+  },
+  {
+    "name": "users/me/dataTypes/steps/dataPoints/fixture",
+    "steps": {
+      "interval": {
+        "startTime": "2026-09-19T00:00:00Z",
+        "endTime": "2026-09-20T00:00:00Z"
+      },
+      "count": 11050
+    }
+  },
+  {
+    "name": "users/me/dataTypes/steps/dataPoints/fixture",
+    "steps": {
+      "interval": {
+        "startTime": "2026-09-20T00:00:00Z",
+        "endTime": "2026-09-21T00:00:00Z"
+      },
+      "count": 6130
+    }
+  },
+  {
+    "name": "users/me/dataTypes/steps/dataPoints/fixture",
+    "steps": {
+      "interval": {
+        "startTime": "2026-09-21T00:00:00Z",
+        "endTime": "2026-09-22T00:00:00Z"
+      },
+      "count": 8020
+    }
+  },
+  {
+    "name": "users/me/dataTypes/steps/dataPoints/fixture",
+    "steps": {
+      "interval": {
+        "startTime": "2026-09-22T00:00:00Z",
+        "endTime": "2026-09-23T00:00:00Z"
+      },
+      "count": 11687
+    }
+  }
+]
