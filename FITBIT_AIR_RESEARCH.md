@@ -32,7 +32,7 @@ implementation (C, with Android/Apple platform code).
 ## Phase 3 - discovery
 - Scan 1 (15 s, 85 devices) and scan 2 (45 s, 121 devices): no `abba*` service UUIDs, no Fitbit mfg data, no
   name containing Fitbit/Air. Most devices are neighbours' (WHOOP, TV, LED strips ...) - not touched.
-- Only candidate: `FITBIT-AIR-LOCAL-HANDLE`, RSSI -43, one advertisement in 45 s, service UUID `0xFD62`,
+- Only candidate: `<fitbit-handle-A>`, RSSI -43, one advertisement in 45 s, service UUID `0xFD62`,
   service data under `0x180A` = `4304875a959f5e4f`. (0xFD62 is believed to be a Fitbit SIG-assigned UUID - unverified.)
 - Connection attempt to it failed: it stopped advertising (not seen in the following 30 s).
 - The user's iPhone was advertising at -29 dBm (84 adverts/45 s) => iPhone Bluetooth radio is still ON
@@ -40,7 +40,7 @@ implementation (C, with Android/Apple platform code).
   probably still attached to it / advertising sparsely.
 
 ## Phase 3/4 - device identified and GATT enumerated (2026-09-21 19:01)
-- Fitbit Air = CoreBluetooth id `FITBIT-AIR-LOCAL-HANDLE`. Advertises service `0xFD62` + service data under 0x180A
+- Fitbit Air = CoreBluetooth id `<fitbit-handle-A>`. Advertises service `0xFD62` + service data under 0x180A
   (`43 04 <6 bytes>`, bytes change between adverts). Appeared after iPhone BT was turned fully off and the tracker was woken.
 - Direct Mac connection works without pairing. MTU 247. Log: `logs/gatt-20260921-190135.json`.
 - Device Information: manufacturer `Fitbit`, model `67`, firmware `67.20001.253.2`, hw rev empty.
@@ -85,7 +85,7 @@ Answered: it does not (see Phase 8). The private channel is closed to an unbonde
 - [x] Active Gattlink probe (see below)
 
 ## Phase 8 - active Gattlink probe (2026-09-21 19:18)
-- Note: the tracker's CoreBluetooth id rotated (`FITBIT-AIR-LOCAL-HANDLE-...` -> `FITBIT-AIR-LOCAL-HANDLE-...`, resolvable private address) and it now
+- Note: the tracker's CoreBluetooth id rotated (`<fitbit-handle-A>` -> `<fitbit-handle-B>`, resolvable private address) and it now
   advertises the name **"Google Fitbit Air"** with service 0xFD62. Scripts now discover it by the 0xFD62 service (`auto`).
 - `scripts/gattlink_probe.py`: subscribed to abbaff02 (+abbafd01/02, 2a37), then wrote the documented Gattlink
   Reset Request (`0x80`, per golden-gate `gg_gattlink.c`) to abbaff01 (write-without-response); retried at 1 s, 3 tries total,
@@ -305,3 +305,23 @@ Nothing was reset, flashed, erased, bonded or modified at any point.
 - `scripts/hub_peripheral.py` — Mac as Golden Gate Hub (CBPeripheralManager GATT server)
 - `scripts/poll_motion.py` — rapid reconnect-polling of all readable chars during cued movement
 - `scripts/att_error_detail.py` — ATT error detail + stability baseline
+
+---
+
+## Privacy note on the captured logs
+
+A Bluetooth Low Energy scan records every advertising device in range, not only the one
+being researched. The raw logs from this investigation captured 193 distinct devices
+belonging to neighbours, including personal device names and a CPAP machine with a serial
+number. None of that was the researcher's to publish and none of it had any bearing on the
+findings, which concern one Fitbit Air.
+
+Before this repository was made public, `tools/sanitize_ble_logs.py` removed every record
+belonging to a device other than the Fitbit Air -- removed, not anonymised, because an
+anonymised advertisement still carries manufacturer payloads and timing that fingerprint a
+device and a household. One file, a pure survey of 85 neighbour devices with no Fitbit in
+it, was deleted outright. The Fitbit's own per-host CoreBluetooth handles are replaced with
+placeholders throughout; they were resolvable private addresses that rotated between
+sessions anyway, which is itself one of the findings above.
+
+Every conclusion in this document rests on the Fitbit's own records and is unaffected.

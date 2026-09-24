@@ -30,7 +30,7 @@ skips that review entirely. It only applies to apps going public or past 100 use
 
 ## Use
 
-    cd /Users/<user>/Projects/fitbit-air-research
+    cd /path/to/wearable-insight-reliability-engine
     ./.venv/bin/python google_health/gh_auth.py          # one-time browser authorization
     ./.venv/bin/python google_health/gh_fetch.py --days 7
     ./.venv/bin/python google_health/gh_fetch.py --types steps,heart-rate --days 30

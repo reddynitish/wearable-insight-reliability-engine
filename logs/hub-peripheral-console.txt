@@ -1,8 +1,6 @@
 running as GG hub for 240s ...
 peripheral manager state: poweredOn
   {"kind": "state", "state": "poweredOn", "t": 1790126265.673307}
-  {"kind": "service_added", "uuid": "ABBAFC00-E56A-484C-B832-8B17CF6CBFE8", "error": null, "t": 1790126265.674751}
-  {"kind": "service_added", "uuid": "ABBAFF00-E56A-484C-B832-8B17CF6CBFE8", "error": null, "t": 1790126265.674797}
   {"kind": "advertising", "error": null, "t": 1790126265.6751502}
 
 *** Now advertising as a Golden Gate Hub. Waiting for the tracker. ***
