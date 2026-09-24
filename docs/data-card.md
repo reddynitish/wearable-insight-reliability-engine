@@ -87,7 +87,46 @@ proxy, and not assumed.
 **Known quirk handled:** a daily resting heart rate of exactly 0 means "no estimate", not a
 measurement. Those days are dropped rather than averaged into a baseline.
 
-## 3. The other four datasets (planned, none downloaded)
+## 3. LifeSnaps (verified, downloaded, external validation only)
+
+| | |
+|---|---|
+| Source | https://zenodo.org/records/7229547 (DOI 10.5281/zenodo.7229547) |
+| Citation | Yfantidou et al., "LifeSnaps, a 4-month multi-modal dataset...", *Scientific Data* 9, 663 (2022), doi:10.1038/s41597-022-01764-x |
+| Licence | CC BY 4.0. No changes made to the data. |
+| File | `rais_anonymized.zip`, 615,037,493 bytes, MD5 verified against the Zenodo record |
+| Subjects | 71, ~3 months each, Fitbit Sense |
+| Committed | **No.** `data/datasets/` is gitignored. |
+
+**Role: external validation only. No threshold is tuned on this dataset.** It exists to
+test whether the PMData-derived `claim-policy-0.2.0` generalises to a larger, general
+population on a different device.
+
+**What is used:** the daily Fitbit table only (`resting_hr`, `minutesAsleep`,
+`sleep_efficiency`, activity-level minutes, `steps`), plus the `age`, `gender` and `bmi`
+columns for the subgroup analysis. The hourly table, the MongoDB dumps and the survey
+instruments are not used.
+
+**Three differences from PMData that make raw comparison unsafe**, all stated in the
+adapter and the report:
+
+1. *Wear time is a different measurement.* PMData counts minutes with an actual heart-rate
+   sample; LifeSnaps has no such field, so wear is the sum of activity-level minute buckets
+   clamped at 1440. Tracked time, not sampled time.
+2. *No sleep interval.* The daily table has durations but no clock times, so the sleep
+   window is reconstructed from time-in-bed anchored to a nominal 07:00 wake. Sleep results
+   here are weaker evidence than the heart-rate results.
+3. *Timezone unknown, cohort geographically distributed.* UTC is assumed, so day boundaries
+   are wrong for most participants by some offset.
+
+**Identifiers.** The dataset's participant tokens are already anonymised; they are further
+shortened and prefixed (`lifesnaps-<8 chars>`) so no raw token reaches a decision trace.
+
+**Source data quality note.** The `bmi` column mixes bare numbers and bands (`21.0`, `<19`,
+`>=25`) in the same field. The analysis collapses everything onto the conventional 25
+cutoff so the groups are comparable.
+
+## 4. The other four datasets (planned, none downloaded)
 
 See [`data/DATASETS.md`](../data/DATASETS.md): PPG-DaLiA, SleepAccel, WESAD, DREAMT.
 
@@ -103,7 +142,7 @@ record, subject-held-out splits only, at least one dataset held out entirely for
 transfer, pseudonymous identifiers rewritten on ingest, and no dataset file or derived
 subject-level table committed (`data/datasets/` is gitignored).
 
-## 4. Personal Google Health data (demonstration only)
+## 5. Personal Google Health data (demonstration only)
 
 | | |
 |---|---|
@@ -135,7 +174,7 @@ observations using candidate key lists written from the fetch client and the doc
 shape, **not** by inspecting personal exports. Points it cannot map are counted and
 reported by `demo/google_health_demo.py --report`, never converted with a guessed value.
 
-## 5. BLE research artifacts (preserved, not evidence)
+## 6. BLE research artifacts (preserved, not evidence)
 
 `captures/`, `logs/`, and `scripts/` hold the completed direct-BLE investigation: GATT
 enumerations, advertisement records, and notification payloads from the owner's own device.

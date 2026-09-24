@@ -354,6 +354,54 @@ engine has no equivalent of. Worth knowing; not a reason to put a model in the d
 path. Full write-up and the caveats that limit how far this travels:
 [`eval/results/pmdata-learned-*.md`](eval/results/).
 
+### Do the revised thresholds generalise? Second cohort says yes
+
+`claim-policy-0.2.0` was set from PMData — 16 largely athletic Norwegian adults on a Fitbit
+Versa 2. A threshold tuned to one cohort is a hypothesis about the next one, so it was
+tested against **LifeSnaps**: 71 geographically distributed participants, ~3 months each,
+Fitbit Sense. ([Yfantidou et al., *Scientific Data* 9, 663 (2022)](https://doi.org/10.1038/s41597-022-01764-x),
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).) **No threshold was tuned on it.**
+
+| | PMData (16 athletes) | LifeSnaps (71 general) |
+|---|---|---|
+| `show_z ≥ 1.5` fires on | 10.5% of days | **11.0%** |
+| `min_wear_coverage` rejects | 10.6% | 6.7% |
+| `min_absolute_delta` blocks | 79.5% | 71.5% |
+| baseline settles after | 48 days | 40 days |
+| resting-heart-rate decision coverage | 7.5% | **8.3%** |
+| unsupported-show on corrupted real evidence | 0.0000 | **0.0000** (3084 cases) |
+
+The thresholds hold. The effect-size threshold fires on almost exactly the same share of
+days in both cohorts, and decision coverage lands within a point. The tightened stability
+gate (8.0 → 5.0 bpm) now fires on **0.3%** of days in a general population where it fired
+on 0.0% among athletes — which is what a working gate should do.
+
+Both cohorts also confirm the compromise in `min_baseline_days`: a personal baseline takes
+40–48 days to settle and the contract requires 28, so the gap is real and documented rather
+than resolved.
+
+### Fairness: no disparity detectable, and the study is too small to rule one out
+
+LifeSnaps carries age, gender and BMI, which made the first subgroup analysis possible. The
+risk here is not biased conclusions — the engine compares each person only to themselves —
+but uneven **access**: a quality gate firing more often for one group would ration insights
+while looking perfectly safe in aggregate.
+
+| group | mean decision coverage | difference (95% CI) |
+|---|---|---|
+| male (n=41) vs female (n=26) | 7.2% vs 5.4% | −1.8% [−5.3%, +1.7%] — not distinguishable |
+| age <30 (n=36) vs ≥30 (n=30) | 5.9% vs 7.0% | −1.1% [−4.7%, +2.4%] — not distinguishable |
+| BMI <25 (n=46) vs ≥25 (n=20) | 5.5% vs 8.4% | +2.9% [−1.2%, +7.4%] — not distinguishable |
+
+**This result is worth reading carefully, because the first version of it was wrong.** The
+per-subject *medians* differ more than twofold by gender (5.1% vs 2.3%) and look alarming.
+Bootstrapping over subjects shows the interval comfortably contains zero, and the mechanism
+markers are near-identical (wear 0.71 vs 0.69, baseline SD 1.88 vs 2.03). The median was
+sampling noise. Every subgroup comparison now carries an interval for exactly that reason.
+
+The honest conclusion is **not** "the engine is fair" — it is that no disparity is
+detectable at n=67, and that is far too small to rule out one that matters.
+
 ### One design lesson the data handed over
 
 No Fitbit export carries a sync-completion timestamp. Without one the engine discloses
@@ -410,14 +458,15 @@ therefore depend entirely on public datasets that ship raw accelerometer data.
 ```
 engine/            the engine: schemas, policies, features, gates, decisions, explanations
   policies/        six versioned claim contracts
-  adapters/        Google Health and PMData -> canonical observations
+  adapters/        Google Health, PMData and LifeSnaps -> canonical observations
   api/             FastAPI surface and the before/after demo page
   measure.py       independent contract measurement, used only to label evaluation cases
   corruptions.py   17 seeded failure injections
   synth.py         seeded synthetic evidence generators
 eval/              synthetic suite, baselines, metrics, threshold sweep, PMData
-                   preparation / evaluation / policy A-B, learned baselines B3+B4
-tests/             307 tests
+                   preparation / evaluation / policy A-B, learned baselines B3+B4,
+                   LifeSnaps external validation
+tests/             327 tests
 docs/              claim contracts, evaluation protocol, related work, cards, ADRs
 demo/              Google Health demonstration script
 tools/             secret scanner
@@ -430,7 +479,7 @@ google_health/     the supported API client (unchanged)
 ## Development
 
 ```bash
-./.venv/bin/python -m pytest                    # 307 tests
+./.venv/bin/python -m pytest                    # 327 tests
 ./.venv/bin/python -m eval.run_eval --seeds 5   # evaluation artifacts
 ./.venv/bin/python tools/secret_scan.py         # pre-publish gate
 ```
@@ -462,5 +511,5 @@ reports whether measurements support a statement, never whether a person has a c
 - [docs/resume-positioning.md](docs/resume-positioning.md) — what may and may not be claimed
 - [docs/architecture.md](docs/architecture.md) — diagram and module map
 - [docs/decisions/](docs/decisions/) — architecture decision records
-- [data/DATASETS.md](data/DATASETS.md) — dataset manifest; PMData verified and in use, the rest unverified
+- [data/DATASETS.md](data/DATASETS.md) — dataset manifest; PMData and LifeSnaps verified and in use, the rest unverified
 - [FITBIT_AIR_RESEARCH.md](FITBIT_AIR_RESEARCH.md) — the completed BLE feasibility research

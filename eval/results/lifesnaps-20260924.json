@@ -1,0 +1,278 @@
+{
+  "artifact": "lifesnaps-external-validation",
+  "synthetic": false,
+  "dataset": "LifeSnaps",
+  "citation": "Yfantidou et al., 'LifeSnaps, a 4-month multi-modal dataset capturing unobtrusive snapshots of our lives in the wild', Scientific Data 9, 663 (2022). doi:10.1038/s41597-022-01764-x; data doi:10.5281/zenodo.7229547. Licensed CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/); no changes were made to the data.",
+  "role": "external validation only; no threshold is tuned on this dataset",
+  "generated_at": "2026-09-24T15:21:33.046953+00:00",
+  "model_version": "reliability-engine-0.1.0",
+  "policy_version": "claim-policy-0.2.0",
+  "python": "3.13.11",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "subjects": 71,
+  "thresholds": {
+    "subject_days": 7083,
+    "checks": [
+      {
+        "threshold": "min_wear_coverage",
+        "contract_value": 0.6,
+        "observed": {
+          "n": 7083,
+          "mean": 0.835,
+          "sd": 0.174,
+          "p05": 0.587,
+          "median": 0.923,
+          "p95": 1.0,
+          "max": 1.0
+        },
+        "share_affected": 0.0665
+      },
+      {
+        "threshold": "max_baseline_sd (resting heart rate, bpm)",
+        "contract_value": 5.0,
+        "observed": {
+          "n": 2368,
+          "mean": 2.525,
+          "sd": 0.804,
+          "p05": 1.462,
+          "median": 2.371,
+          "p95": 3.937,
+          "max": 5.179
+        },
+        "share_affected": 0.0034
+      },
+      {
+        "threshold": "max_baseline_shift (resting heart rate, bpm)",
+        "contract_value": 6.0,
+        "observed": {
+          "n": 2368,
+          "mean": 2.096,
+          "sd": 1.699,
+          "p05": 0.165,
+          "median": 1.736,
+          "p95": 5.818,
+          "max": 8.48
+        },
+        "share_affected": 0.0439
+      },
+      {
+        "threshold": "show_z (resting heart rate)",
+        "contract_value": 1.5,
+        "observed": {
+          "n": 2368,
+          "mean": 0.033,
+          "sd": 1.161,
+          "p05": -1.854,
+          "median": 0.016,
+          "p95": 1.984,
+          "max": 4.093
+        },
+        "share_affected": 0.1102
+      },
+      {
+        "threshold": "min_absolute_delta (resting heart rate, bpm)",
+        "contract_value": 3.0,
+        "observed": {
+          "n": 2368,
+          "mean": 2.299,
+          "sd": 1.837,
+          "p05": 0.186,
+          "median": 1.857,
+          "p95": 5.84,
+          "max": 11.74
+        },
+        "share_affected": 0.7149
+      }
+    ],
+    "baseline_settling_days": {
+      "n": 53,
+      "mean": 39.585,
+      "sd": 9.985,
+      "p05": 24.0,
+      "median": 40.0,
+      "p95": 55.0,
+      "max": 57.0
+    },
+    "contract_min_baseline_days": 28
+  },
+  "decisions": {
+    "RESTING_HEART_RATE_ELEVATED": {
+      "evaluated_days": 4422,
+      "decisions": {
+        "SHOW": 0,
+        "SHOW_WITH_WARNING": 366,
+        "WAIT_FOR_MORE_DATA": 1911,
+        "REJECT": 2145
+      },
+      "decision_coverage": 0.0828,
+      "top_reason_codes": {
+        "COVERAGE_UNKNOWN": 4422,
+        "BASELINE_NOT_MATURE": 2173,
+        "CLAIM_CONTRADICTED": 2106,
+        "INSUFFICIENT_HISTORICAL_COVERAGE": 1258,
+        "INSUFFICIENT_COVERAGE": 455,
+        "EFFECT_BELOW_RELIABLE_THRESHOLD": 258
+      }
+    },
+    "ACTIVITY_LOAD_HIGH": {
+      "evaluated_days": 7083,
+      "decisions": {
+        "SHOW": 166,
+        "SHOW_WITH_WARNING": 125,
+        "WAIT_FOR_MORE_DATA": 2472,
+        "REJECT": 4320
+      },
+      "decision_coverage": 0.0411,
+      "top_reason_codes": {
+        "CLAIM_CONTRADICTED": 4313,
+        "INSUFFICIENT_COVERAGE": 2319,
+        "BASELINE_SHIFT_DETECTED": 1301,
+        "BASELINE_NOT_MATURE": 1096,
+        "INSUFFICIENT_HISTORICAL_COVERAGE": 739,
+        "BASELINE_UNSTABLE": 223
+      }
+    },
+    "SLEEP_DURATION_LOW": {
+      "evaluated_days": 3550,
+      "decisions": {
+        "SHOW": 384,
+        "SHOW_WITH_WARNING": 107,
+        "WAIT_FOR_MORE_DATA": 1014,
+        "REJECT": 2045
+      },
+      "decision_coverage": 0.1383,
+      "top_reason_codes": {
+        "CLAIM_CONTRADICTED": 2043,
+        "INSUFFICIENT_HISTORICAL_COVERAGE": 627,
+        "BASELINE_NOT_MATURE": 519,
+        "MARGINAL_SUPPORT": 130,
+        "BASELINE_UNSTABLE": 95,
+        "CONTEXT_CONFLICT": 78
+      }
+    },
+    "SLEEP_QUALITY_REDUCED": {
+      "evaluated_days": 3550,
+      "decisions": {
+        "SHOW": 0,
+        "SHOW_WITH_WARNING": 113,
+        "WAIT_FOR_MORE_DATA": 1694,
+        "REJECT": 1743
+      },
+      "decision_coverage": 0.0318,
+      "top_reason_codes": {
+        "LOW_REFERENCE_AGREEMENT": 3550,
+        "CLAIM_CONTRADICTED": 1739,
+        "BASELINE_NOT_MATURE": 1027,
+        "INSUFFICIENT_HISTORICAL_COVERAGE": 952,
+        "EFFECT_BELOW_RELIABLE_THRESHOLD": 493,
+        "SUMMARY_DETAIL_MISMATCH": 165
+      }
+    }
+  },
+  "subgroups": {
+    "gender": {
+      "groups": {
+        "FEMALE": {
+          "subjects": 26,
+          "mean_decision_coverage": 0.054,
+          "median_decision_coverage": 0.0231,
+          "min": 0.0,
+          "max": 0.2105
+        },
+        "MALE": {
+          "subjects": 41,
+          "mean_decision_coverage": 0.0719,
+          "median_decision_coverage": 0.0508,
+          "min": 0.0,
+          "max": 0.3265
+        },
+        "unknown": {
+          "subjects": 4,
+          "mean_decision_coverage": 0.1109,
+          "median_decision_coverage": 0.1323,
+          "min": 0.0312,
+          "max": 0.1475
+        }
+      },
+      "difference": {
+        "between": "FEMALE minus MALE",
+        "point": -0.0179,
+        "ci95_low": -0.0528,
+        "ci95_high": 0.0173,
+        "distinguishable_from_zero": false
+      }
+    },
+    "age_band": {
+      "groups": {
+        "<30": {
+          "subjects": 36,
+          "mean_decision_coverage": 0.0589,
+          "median_decision_coverage": 0.0356,
+          "min": 0.0,
+          "max": 0.2105
+        },
+        ">=30": {
+          "subjects": 30,
+          "mean_decision_coverage": 0.0705,
+          "median_decision_coverage": 0.0432,
+          "min": 0.0,
+          "max": 0.3265
+        },
+        "unknown": {
+          "subjects": 5,
+          "mean_decision_coverage": 0.1119,
+          "median_decision_coverage": 0.1176,
+          "min": 0.0312,
+          "max": 0.1475
+        }
+      },
+      "difference": {
+        "between": "<30 minus >=30",
+        "point": -0.0115,
+        "ci95_low": -0.0473,
+        "ci95_high": 0.0236,
+        "distinguishable_from_zero": false
+      }
+    },
+    "bmi_band": {
+      "groups": {
+        "25 or over": {
+          "subjects": 20,
+          "mean_decision_coverage": 0.084,
+          "median_decision_coverage": 0.0548,
+          "min": 0.0,
+          "max": 0.3265
+        },
+        "under 25": {
+          "subjects": 46,
+          "mean_decision_coverage": 0.0555,
+          "median_decision_coverage": 0.0355,
+          "min": 0.0,
+          "max": 0.2105
+        },
+        "unknown": {
+          "subjects": 5,
+          "mean_decision_coverage": 0.1119,
+          "median_decision_coverage": 0.1176,
+          "min": 0.0312,
+          "max": 0.1475
+        }
+      },
+      "difference": {
+        "between": "25 or over minus under 25",
+        "point": 0.0285,
+        "ci95_low": -0.0125,
+        "ci95_high": 0.0738,
+        "distinguishable_from_zero": false
+      }
+    }
+  },
+  "corruptions_on_real_evidence": {
+    "real_days_used_as_base": 257,
+    "corrupted_cases": 3084,
+    "displayed": 0,
+    "unsupported_show_rate": 0.0,
+    "benign_cases": 514,
+    "benign_decision_changes": 0
+  }
+}

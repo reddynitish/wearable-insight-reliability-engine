@@ -3,19 +3,24 @@
 Read this before drawing any conclusion from this repository. It is ordered by how badly
 each item would mislead someone who skipped it.
 
-## 1. One dataset, one cohort, one device
+## 1. Two cohorts, both Fitbit, neither with a reference standard
 
-The engine has now been evaluated on real wearable data — PMData, 16 subjects, ~5 months
-each, Fitbit Versa 2 — and three thresholds were revised because of it. That is a real
-result and it is a narrow one.
+The engine has been evaluated on PMData (16 subjects, Fitbit Versa 2), three thresholds
+were revised on that evidence, and the revision was then checked against LifeSnaps (71
+subjects, Fitbit Sense) which was **not** used to tune anything. The thresholds held: the
+effect-size threshold fires on 10.5% and 11.0% of days respectively, decision coverage lands
+at 7.5% and 8.3%, and the gates returned 0.0000 unsupported-show on both.
 
-PMData is **16 largely athletic Norwegian adults on a single device model**. The revised
-thresholds in `claim-policy-0.2.0` are tuned to that cohort's distributions. That is better
-than tuned to nothing, and it is not general: a less active population, an older one, or a
-different sensor would likely move them again. In particular the resting-heart-rate
-stability gate still fires on 0.0% of subject-days even after being tightened from 8.0 to
-5.0 bpm, because nobody in this cohort has an unstable baseline — so that gate remains
-**unvalidated in the direction it exists to act**.
+That is genuine external validation and it is still narrow. Both cohorts are **Fitbit
+wearers who volunteered for a research study**, which is not the general population; both
+skew young; neither contains anyone using the device under clinical supervision. A different
+sensor vendor, an older cohort, or people with cardiac conditions could move these numbers
+again.
+
+The tightened stability gate is the clearest case of remaining uncertainty: it fires on
+0.0% of PMData days and 0.3% of LifeSnaps days. It can now act, which 8.0 bpm could not —
+but it has still barely been observed doing so, so it remains close to **unvalidated in the
+direction it exists to act**.
 
 ## 2. Real data has no ground truth for the uncorrupted days
 
@@ -119,14 +124,23 @@ Motion-artifact quality estimation therefore depends entirely on public datasets
 raw accelerometer data — principally PPG-DaLiA. If that dataset turns out to be
 unobtainable or unusable, the signal-quality stage has no personal-data fallback.
 
-## 10. Fairness and subgroup performance are untested
+## 10. Fairness: measured once, nothing detected, badly underpowered
 
-The engine compares each person only to their own baseline, which avoids population-
-reference bias by construction. But PPG signal quality is known to vary with skin tone,
-tattoos, perfusion, and wear position, and a quality gate that fires more often for some
-people would ration insights unevenly while looking safe in the aggregate. Nothing here
-measures that. No fairness claim is made. Testing it needs datasets carrying the relevant
-metadata, and coverage must be reported per subgroup, not only pooled.
+LifeSnaps carries gender, age band and BMI, so decision coverage has now been compared
+across subgroups. No difference was distinguishable from zero: male vs female −1.8%
+[−5.3%, +1.7%], age <30 vs ≥30 −1.1% [−4.7%, +2.4%], BMI <25 vs ≥25 +2.9% [−1.2%, +7.4%],
+bootstrapping over subjects.
+
+**This is not a fairness claim.** n=67 with the smallest group at 20 cannot rule out a
+disparity that would matter in a product. And the analysis nearly went wrong: the
+per-subject medians differ more than twofold by gender and would have supported a confident
+and false headline. The intervals are what stopped that, which is why every subgroup
+comparison now carries one.
+
+What is still untested is the mechanism most likely to cause real harm: PPG signal quality
+varies with skin tone, tattoos, perfusion and wear position, and neither dataset records
+skin tone. A gate that fires more often for darker skin would ration insights while looking
+perfectly safe in every number above. Testing that needs a dataset that records it.
 
 ## 11. Known engine-level gaps
 

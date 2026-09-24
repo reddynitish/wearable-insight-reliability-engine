@@ -36,6 +36,16 @@ command from this repository, and only with the qualifier the artifact itself ca
 > coverage 5.3% → 9.1%) and confirming the unsupported-show rate on corrupted real evidence
 > stayed at 0.0000 across 1356 cases.
 
+> Validated those revised thresholds on a second, independent cohort that was not used to
+> tune them — LifeSnaps, 71 participants on a different Fitbit model — where the effect-size
+> threshold fired on 11.0% of days against 10.5% in the tuning cohort and decision coverage
+> landed at 8.3% against 7.5%.
+
+> Built the learned baselines the project's own success criterion called for, measured that
+> they did not beat the deterministic engine on held-out subjects, and published the
+> negative result: without gates the model displayed 23% of inadequate evidence, and with
+> them it reproduced the engine exactly.
+
 > Established through direct BLE investigation that the target device exposes no accessible
 > motion stream — an ~8.31 s unbonded ATT service window and an authenticated DTLS channel
 > requiring device credentials — and redirected the project from sensor access to evidence
@@ -53,7 +63,8 @@ turns a reproducible engineering result into a false claim about real-world perf
 | "Trained a signal-quality model" | No learned component exists. |
 | "Validated against polysomnography / chest ECG" | No reference-standard data has been touched. PPG-DaLiA and SleepAccel are still unverified and undownloaded. |
 | "Novel claim-level reliability layer" | `docs/related-work.md` lists seven verification tasks, none started. |
-| "Evaluated on N wearable datasets" | N is one, and it is 16 largely athletic adults on a single device model. |
+| "Evaluated on N wearable datasets" | N is two: PMData (16) and LifeSnaps (71). Both are Fitbit wearers who volunteered for research, neither has a reference standard. |
+| "Fair across demographic groups" | No subgroup difference was detectable, at n=67 with the smallest group at 20. That cannot rule out a disparity, and skin tone — the likeliest mechanism — is in neither dataset. |
 | "Calibrated thresholds for wearable insights" | The thresholds were corrected where a gate demonstrably could not fire or fired on half of all days. Nothing was optimised against an outcome, because there is no outcome label. |
 | "Production-ready health service" | No persistence, no deployment, no retention path, no clinical review. |
 | "Improved accuracy over a machine-learning baseline" | Baselines B3 and B4 are unimplemented by design, and declared so. |

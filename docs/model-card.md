@@ -122,12 +122,39 @@ activity stability gate fired on 48.7% and was withholding half of all activity 
 real people. It is one cohort — 16 largely athletic adults, one device model — so the
 revised values are tuned to them, not validated for a population.
 
+### External validation — LifeSnaps (71 subjects, Fitbit Sense)
+
+The thresholds were set from PMData, so they were checked against a cohort they were not
+tuned on. Yfantidou et al., *Scientific Data* 9, 663 (2022), CC BY 4.0.
+
+| | PMData (16, athletic) | LifeSnaps (71, general) |
+|---|---|---|
+| `show_z` fires on | 10.5% of days | 11.0% |
+| resting-heart-rate decision coverage | 7.5% | 8.3% |
+| baseline settling time | 48 days | 40 days |
+| unsupported-show, corrupted real evidence | 0.0000 | 0.0000 |
+
+The thresholds generalise across the two cohorts. Both remain Fitbit wearers who
+volunteered for a research study, which is not the general population.
+
+### Subgroup performance
+
+Decision coverage by subgroup, bootstrapped over subjects. No difference is distinguishable
+from zero: gender −1.8% [−5.3%, +1.7%], age −1.1% [−4.7%, +2.4%], BMI +2.9% [−1.2%, +7.4%].
+**This is not a fairness claim**; n=67 cannot rule out a disparity that would matter, and
+skin tone — the variable most likely to drive one, through PPG quality — is recorded in
+neither dataset.
+
 ### Metrics that do not exist yet
 
-Calibration curves, expected calibration error, Brier score, selective-risk-versus-coverage
-curves, out-of-distribution performance, subgroup performance, and any result on real
-wearable data. All require the public datasets in `data/DATASETS.md`, none of which has
-been downloaded.
+Any result against a **reference standard**. Both datasets are wearable-only: there is no
+chest ECG for heart rate and no polysomnography for sleep, so on real data the only cases
+with known labels are the ones corrupted deliberately. That gap needs PPG-DaLiA and
+SleepAccel, neither of which has been downloaded.
+
+Calibration for the shipped engine. The learned models produce calibrated probabilities
+(Brier 0.038, ECE 0.003) but were not adopted, and the rules engine's
+`claim_support_probability` remains an uncalibrated score.
 
 ## Training data
 
@@ -153,11 +180,12 @@ sensor-error model, no population variation, no device heterogeneity.
   (an email address or phone number is rejected). No credential or personal export is read
   by the engine; the Google Health adapter cannot make a network call. Decision traces
   contain measurements, so they are personal data wherever they are logged.
-- **Fairness.** Untested. The engine compares each person only against their own baseline,
-  which avoids population-reference bias by construction, but PPG signal quality is known
-  to vary with skin tone, tattoos, and perfusion, and a quality gate that fires more often
-  for some people would ration insights unevenly. Nothing here measures that, and no
-  claim of fairness is made. Testing it needs datasets with the relevant metadata.
+- **Fairness.** Measured once, on LifeSnaps, with nothing detectable and nowhere near
+  enough power to conclude anything. The engine compares each person only against their own
+  baseline, which avoids population-reference bias by construction. The residual risk is
+  uneven *access*: PPG quality varies with skin tone, tattoos and perfusion, and a gate
+  firing more often for some people would ration insights while looking safe in aggregate.
+  Skin tone is recorded in neither dataset, so the most likely mechanism is untested.
 - **Failure mode to watch.** Systematic over-abstention for a subgroup would look like
   safety in the aggregate metrics while denying that subgroup any insight at all. Coverage
   is therefore reported beside every risk number, and should be reported per subgroup as

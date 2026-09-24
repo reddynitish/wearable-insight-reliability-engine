@@ -1,7 +1,7 @@
 # Dataset manifest
 
-**One dataset is verified and downloaded: PMData.** The rest of this table remains
-unverified and untouched.
+**Two datasets are verified and downloaded: PMData and LifeSnaps.** The rest of this table
+remains unverified and untouched.
 
 **Verification status of the remaining rows: UNVERIFIED.** Their citations, URLs, sizes,
 and license names were drafted from memory during AI-assisted planning. Every row must
@@ -75,6 +75,32 @@ and this engine judges sensor evidence.
 derived per-subject table is committed. Participant identifiers are used as the dataset's
 own pseudonyms (`p01`…`p16`), rewritten to `pmdata-pNN` on ingest.
 
+### LifeSnaps
+
+| field | value |
+|---|---|
+| Status | **VERIFIED 2026-09-24, downloaded** |
+| Canonical record | https://zenodo.org/records/7229547 (DOI [10.5281/zenodo.7229547](https://doi.org/10.5281/zenodo.7229547)) |
+| Paper | Yfantidou, Karagianni, Efstathiou, Vakali, Palotti, Giakatos, Marchioro, Kazlouski, Ferrari, Girdzijauskas. **"LifeSnaps, a 4-month multi-modal dataset capturing unobtrusive snapshots of our lives in the wild."** *Scientific Data* 9, 663 (2022). DOI [10.1038/s41597-022-01764-x](https://doi.org/10.1038/s41597-022-01764-x) |
+| Licence | **CC BY 4.0** (stated in the Zenodo record metadata). Attribution given here, in the README, in the adapter, and in every evaluation artifact. No changes made to the data. |
+| File | `rais_anonymized.zip`, 615,037,493 bytes, MD5 `726afe263ab4b900a721eac19b2ca13a` (recorded from the Zenodo record and verified on download) |
+| Access date | 2026-09-24 |
+| Credentials required | None. Open access. |
+| Subjects | 71 participants, in two rounds (May–Jul 2021, n=38; Nov 2021–Jan 2022, n=34) |
+| Device | Fitbit Sense |
+| Scale | >71 million rows, >35 data types, second-to-daily granularity |
+
+**Why this dataset, specifically.** It is the *external validity check* on the
+`claim-policy-0.2.0` thresholds, which were set from PMData. PMData is 16 largely athletic
+Norwegian adults on a Fitbit Versa 2; `docs/limitations.md` states plainly that a threshold
+tuned to one cohort is a hypothesis about the next one. LifeSnaps is a larger,
+geographically distributed, general-population cohort on a different Fitbit model. If the
+revised thresholds describe these people too, the revision generalises. If they do not,
+that is the more important finding and it gets published.
+
+This is the dataset-held-out external check that `docs/evaluation-protocol.md` section 6
+requires: LifeSnaps is not used to set any threshold.
+
 ## Remaining candidates (unverified, not downloaded)
 
 | Dataset | Status | Signals / reference | Intended use in this project | Access notes to verify |
@@ -106,3 +132,4 @@ own pseudonyms (`p01`…`p16`), rewritten to `pmdata-pNN` on ingest.
 |---|---|
 | 2026-09-23 | manifest created; all rows unverified; no downloads performed |
 | 2026-09-23 | PMData verified against its primary source and downloaded; licence discrepancy between a search summary (CC BY-NC 4.0) and the dataset page (CC BY 4.0) recorded, primary source adopted |
+| 2026-09-24 | LifeSnaps verified against its Zenodo record and downloaded, as the external-validity check on the PMData-derived thresholds; not used to set any threshold |
