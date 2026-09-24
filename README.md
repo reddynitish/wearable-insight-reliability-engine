@@ -207,8 +207,8 @@ types × 3 severities:**
 | B0 always show | 1.0000 [1.0000, 1.0000] | 0.0000 | 1.0000 | 0.14 |
 | B1 data-present check | 0.9583 [0.9436, 0.9723] | 0.0000 | 0.8803 | 0.14 |
 | **B2 rules engine (this)** | **0.0000 [0.0000, 0.0000]** | **0.0000** | 0.2699 | 0.78 |
-| B3 learned, no abstention | not implemented — needs public datasets | | | |
-| B4 hybrid, calibrated | not implemented — needs public datasets | | | |
+| B3 learned, no abstention | built and tested on real data — see below | | | |
+| B4 hybrid, calibrated | built and tested on real data — see below | | | |
 
 Intervals bootstrap over **subjects**, not cases, because cases from one subject share a
 baseline and a window.
@@ -250,8 +250,8 @@ sometimes fixing the engine, sometimes the labeller, all of it in the git histor
 evidence itself is generated from Gaussian baselines with no sensor-error model, so it
 tests the decision logic, not physiology.
 
-**No learned component exists yet**, so baselines B3 and B4 remain unimplemented and
-declared as such. But the engine has now been run against real wearable data — see below.
+Baselines B3 and B4 have been built and tested against real data, and the measured answer
+was that they do not earn their place — see below.
 
 ## Results on real data — PMData
 
@@ -318,6 +318,42 @@ Adopted as `claim-policy-0.2.0` only after measuring the effect (activity covera
 improvement. Full before/after:
 [`eval/results/pmdata-policy-comparison-*.md`](eval/results/).
 
+### Does machine learning help? Measured: no
+
+The brief's own success criterion is whether a learned component beats the deterministic
+baseline on held-out subjects. It was tested on real PMData evidence, 15,765 cases,
+4-fold subject-held-out cross-validation, with calibration fitted on subjects disjoint from
+both training and test:
+
+| baseline | coverage | unsupported-show | ROC-AUC | Brier | ECE |
+|---|---|---|---|---|---|
+| **B2** rules engine | 0.0187 | **0.0000** | — | — | — |
+| **B3** gradient boosting, no gates | 0.2304 | **0.2333** | 0.979 | 0.038 | 0.003 |
+| **B4** gradient boosting, hybrid | 0.0187 | **0.0000** | 0.979 | 0.038 | 0.003 |
+
+**Verdict: drop the learned component, ship the rules engine.**
+
+The models learn the contract nearly perfectly — ROC-AUC 0.98 on held-out subjects, so the
+features carry the information. But:
+
+- **B3 is unsafe.** Without gates it displays **23% of inadequate evidence**. Ranking well
+  is not the same as deciding well: a probability has no way to say "this requirement was
+  not met".
+- **B4 is identical to the engine**, because the gates decide first and the model only
+  re-ranks what they let through. At the engine's own zero-risk operating point the model
+  reaches *lower* coverage.
+
+The general point: **when the decision rule is a known deterministic function of observable
+features, a learned approximation can only add error.** There is no hidden signal to
+discover, because the contract is written down. ML belongs at the Stage-2 question instead
+— *is this PPG window trustworthy?* — where the target genuinely is not a known function of
+the inputs.
+
+The one thing the learned path offered is calibration (Brier 0.038, ECE 0.003), which the
+engine has no equivalent of. Worth knowing; not a reason to put a model in the decision
+path. Full write-up and the caveats that limit how far this travels:
+[`eval/results/pmdata-learned-*.md`](eval/results/).
+
 ### One design lesson the data handed over
 
 No Fitbit export carries a sync-completion timestamp. Without one the engine discloses
@@ -379,9 +415,9 @@ engine/            the engine: schemas, policies, features, gates, decisions, ex
   measure.py       independent contract measurement, used only to label evaluation cases
   corruptions.py   17 seeded failure injections
   synth.py         seeded synthetic evidence generators
-eval/              synthetic suite, baselines, metrics, threshold sweep,
-                   PMData preparation / evaluation / policy comparison
-tests/             293 tests
+eval/              synthetic suite, baselines, metrics, threshold sweep, PMData
+                   preparation / evaluation / policy A-B, learned baselines B3+B4
+tests/             307 tests
 docs/              claim contracts, evaluation protocol, related work, cards, ADRs
 demo/              Google Health demonstration script
 tools/             secret scanner
@@ -394,7 +430,7 @@ google_health/     the supported API client (unchanged)
 ## Development
 
 ```bash
-./.venv/bin/python -m pytest                    # 293 tests
+./.venv/bin/python -m pytest                    # 307 tests
 ./.venv/bin/python -m eval.run_eval --seeds 5   # evaluation artifacts
 ./.venv/bin/python tools/secret_scan.py         # pre-publish gate
 ```

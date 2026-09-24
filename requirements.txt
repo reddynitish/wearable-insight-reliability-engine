@@ -3,6 +3,12 @@ pydantic>=2.7
 fastapi>=0.115
 uvicorn[standard]>=0.30
 
+# Evaluation only. The engine itself has no ML dependency and never will:
+# eval/learned.py exists to test whether a learned component earns its place, and the
+# measured answer on real data was no. See eval/results/pmdata-learned-*.md.
+scikit-learn>=1.6
+numpy>=1.26
+
 # Development and evaluation
 pytest>=8.0
 hypothesis>=6.100
